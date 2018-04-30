@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorbackground"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.carlos.projetocultural.MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <FrameLayout
+        android:id="@+id/fragViewPub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewhome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical" />
+
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/progressBarHome"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:progressTint="@color/colorPrimary"
+            android:visibility="visible" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/imagemback"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:tint="@color/colorbranco"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:rippleColor="@color/colorbranco"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/FAB_att"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:tint="@color/colorbranco"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:rippleColor="@color/colorbranco"
+            app:srcCompat="@drawable/rightarrow" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/suas_pub"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Minhas publicações" />
+
+        <item
+            android:id="@+id/pub_recentes"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Publicações recentes" />
+
+        <item
+            android:id="@+id/mapaonline"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Mapa on-line" />
+
+        <item
+            android:id="@+id/mapaoffline"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Mapa off-line" />
+
+
+        <item
+            android:id="@+id/categoria"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="CATEGORIAS" >
+
+            <menu >
+                <group android:id="@+id/cat"
+                    android:checkableBehavior="single">
+                    <item android:id="@+id/escolas"
+                        android:title="Escolas" />
+                    <item android:id="@+id/museus"
+                        android:title="Museus" />
+                    <item android:id="@+id/feiras"
+                        android:title="Feiras" />
+                    <item android:id="@+id/praças"
+                        android:title="Praças" />
+                    <item android:id="@+id/outros"
+                        android:title="Outros" />
+                </group>
+            </menu>
+        </item>
+
+
+    </group>
+
+    <item android:title="COMUNICAÇÃO">
+        <menu>
+            <!--item
+                android:id="@+id/PESQUISAS"
+                android:icon="@drawable/ic_menu_send"
+                android:title="pesquisas" /-->
+            <item
+                android:id="@+id/contato"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Fale conosco" />
+            <item
+                android:id="@+id/pesquisador"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Pesquisador" />
+        </menu>
+    </item>
+
+
+
+</menu>

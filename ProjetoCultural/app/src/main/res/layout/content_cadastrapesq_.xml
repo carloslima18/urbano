@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reca"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.carlos.projetocultural.Cadastrapesq_Activity"
+    tools:showIn="@layout/activity_cadastrapesq_">
+
+    <Button
+        android:id="@+id/buttoncadastropesq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/cpfcad"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="41dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Requisitar cadastro "
+        android:textColor="@color/colorbranco" />
+
+    <TextView
+        android:id="@+id/nomecd"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_alignStart="@+id/cpfcad"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="34dp"
+        android:text="NOME COMPLETO"
+        android:textColor="@color/colorbutton" />
+
+    <EditText
+        android:id="@+id/nomeedcad"
+        android:layout_width="332dp"
+        android:layout_height="44dp"
+        android:layout_alignStart="@+id/nomecd"
+        android:layout_below="@+id/nomecd"
+        android:textColor="@color/colorbutton" />
+
+    <TextView
+        android:id="@+id/cpfcad"
+        android:layout_width="118dp"
+        android:layout_height="33dp"
+        android:layout_above="@+id/cpfedcad"
+        android:layout_alignStart="@+id/cpfedcad"
+        android:text="CPF"
+        android:textColor="@color/colorbutton"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/cpfedcad"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/emailedcd"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorbutton" />
+
+
+    <TextView
+        android:id="@+id/emailcd"
+        android:layout_width="110dp"
+        android:layout_height="34dp"
+        android:layout_above="@+id/emailedcd"
+        android:layout_alignStart="@+id/emailedcd"
+        android:text="EMAIL"
+        android:textColor="@color/colorbutton" />
+
+    <EditText
+        android:id="@+id/emailedcd"
+        android:layout_width="322dp"
+        android:layout_height="54dp"
+        android:layout_above="@+id/buttoncadastropesq"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:textColor="@color/colorbutton" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="URBANO CADASTRO"
+        android:textColor="@color/colorbutton"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>

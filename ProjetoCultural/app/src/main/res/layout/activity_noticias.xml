@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--SE ENCONTRA NA ABA PESQUISAS -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.carlos.projetocultural.NoticiasActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarnoticias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:subtitleTextColor="@color/ef_white"
+            app:titleTextColor="@color/ef_white"
+            android:background="@color/colorPrimary"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:textAlignment="center"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="13dp">
+
+    <LinearLayout
+        android:id="@+id/lineardepergt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Noticias gerais"
+            android:textAlignment="center"
+            android:textColor="@color/colorbutton"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            tools:text="Ajuda urbano" />
+
+
+        <TextView
+            android:id="@+id/texto2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:text="PERGUNTAS FREQUENTES"
+            android:textAlignment="viewStart"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/pgt1"
+
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Para onde vai minhas publicações enviadas?"
+            android:textColor="@color/colorbranco" />
+
+        <TextView
+            android:id="@+id/resp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/perg1"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorbutton"
+            android:visibility="gone"
+            tools:text="para uma análise teste" />
+
+        <Button
+            android:id="@+id/pgt2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Posso ser um pesquisador?"
+            android:textColor="@color/colorbranco" />
+
+        <TextView
+            android:id="@+id/resp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/perg2"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorbutton"
+            android:visibility="gone"
+            tools:text="para uma análise teste" />
+
+        <Button
+            android:id="@+id/pgt3"
+
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Qual a finalidade desta aplicação?"
+            android:textColor="@color/colorbranco" />
+
+        <TextView
+            android:id="@+id/resp3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/perg3"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorbutton"
+            android:visibility="gone"
+            tools:text="para uma análise teste" />
+
+        <Button
+            android:id="@+id/pgt4"
+
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="É só isso?"
+            android:textColor="@color/colorbranco" />
+
+        <TextView
+            android:id="@+id/resp4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/perg4"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorbutton"
+            android:visibility="gone"
+            tools:text="para uma análise teste" />
+
+        <Button
+            android:id="@+id/pgt5"
+
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Quais publicações são preferênciais?"
+            android:textColor="@color/colorbranco" />
+
+        <TextView
+            android:id="@+id/resp5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/perg5"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorbutton"
+            android:visibility="gone"
+            tools:text="para uma análise teste" />
+
+
+        <Button
+            android:id="@+id/pgt10"
+
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Alguma outra duvída?"
+            android:textAlignment="center"
+            android:textColor="@color/colorbranco" />
+
+
+    </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
+
+
+
+
+
+

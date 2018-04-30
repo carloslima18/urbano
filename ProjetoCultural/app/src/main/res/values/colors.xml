@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="background_listview_main" type="color">#FFFFFF</item>
+    <item name="background_activity_main" type="color">#E0E0E0</item>
+    <item name="background_textview_main" type="color">#BDBDBD</item>
+    <item name="background_linear_main" type="color">#BDBDBD</item>
+
+    <color name="colorPrimary">#D50000</color>
+    <color name="colorPrimaryDark">#b01616</color>
+    <color name="colorAccent">#D50000</color>
+    <color name="colorbutton">#000000</color>
+    <color name="colorload">#D50000</color>
+    <color name="colorbackground">#FFFFFF</color>
+    <color name="colorbranco">#FFFFFF</color>
+
+
+    <color name="colorPrimaryp">#000000</color>
+    <color name="colorPrimaryDarkp">#FFFFFF</color>
+    <color name="colorAccentp">#ea3732</color>
+    <color name="contact_name">#333333</color>
+    <color name="contact_number">#8c8c8c</color>
+
+    <color name="roxo">#9C27B0</color>
+    <color name="azul">#2196F3</color>
+    <color name="verdeagua">#009688</color>
+    <color name="verdeclaro">#8BC34A</color>
+    <color name="laranja">#FF9800</color>
+    <color name="branco">#FFFFFF</color>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,1032 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeadd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_border"
+    android:padding="15dp"
+    tools:context=".AddFragment">
+
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="13dp">
+
+
+        <LinearLayout
+            android:id="@+id/lladd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:orientation="vertical">
+
+            <!--titulo-->
+            <TextView
+                android:id="@+id/tituloa"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="ADICIONAR PUBLICAÇÃO"
+                android:textAllCaps="true"
+                android:textColor="@color/colorbutton"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.441"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.017" />
+
+            <!--nome -->
+            <LinearLayout
+                android:id="@+id/e"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="NOME:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/nomea"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="nome do local"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
+
+            </LinearLayout>
+
+            <!--rede social -->
+            <LinearLayout
+                android:id="@+id/t"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="REDE SOCIAL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/redesociala"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="rede social" />
+            </LinearLayout>
+
+            <!--endereçco -->
+            <LinearLayout
+                android:id="@+id/v"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="ENDEREÇO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/enderecoa"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="endereço" />
+            </LinearLayout>
+
+            <!--contato -->
+            <LinearLayout
+                android:id="@+id/x"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="CONTATO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/contatoa"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="contato"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <!--email -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:text="EMAIL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/emaila"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="Email" />
+            </LinearLayout>
+
+            <!--atv exercida -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="ATV. EXERCIDA:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/atvexa"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="atividade exercida"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
+            </LinearLayout>
+
+
+            <!--spinner para a categoria -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textviewcategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="CATEGORIA:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spinneradd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+
+                    />
+            </LinearLayout>
+
+            <!--ano inicio-->
+            <LinearLayout
+                android:id="@+id/anoinicioa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="ANO INICIO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/anoinicio"
+
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <!--cnpj -->
+            <LinearLayout
+                android:id="@+id/cnpja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="CNPJ:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/cnpj"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <!--representacao -->
+            <LinearLayout
+                android:id="@+id/representacaoa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="REPRESENTAÇÃO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/representacao"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <!--recursor -->
+            <LinearLayout
+                android:id="@+id/recursoa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:text="RECURSO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/recurso"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <!--botes de add e remover perguntas-->
+            <LinearLayout
+                android:id="@+id/layoutaddcampos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/addcampolr"
+                    style="@android:style/Widget.Holo.Light.Button.Toggle"
+                    android:layout_width="70dp"
+                    android:layout_height="36dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="+ PGT"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/removecampolr"
+                    style="@android:style/Widget.Holo.Light.Button.Toggle"
+                    android:layout_width="70dp"
+                    android:layout_height="36dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="- PGT"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <!--perguntas e respostas-->
+            <LinearLayout
+                android:id="@+id/campo1layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo1a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 1:" />
+
+                <EditText
+                    android:id="@+id/campo2a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="resposta 1:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo2layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo3a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 2:" />
+
+                <EditText
+                    android:id="@+id/campo4a"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="resposta 2:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo3layoutr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo5a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 3:" />
+
+                <EditText
+                    android:id="@+id/campo6a"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="resposta 3:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo4layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo7a"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 4:" />
+
+                <EditText
+                    android:id="@+id/campo8a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="resposta 4:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo5layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo9a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 5:" />
+
+                <EditText
+                    android:id="@+id/campo10a"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 5:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/campo6ayoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo11a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 6:" />
+
+                <EditText
+                    android:id="@+id/campo12a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="resposta 6:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo7layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo13a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 7:" />
+
+                <EditText
+                    android:id="@+id/campo14a"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="resposta 7:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo8layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo15a"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 8:" />
+
+                <EditText
+                    android:id="@+id/campo16a"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 8:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo9layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo17a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 9:" />
+
+                <EditText
+                    android:id="@+id/campo18a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="resposta 9:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/campo10layoutlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo19a"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="pergunta 10:" />
+
+                <EditText
+                    android:id="@+id/campo20a"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="resposta 10:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <!--
+                 <LinearLayout
+                     android:id="@+id/campo11layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo11aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 11:" />
+
+                     <EditText
+                         android:id="@+id/campo11a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 11:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo12layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo12aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 12:" />
+
+                     <EditText
+                         android:id="@+id/campo12a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 12:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo13layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo13aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 13:" />
+
+                     <EditText
+                         android:id="@+id/campo13a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 13:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo14layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo14aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 14:" />
+
+                     <EditText
+                         android:id="@+id/campo14a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 14:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo15layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo15aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 15:" />
+
+                     <EditText
+                         android:id="@+id/campo15a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 15:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo16layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo16aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 16:" />
+
+                     <EditText
+                         android:id="@+id/campo16a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 16:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo17layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo17aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 17:" />
+
+                     <EditText
+                         android:id="@+id/campo17a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 17:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo18layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo18aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 18:" />
+
+                     <EditText
+                         android:id="@+id/campo18a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 18:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo19layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo19aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 19:" />
+
+                     <EditText
+                         android:id="@+id/campo19a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 19:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+                 <LinearLayout
+                     android:id="@+id/campo20layoutlr"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="vertical"
+                     android:visibility="gone">
+
+                     <EditText
+                         android:id="@+id/campo20aa"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="pergunta 20:" />
+
+                     <EditText
+                         android:id="@+id/campo20a"
+                         android:layout_width="match_parent"
+                         android:layout_height="60dp"
+                         android:hint="resposta 20:" />
+
+                     <ImageView
+                         android:layout_width="match_parent"
+                         android:layout_height="2dp"
+                         android:background="@color/colorPrimaryDark" />
+
+                 </LinearLayout>
+     -->
+
+
+            <!--campo para as imagens-->
+            <Button
+                android:id="@+id/addfoto"
+                style="@android:style/Widget.Holo.Light.Button.Toggle"
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="ADD IMG"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/llcunjuntoimg1and2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img1aa"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img1a"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img2aa"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img2a"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llcunjuntoimg3nd4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img3aa"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img3a"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img4aa"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img4a"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/addmapadd"
+                android:layout_width="70dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="ADD MAP"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/mostramapaadd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <!-- campo para o google map-->
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/figMapAdda"
+                    android:layout_width="match_parent"
+                    android:layout_height="220sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                   />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonAddMapa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Alterar Localização"
+                android:textColor="@color/colorbranco"
+                app:layout_constraintStart_toEndOf="@+id/buttonFoto" />
+
+
+            <Button
+                android:id="@+id/buttonSalvara"
+                android:layout_width="294dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Salvar Publicação"
+                android:textColor="@color/colorbranco" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

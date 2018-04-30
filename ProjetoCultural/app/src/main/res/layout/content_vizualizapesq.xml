@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.carlos.projetocultural.vizualizapesqActivity"
+    tools:showIn="@layout/activity_vizualizapesq"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="13dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulov"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/colorbutton"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                tools:text="NOME DA PUBLICACAO" />
+
+            <!--nome-->
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOME:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="NOME:" />
+
+                <TextView
+                    android:id="@+id/nomev"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--redesec-->
+            <LinearLayout
+                android:id="@+id/ll2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/redesocial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="REDE SOCIAL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/redecoailv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+
+            </LinearLayout>
+            <!--end-->
+            <LinearLayout
+                android:id="@+id/ll3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENDEREÇO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/enderecov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--contato-->
+            <LinearLayout
+                android:id="@+id/ll4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/cont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTATO/CELL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="CONTATO/CELL" />
+
+                <TextView
+                    android:id="@+id/contatov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+
+
+            </LinearLayout>
+            <!--email-->
+            <LinearLayout
+                android:id="@+id/ll5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/emailv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--atvex-->
+            <LinearLayout
+                android:id="@+id/ll6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATVIDADE EXERCIDA:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/atvexv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--categ-->
+            <LinearLayout
+                android:id="@+id/llcat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CATEGORIA:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/categoriav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+            </LinearLayout>
+            <!--inicio-->
+            <LinearLayout
+                android:id="@+id/ll8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ANO DE INICIO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/anoiniciov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--cnpj-->
+            <LinearLayout
+                android:id="@+id/ll9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CNPJ:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/cnpjv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--represemtacao-->
+            <LinearLayout
+                android:id="@+id/ll10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                   android:text="REPRESENTAÇÃO:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/representacaov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <!--recurso-->
+            <LinearLayout
+                android:id="@+id/ll11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RECURSO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/recursov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btperguntaserespostas"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="PGT+"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btescondeperguntas"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="PGT-"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+
+            </LinearLayout>
+
+            <!--perguntas e responstas-->
+            <LinearLayout
+                android:id="@+id/ll12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt1v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp1vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt2v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp2vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt3v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp3vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt4v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp4vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt5v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp5vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/pgt6v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+
+                <TextView
+                    android:id="@+id/resp6vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt7v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp7vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt8v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp8vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt9v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp9vv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/pgt10v"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    tools:text="informação completa do individuo" />
+                <TextView
+                    android:id="@+id/resp10vv"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    tools:text="informaão completa do individuo" />
+            </LinearLayout>
+
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btmostramapa"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Vizualiza mapa"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+            <!--mapa-->
+            <LinearLayout
+                android:id="@+id/mostramapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <!-- campo para o google map-->
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/figMapAddav"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp" />
+            </LinearLayout>
+
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btmostraimg"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Imagens"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+
+            <!--campo para as imagens-->
+
+            <LinearLayout
+                android:id="@+id/llimg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="200dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bigimvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/bigim"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img1vv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img1v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img2vv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img2v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img4vv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img4v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img3vv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img3v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativell"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorbackground"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.carlos.projetocultural.actViewPub"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/activity_act_view_pub">
+
+    <ScrollView
+        android:id="@+id/scroolview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="13dp"
+       >
+
+
+        <LinearLayout
+            android:id="@+id/llc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ef_white"
+            android:orientation="vertical">
+
+            <!--linar layout vertical do titulo-->
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tituloPub"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:fontFamily="@font/rock_salt"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic"
+                    tools:text="nome da publicacao" />
+
+                <TextView
+                    android:id="@+id/textviewAvl"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Calculando..."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    tools:text="Calculando..." />
+            </LinearLayout>
+
+
+            <!--linar layout vertical das imagens-->
+            <LinearLayout
+                android:id="@+id/l2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <!--RelativeLayout
+                    android:id="@+id/rimg2"
+                    android:layout_width="170dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="66dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewPub1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressbaract1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible" />
+                </RelativeLayout-->
+
+                <!--RelativeLayout
+                    android:id="@+id/rimg1"
+                    android:layout_width="180dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewPub2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressbaract2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible" />
+                </RelativeLayout-->
+
+                <!--RelativeLayout
+     android:id="@+id/rimg3"
+     android:layout_width="180dp"
+     android:layout_height="150dp"
+     android:layout_alignParentStart="true"
+     android:layout_below="@+id/rimg1"
+     android:layout_marginTop="45dp">
+
+     <ImageView
+         android:id="@+id/imgViewPub3"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_alignParentStart="true"
+         android:layout_alignParentTop="true"
+         android:adjustViewBounds="true"
+         android:padding="1dp" />
+
+     <ProgressBar
+         android:id="@+id/progressbaract3"
+         android:layout_width="50dp"
+         android:layout_height="50dp"
+         android:layout_centerInParent="true"
+         android:visibility="visible" />
+ </RelativeLayout-->
+
+                <!--RelativeLayout
+                    android:id="@+id/rimg4"
+                    android:layout_width="170dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/rimg2"
+                    android:layout_marginTop="30dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewPub4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:adjustViewBounds="true"
+                        android:padding="1dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressbaract4"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible" />
+                </RelativeLayout-->
+
+                <!--campo para as imagens-->
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardviewimgbig"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgViewPubbig"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/llimg12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/rimg1"
+                        android:layout_width="165dp"
+                        android:layout_height="175dp"
+                        android:layout_marginRight="40dp"
+                        app:cardCornerRadius="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressbaract2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="60dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/imgViewPub2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:scaleType="centerCrop" />
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/rimg2"
+                        android:layout_width="165dp"
+                        android:layout_height="165dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="30dp"
+                        app:cardCornerRadius="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressbaract1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="60dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/imgViewPub1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="centerCrop" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llimg34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/rimg3"
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressbaract3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="60dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/imgViewPub3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:scaleType="centerCrop" />
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/rimg4"
+                        android:layout_width="150dp"
+                        android:layout_height="170dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="30dp"
+                        android:elevation="10dp"
+                        app:cardCornerRadius="5dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressbaract4"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginTop="60dp"
+                            android:visibility="visible" />
+
+                        <ImageView
+                            android:id="@+id/imgViewPub4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:scaleType="centerCrop" />
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--informações mapas, info add, -->
+            <LinearLayout
+                android:id="@+id/ender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textvInfoPub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/nunito"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    tools:text="informacao geral da publicacao como nome, contato, @android:string/defaultVoiceMailAlphaTag" />
+
+
+                <Button
+                    android:id="@+id/mostramapa"
+                    style="@android:style/Widget.DeviceDefault.Button.Toggle"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="visualizar mapa"
+                    android:textColor="@color/colorbranco"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/llmapa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapViewPub"
+                        android:layout_width="340dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/mostrarinfo"
+                    style="@android:style/Widget.DeviceDefault.Button.Toggle"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="visualizar info"
+                    android:textColor="@color/colorbranco"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/infodepub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone"
+                    tools:text="mais informação como tudo, ano inicio, representacao, recursos, história em geral" />
+
+
+            </LinearLayout>
+
+            <!--botoes e avaliacao-->
+            <LinearLayout
+                android:id="@+id/avl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/buttonAvl"
+                    style="@android:style/Widget.DeviceDefault.Button.Toggle"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="Avaliar Publicação"
+                    android:textColor="@color/colorbranco" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">URBANO</string>
+
+    <string name="navigation_drawer_open">MENU URBANO</string>
+
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Configuração</string>
+
+    <string name="title_activity_principal">SUAS PUBLICAÇÕES</string>
+
+    <string name="maintext">
+        O Projeto URBANO, é um aplicativo que tem como objetivo aprensentar
+        o estudo feito, que tem a finalidade de investigar as dinâmicas sociais de ocupação dos espaços
+        urbanos na cidade de Anápolis que guardam autenticidades e promovam processos de resistência
+        aos fluxos hegemônicos. \n \n
+        A partir dos lugares identificados, buscamos organizar uma base de
+        dados inicial que contenha informações sobre a dinamização e fixação de práticas sociais, que
+        expressem algum tipo de resistência. Juntamente com essa base de dados digital objetivou-se
+        desenvolver tal aplicação, para fortalecer o diálogo do projeto com a comunidade.  \n
+    </string>
+
+    <string name="cadastrapesq">
+        Olá! Ao se candidatar a ser um de nossos pesquisadores, enviando os dados pedidos,
+        passara por um verificação de autenticidade dos mesmos. Caso seja aprovado, receberá
+        um e-mail com nosso contato explicando o próximo procedimento a ser feito.
+        \n \n
+    </string>
+
+    <string name="maintext2"> \n
+                Nesta medida a sociedade atual apresenta traços de padronização que promovem  \n
+        transformações nos lugares. Com a massificação alguns pontos de encontro que antes eram \n
+        frequentados por um grande número de pessoas perderam a visibilidade que antes era muito \n
+        maior. Podemos citar como exemplos desses locais as feiras com produtos oriundos da fazenda, \n
+        peças teatrais, casas de artesanatos, ações sociais e culturais para comunidade e patrimônios \n
+        históricos, de modo estão atuando como pontos de resistência, sendo uma consequência das \n
+        transformações do espaço geográfico. \n
+    </string>
+
+    <string name="noticias">
+               A Prefeitura de Anápolis, por meio da Secretaria Municipal de
+        Cultura, abriu nesta segunda-feira, 5, as inscrições do Bolsa
+        Cultura para preenchimento de vagas no Corpo de Baile do Teatro
+        Municipal, Coro Sinfônico, Orquestra de Violeiros, Orquestra Jovem
+        e Companhia Anapolina de Teatro. O programa oferece incentivo de
+        R$ 400 para que artistas iniciantes possam investir na sua profissionalização.
+        Para as inscrições são solicitadas cópias dos seguintes documentos:
+        RG, CPF, comprovante de endereço e currículo acompanhado de documentos originais.
+
+    </string>
+
+
+    <string name="perg1">
+        Suas publicações enviadas, serão analisadas pelo administrador do Urbano, nas quais serão avaliadas
+        nos seguintes critérios:\n
+        1) Qualidade da imagem, preferencialmente imagens com maior largura, ou seja, prefira selecionar fotos
+           que foram tiradas com o celular (deitado). \n
+        2) Autenticidade das informações enviadas.\n
+        3) Ortografia e gramática. \n
+        4) Autenticidade de localização do local. \n
+        Após a verificação, sua publicação poderá ser aceita e disponibilizada para os demais usuários.\n
+        OBS: No ato das violações dessas regras básicas para o envio de publicações. As demais publicações
+        enviadas, não serão consideradas.
+    </string>
+
+
+    <string name="perg2">
+        Pode. Após realizar a requisição de pesquisador na aba -pesquisador- será feito uma validação dos dados
+        enviados, e caso aceito, receberá um correio eletrônico para mais instruções. \n
+        O pesquisador terá privilégios adicionais na aplicação, como perguntas e respostas para mais dados, podendo
+        Usar o aplicativo para guardar suas pesquisas ou envia-las de maneira convencional para exposição do local.
+        O cadastro pode ser enviado uma única vez. Cadastros feitos mais de uma vez, serão desconsiderados.
+    </string>
+
+    <string name="perg3">
+        A finalidade do nosso aplicativo, é disponibilizar aos usuários, a pesquisa de locais que oferecem
+        algum tipo de lazer, cultura, informação dentre outros aspectos.
+    </string>
+
+    <string name="perg4">
+        Não. A aplicação esta em constante desenvolvimento, para cada vez mais, melhorar a experiência do usuário, seja
+        para obter informações de locais desejados ou para disponibilizar um repositório de pesquisas sobre locais.
+    </string>
+
+    <string name="perg5">
+        Publicações de locais culturais, lazer, diversificados, nos quais podem disperta o interesse dos demais usúarios
+        a conhecer o mesmo.
+    </string>
+
+
+
+
+
+
+    <string name="title_activity_add">ADICIONAR PUBLICAÇÃO</string>
+    <string name="title_activity_map_pub">MAPA URBANO</string>
+    <string name="title_activity_act_view_pub">DADOS PUBLICADOS</string>
+    <string name="title_activity_avaliacao">AVALIAÇÃO</string>
+    <string name="title_activity_home">PUBLICAÇÕES RECENTES</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="app_namep">RecyclerView Search</string>
+    <string name="action_settingsp">Settings</string>
+    <string name="toolbar_title">Contacts</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name…</string>
+    <string name="title_activity_cadastrapesq_">CADASTRO PESQUISADOR</string>
+
+    <string-array name="planets_array">
+        <item>ESCOLA</item>
+        <item>PRAÇA</item>
+        <item>MUSEU</item>
+        <item>TEATRO</item>
+        <item>FEIRA</item>
+        <item>OUTROS</item>
+    </string-array>
+    <string name="title_activity_vizualizapesq">vizualizapesqActivity</string>
+</resources>
