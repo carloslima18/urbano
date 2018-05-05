@@ -151,10 +151,10 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
         var x = -1;
         if(pesquisador != ""){
             x = 1;
-            urlnota = "http://$idd/urbano/sendavlpubpesq?_format=json&AvaliacaopubpesqSearch[idpubpesq]=$id&fields=nota"
+            urlnota = "http://orbeapp.com/web/sendavlpubpesq?_format=json&AvaliacaopubpesqSearch[idpubpesq]=$id&fields=nota"
         }else{
             x = 0;
-            urlnota = "http://$idd/urbano/sendavlpubuser?_format=json&AvaliacaopubuserSearch[idpubpesq]=$id&fields=nota"
+            urlnota = "http://orbeapp.com/web/sendavlpubuser?_format=json&AvaliacaopubuserSearch[idpubpesq]=$id&fields=nota"
         }
         Thread {
             if (x == 0) {
@@ -193,10 +193,10 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
         var x = -1;
         if(pesquisador != ""){
              x = 1;
-             url =  "http://$idd/urbano/sendpubpesq/$id?_format=json&fields=img1,img2,img3,img4"
+             url =  "http://orbeapp.com/web/sendpubpesq/$id?_format=json&fields=img1,img2,img3,img4"
         }else{
             x = 0;
-             url =  "http://$idd/urbano/sendpubuser/$id?_format=json&fields=img1,img2,img3,img4"
+             url =  "http://orbeapp.com/web/sendpubuser/$id?_format=json&fields=img1,img2,img3,img4"
         }
         Thread{
             //   listItems = PubuserService.getPubuserId(id.toInt())
@@ -242,6 +242,43 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
                 progressbaract2.visibility = View.GONE
                 progressbaract3.visibility = View.GONE
                 progressbaract4.visibility = View.GONE
+
+                //carrega os botes de clic das img logo apos ter img, se n da erro
+
+                cardviewimgbig.setOnClickListener {
+                    cardviewimgbig.visibility = View.GONE
+                    llimg12.visibility = View.VISIBLE
+                    llimg34.visibility = View.VISIBLE
+                }
+                rimg1.setOnClickListener {
+                    imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base642))
+                    // Glide.with(this).load(base641).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
+                    cardviewimgbig.visibility = View.VISIBLE
+                    llimg12.visibility = View.GONE
+                    llimg34.visibility = View.GONE
+                }
+                rimg2.setOnClickListener {
+                    //  Glide.with(this).load(base642).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
+                    imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base641))
+                    cardviewimgbig.visibility = View.VISIBLE
+                    llimg12.visibility = View.GONE
+                    llimg34.visibility = View.GONE
+                }
+                rimg3.setOnClickListener {
+                    //  Glide.with(this).load(base643).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
+                    imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base643))
+                    cardviewimgbig.visibility = View.VISIBLE
+                    llimg12.visibility = View.GONE
+                    llimg34.visibility = View.GONE
+                }
+                rimg4.setOnClickListener {
+                    imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base644))
+                    // Glide.with(this).load(base644).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
+                    cardviewimgbig.visibility = View.VISIBLE
+                    llimg12.visibility = View.GONE
+                    llimg34.visibility = View.GONE
+                }
+
             }
         }.start()
     }
@@ -278,40 +315,6 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
         mapView?.onResume();
 
 
-
-        cardviewimgbig.setOnClickListener {
-            cardviewimgbig.visibility = View.GONE
-            llimg12.visibility = View.VISIBLE
-            llimg34.visibility = View.VISIBLE
-        }
-        rimg1.setOnClickListener {
-            imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base642))
-           // Glide.with(this).load(base641).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
-            cardviewimgbig.visibility = View.VISIBLE
-            llimg12.visibility = View.GONE
-            llimg34.visibility = View.GONE
-        }
-        rimg2.setOnClickListener {
-          //  Glide.with(this).load(base642).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
-            imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base641))
-            cardviewimgbig.visibility = View.VISIBLE
-            llimg12.visibility = View.GONE
-            llimg34.visibility = View.GONE
-        }
-        rimg3.setOnClickListener {
-          //  Glide.with(this).load(base643).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
-            imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base643))
-            cardviewimgbig.visibility = View.VISIBLE
-            llimg12.visibility = View.GONE
-            llimg34.visibility = View.GONE
-        }
-        rimg4.setOnClickListener {
-            imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base644))
-           // Glide.with(this).load(base644).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
-            cardviewimgbig.visibility = View.VISIBLE
-            llimg12.visibility = View.GONE
-            llimg34.visibility = View.GONE
-        }
 
 
 

@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
             //var obj :ArrayList<JSONObject> ?= null
             val loguin = tlogin.text.toString()
             val senha = tsenha.text.toString()
-            val url = "http://$ip/urbano/sendpesquisador?_format=json&&PesquisadorSearch[campo2]=S&PesquisadorSearch[nome]=$loguin&fields=id,nome,senha" //&PesquisadorSearch[campo2]=S
+            val url = "http://orbeapp.com/web/sendpesquisador?_format=json&&PesquisadorSearch[campo2]=S&PesquisadorSearch[nome]=$loguin&fields=id,nome,senha" //&PesquisadorSearch[campo2]=S
             if (AndroidUtils.isNetworkAvailable(applicationContext)) {
                 Thread {
                     arrayList = pubService.getelemento(url)

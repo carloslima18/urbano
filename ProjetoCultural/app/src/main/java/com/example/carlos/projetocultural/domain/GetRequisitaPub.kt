@@ -24,7 +24,7 @@ class GetRequisitaPub(context: Context, listV: RecyclerView, param:String) : Asy
     var context = context
     var param = param//192.168.137.113
     var id = MainActivity().ipconfig
-    val URL = "http://$id/urbano/sendpubuser?_format=json$param"
+    val URL = "http://orbeapp.com/web/sendpubuser?_format=json$param"
 
     override fun onPreExecute(){
         super.onPreExecute()

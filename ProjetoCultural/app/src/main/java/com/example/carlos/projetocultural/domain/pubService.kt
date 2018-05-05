@@ -16,9 +16,9 @@ import org.json.JSONObject
 
 
 object pubService{
-    var ip = "192.168.15.5"
-    private val BASE_URLuser = "http://$ip/urbano/sendpubuser?_format=json"
-    private val BASE_URLpesq = "http://$ip/urbano/sendpubpesq?_format=json"
+    var ip = "192.168.15.4"
+    private val BASE_URLuser = "http://orbeapp.com/web/sendpubuser?_format=json"
+    private val BASE_URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json"
 
 
     // Busca os carros por tipo (clássicos, esportivos ou luxo)
@@ -201,13 +201,13 @@ object pubService{
 
 
     fun saveAvaliacaouser(avl: JSONObject): Response{
-        val json = HttpHelper.post("http://$ip/urbano/sendavlpubuser?_format=json", avl.toString())
+        val json = HttpHelper.post("http://orbeapp.com/web/sendavlpubuser?_format=json", avl.toString())
         val response = fromJson<Response>(json)
         return response
     }
 
     fun save_candidato_pesquisador(candidato: JSONObject): Response{
-        val json = HttpHelper.post("http://$ip/urbano/sendpesquisador?_format=json", candidato.toString())
+        val json = HttpHelper.post("http://orbeapp.com/web/sendpesquisador?_format=json", candidato.toString())
         val response = fromJson<Response>(json)
         return response
     }
@@ -215,7 +215,7 @@ object pubService{
 
 
     fun saveAvaliacaopesq(avl: JSONObject): Response{
-        val json = HttpHelper.post("http://$ip/urbano/sendavlpubpesq?_format=json", avl.toString())
+        val json = HttpHelper.post("http://orbeapp.com/web/sendavlpubpesq?_format=json", avl.toString())
         val response = fromJson<Response>(json)
         return response
     }

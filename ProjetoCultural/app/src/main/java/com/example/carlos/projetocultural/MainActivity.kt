@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-    public var ipconfig = "192.168.15.5"
+    public var ipconfig = "192.168.15.4"
     fun getInstance(): String? {
         return ipconfig
     }
@@ -140,12 +140,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     fun mapa(){
         var listuser :MutableList<Pubuser>
         var listItems :MutableList<Pubpesq>
-        val URL = "http://$ipconfig/urbano/sendpubuser?_format=json&fields=id,nome,atvexercida,longitude,latitude"
-        val URLpesq = "http://$ipconfig/urbano/sendpubpesq?_format=json&fields=id,nome,atvexercida,latitude,longitude,pesquisador"
+        val URL = "http://orbeapp.com/web/sendpubuser?_format=json&fields=id,nome,atvexercida,longitude,latitude"
+        val URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json&fields=id,nome,atvexercida,latitude,longitude,pesquisador"
 
         val dialog = ProgressDialog.show(this, "Um momento","buscando lugares",false,true)
         Thread{
             listuser = pubService.getPubuser(URL)
+
             listItems = pubService.getPubpesq(URLpesq)
             runOnUiThread{
                 val h = HomeActivity()
@@ -358,16 +359,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun toastx(){
-        val layoutinflate = layoutInflater
-        val layout = R.layout.toastm
-        val viewgroup = findViewById<ViewGroup>(R.id.toast_layout_root)
-        val view = layoutinflate.inflate(layout,viewgroup)
-        val toastx = Toast(this)
-        toastx.duration = Toast.LENGTH_LONG
-        toastx.view = view
-        toastx.show()
-    }
 
 /*
 

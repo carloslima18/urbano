@@ -203,7 +203,7 @@ class MapPub : AppCompatActivity(), OnMapReadyCallback{
                     intent.putExtra("vemdomappubOUvemdohomeactivity", "mappub")
                     try {
                         if(e_pesquisador != "0"){
-                            url = "http://$ipx/urbano/sendpubpesq/$id?_format=json&fields=fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5"
+                            url = "http://orbeapp.com/web/sendpubpesq/$id?_format=json&fields=fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5"
                             Thread {
                                 val pubpesq = pubService.getPubpesqparasoUmresultado(url)
                                 handle.post {
@@ -230,7 +230,7 @@ class MapPub : AppCompatActivity(), OnMapReadyCallback{
                                 }
                             }.start()
                         }else{
-                            url = "http://$ipx/urbano/sendpubuser/$id?_format=json&fields=fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude"
+                            url = "http://orbeapp.com/web/sendpubuser/$id?_format=json&fields=fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude"
                             Thread {
                                 val pubuser = pubService.getPubuserparasoUmresultado(url)
                                 handle.post {

@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import android.Manifest
-import android.app.Application
-import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.os.*
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
@@ -21,22 +17,18 @@ import com.example.carlos.projetocultural.adapters.HomeAdapter
 import com.example.carlos.projetocultural.domain.*
 import com.example.carlos.projetocultural.utils.AndroidUtils
 import org.jetbrains.anko.toast
-import org.json.JSONObject
 import kotlinx.android.synthetic.main.content_home.*
-import kotlinx.android.synthetic.main.content_principal.*
-import kotlin.collections.ArrayList
 import android.os.Parcelable
-import android.transition.Slide
 import android.view.View
-import android.nfc.tech.MifareUltralight.PAGE_SIZE
-import android.support.v7.recyclerview.R.attr.layoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.SearchView;
+import android.support.v4.view.MenuItemCompat.getActionView
 import android.text.TextUtils
+import android.support.v4.view.MenuItemCompat.getActionView
+import android.view.Menu
 
-import java.util.*
 
-
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     var database1: MyDatabaseOpenHelper?=null
     val MY_PERMISSIONS_REQUEST_PHONE_CALL = 1 //variaveis para permissões
@@ -59,8 +51,9 @@ class HomeActivity : AppCompatActivity() {
     private var parceble: Parcelable ?= null
     private var chave_state = "recycler_state"
 
-
-
+    var verifica_se_esta_buscando_publicacoes = 0;
+    var simpleSearchView :SearchView?=null
+    var textoPesquisa:String ?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -80,9 +73,9 @@ class HomeActivity : AppCompatActivity() {
         GetPermission()
             val extras = intent.extras //verifica se tem algo pois o mainActivitu, manda as requisicoes especificas de escolas etc etc etc.
             if (extras != null) {
-                PreenchePubFirst(extras.getString("param"))
+                PreenchePubFirst(extras.getString("param"),"","")
             }else{
-                PreenchePubFirst(null)
+                PreenchePubFirst(null,"","")
             }
 
 
@@ -93,7 +86,25 @@ class HomeActivity : AppCompatActivity() {
         //  recyclerViewhome.addOnScrollListener(recyclerViewOnScrollListener);
         // val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         // StrictMode.setThreadPolicy(policy)*/
+        simpleSearchView = findViewById(R.id.searchView) as SearchView
+
+
+
     }
+
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        toast("submeteu $query")
+        finish()
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String): Boolean {
+        toast("mudando")
+        finish()
+        return true
+    }
+
 
 
     override fun onSaveInstanceState(state: Bundle?) {
@@ -113,31 +124,51 @@ class HomeActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
+
+
+
         FAB_att.setOnClickListener(){
-            //addaoadapter(3)
-            pagepesq++
-            pageuser++
-            PreenchePubFirst(null)
+            if(verifica_se_esta_buscando_publicacoes == 0) {
+                //addaoadapter(3)
+                pagepesq++
+                pageuser++
+                PreenchePubFirst(null,"","")
+            }else{
+                toast("Aguarde um momento")
+            }
 
         }
         if (parceble != null) {
             recyclerViewhome.layoutManager.onRestoreInstanceState(parceble)
         }
         imagemback.setOnClickListener {
-            if(pagepesq != 1 || pageuser != 1) {
-                if(pageuser != 1){
-                    pageuser--
+            if(verifica_se_esta_buscando_publicacoes == 0) {
+                if (pagepesq != 1 || pageuser != 1) {
+                    if (pageuser != 1) {
+                        pageuser--
+                    }
+                    if (pagepesq != 1) {
+                        pagepesq--
+                    }
+                    PreenchePubFirst(null,"","")
+                } else {
+                    toast("Inicio")
                 }
-                if(pagepesq != 1){
-                    pagepesq--
-                }
-                PreenchePubFirst(null)
             }else{
-                toast("Inicio")
+                toast("Aguarde um momento")
             }
         }
 
+
+        simpleSearchView?.setOnClickListener {
+            textoPesquisa = (simpleSearchView!!.query.toString())
+            toast("buscando $textoPesquisa")
+            var user ="http://orbeapp.com/web/sendpubuser?_format=json&PublicacaouserSearch[nome]=$textoPesquisa&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1"
+            var pesq =  "http://orbeapp.com/web/sendpubpesq?_format=json&PublicacaopesqSearch[nome]=$textoPesquisa&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1"
+            PreenchePubFirst(null,user,pesq)
+        }
     }
+
 
     override fun onPause() {
         super.onPause()
@@ -268,14 +299,21 @@ class HomeActivity : AppCompatActivity() {
 
     var nomedapublicao_passada_user :String ?=null
     var nomedapublicao_passada_pesq :String ?=null
-    fun PreenchePubFirst(categoria:String?){
+    fun PreenchePubFirst(categoria:String?,searchuser:String,searchpesq:String){
+        verifica_se_esta_buscando_publicacoes = 1
         //comentadox
-        var URL = "http://$ip/urbano/sendpubuser?_format=json&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
-        var URLpesq = "http://$ip/urbano/sendpubpesq?_format=json&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
 
+        var URL = "http://orbeapp.com/web/sendpubuser?_format=json&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
+        var URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
         if(categoria != null) {
-            URL = "http://$ip/urbano/sendpubuser?_format=json&PublicacaouserSearch[categoria]=$categoria&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
-            URLpesq = "http://$ip/urbano/sendpubpesq?_format=json&PublicacaopesqSearch[categoria]=$categoria&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
+            if (categoria != null) {
+                URL = "http://orbeapp.com/web/sendpubuser?_format=json&PublicacaouserSearch[categoria]=$categoria&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
+                URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json&PublicacaopesqSearch[categoria]=$categoria&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
+            }
+        }
+        if(searchuser != "" || searchpesq != ""){
+            URL = searchuser
+            URLpesq = searchpesq
         }
 
         if(AndroidUtils.isNetworkAvailable(applicationContext) ) {
@@ -284,19 +322,8 @@ class HomeActivity : AppCompatActivity() {
             val handle = Handler()
             try {
                 Thread {
-                    val t = pubService.getPubuser(URL)
-                    if(t is List<Pubuser>){
-                        pubuser = t
-                    }else{
-                        toast(t.toString())
-                    }
-                    val t1 = pubService.getPubpesq(URLpesq)
-                    if(t1 is List<Pubpesq>){
-                        pubpesq = t1
-                    }else{
-                        toast(t1.toString())
-                    }
-
+                    pubuser = pubService.getPubuser(URL)
+                    pubpesq = pubService.getPubpesq(URLpesq)
                     handle.post {
                         /*  //vefica se a publicação passada veio dnv, se vir, zera a contagem da pagina
                           if(nomedapublicao_passada_pesq != null) {
@@ -319,14 +346,19 @@ class HomeActivity : AppCompatActivity() {
                               nomedapublicao_passada_pesq = pubpesq[0].nome
                           }
                           */
-                        if(t is List<Pubuser> || t1 is List<Pubpesq>)
-                            pubpesq = juntaPubpesqWithPubuser(pubuser,pubpesq)
-                            if(pubpesq.size != 0) {//0 era para fala se tinha paginaçao ou n(qual pagina que era?)
-                                recyclerViewhome.adapter = HomeAdapter(pubpesq,0, { onClickact(it) }, { SendServer(it) })
+                        if(pubuser.size != 0 || pubpesq.size != 0){
+                            pubpesq = juntaPubpesqWithPubuser(pubuser, pubpesq)
+                            if (pubpesq.size != 0) {//0 era para fala se tinha paginaçao ou n(qual pagina que era?)
+                                recyclerViewhome.adapter = HomeAdapter(pubpesq, 0, { onClickact(it) }, { SendServer(it) })
                                 progressBarHome.visibility = View.GONE
-                            }else{
-                            toast("Nenhuma publicação referente encontrada!")
-                            finish()
+                                verifica_se_esta_buscando_publicacoes = 0
+                            } else {
+                                toast("Nenhuma publicação referente encontrada!")
+                                finish()
+                            }
+                        }else{
+                            progressBarHome.visibility = View.GONE
+                            toast("Nenhuma publicação referente encontrada")
                         }
                     }
                 }.start()
