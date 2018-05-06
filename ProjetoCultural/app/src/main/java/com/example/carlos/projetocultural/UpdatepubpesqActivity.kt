@@ -109,6 +109,9 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         mapView?.onCreate(savedInstanceState)
         mapView?.getMapAsync(this)
 
+        //mudei essa linha do onresume para ca
+        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
+
         return view
 
     }
@@ -380,7 +383,8 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         //val height = resources.getDimensionPixelSize(R.dimen.)
         dialog.window!!.setLayout(width, height.toInt())
 
-        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
+        //mundança dia 6/05 mudei essa linha la para o oncreate
+       // context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
 
         editMapop.setOnClickListener(){
             getlocation()

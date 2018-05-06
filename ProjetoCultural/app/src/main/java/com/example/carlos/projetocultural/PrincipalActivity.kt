@@ -211,26 +211,34 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
 
     fun Enviadados(pubuser:Pubuser){
         if(AndroidUtils.isNetworkAvailable(applicationContext)) {
-            val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
-            dialog.setCancelable(false);
-            try {
-                Thread {
-                    pubuser.img1 = camera.uriForBase64(this, pubuser.img1)
-                    pubuser.img2 = camera.uriForBase64(this, pubuser.img2)
-                    pubuser.img3 = camera.uriForBase64(this, pubuser.img3)
-                    pubuser.img4 = camera.uriForBase64(this, pubuser.img4)
-                    pubService.savePubuserclass(pubuser)
-                    PubuserService.deletepubuser(pubuser)
-                    taskCarros()
-                    runOnUiThread {
-                        dialog.dismiss()
-                        toast("publicação enviada")
-                    }
-                }.start()
-            }catch (e:Exception){
-                dialog.dismiss()
-                toast("falha no envio tentar novamente")
+            if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && pubuser.nome != "" &&
+                    pubuser.atvexercida != "" && pubuser.categoria != "" && pubuser.contato != "" || pubuser.email != "" && pubuser.endereco != "" &&
+                    pubuser.latitude != "" && pubuser.longitude != "" && pubuser.redesocial != "") {
+
+                val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
+                dialog.setCancelable(false);
+                try {
+                    Thread {
+                        pubuser.img1 = camera.uriForBase64(this, pubuser.img1)
+                        pubuser.img2 = camera.uriForBase64(this, pubuser.img2)
+                        pubuser.img3 = camera.uriForBase64(this, pubuser.img3)
+                        pubuser.img4 = camera.uriForBase64(this, pubuser.img4)
+                        pubService.savePubuserclass(pubuser)
+                        PubuserService.deletepubuser(pubuser)
+                        taskCarros()
+                        runOnUiThread {
+                            dialog.dismiss()
+                            toast("publicação enviada")
+                        }
+                    }.start()
+                } catch (e: Exception) {
+                    dialog.dismiss()
+                    toast("falha no envio tentar novamente")
+                }
+            }else{
+                toast("Campos ou fotos nulos")
             }
+
 
         }else{
             toast("sem conexão")

@@ -220,9 +220,10 @@
 
                 <EditText
                     android:id="@+id/anoinicio"
-
+                    android:hint="0000"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
+                    android:maxLength="4"
                     android:inputType="number" />
 
             </LinearLayout>
@@ -244,6 +245,8 @@
 
                 <EditText
                     android:id="@+id/cnpj"
+                    android:maxLength="14"
+                    android:hint="**************"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:inputType="number" />
@@ -266,6 +269,7 @@
 
                 <EditText
                     android:id="@+id/representacao"
+                    android:hint="Cultural,econômica,lazer..."
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_width="300dp"
                     android:layout_height="60dp" />
@@ -288,6 +292,7 @@
 
                 <EditText
                     android:id="@+id/recurso"
+                    android:hint="Recurso Público/privado"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_width="300dp"
                     android:layout_height="60dp" />

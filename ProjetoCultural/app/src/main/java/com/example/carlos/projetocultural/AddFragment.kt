@@ -134,7 +134,7 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
 
 
 
-
+        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
         //retorna a view com os dados adquiridos
         return view
     }
@@ -207,6 +207,7 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
 
     }
 
+
     override fun onResume() {
         super.onResume()
         layoutaddcampos.visibility = View.GONE
@@ -271,7 +272,7 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
 
         /*fica esperando o brosCast quando a função que atualiza a coordenada no mapView na fragment e usada, e retorna
         //as novas coordenadas que o usuario selecionou no mapa*/
-        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
+
         //padrao
         mapView?.onResume();
 
@@ -370,8 +371,8 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
                 val campo3 = campo3a.text.toString()
                 val campo4 = campo4a.text.toString()
                 val campo5 = campo5a.text.toString()
-        if(pubuser.img1 != "" || pubuser.img2 != "" || pubuser.img3 != "" || pubuser.img4 != ""
-        || nome != "" || redesocial != "" || endereco != "" || contato != ""|| atvexercida != "" ||
+        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != ""
+                && nome != "" && redesocial != "" && endereco != "" && contato != ""&& atvexercida != "" &&
                 categoria != "") {
                 if (Validacpf().validateEmailFormat(email)) {
                     pubuser.nome = nome;

@@ -14,6 +14,10 @@ class SendpubpesqController extends ActiveController
 {
     private $format = 'json';
     public $modelClass = 'app\models\Publicacaopesq';
+	    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
 
     public function actions() {
         $actions = parent::actions();

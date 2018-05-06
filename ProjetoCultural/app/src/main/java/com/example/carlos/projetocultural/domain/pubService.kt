@@ -5,9 +5,12 @@ import android.content.Context
 import android.util.Base64
 import android.widget.Toast
 import com.example.carlos.projetocultural.MainActivity
+import com.example.carlos.projetocultural.R.id.e
 import com.example.carlos.projetocultural.extensions.fromJson
 import com.example.carlos.projetocultural.extensions.toJson
 import com.example.carlos.projetocultural.utils.HttpHelper
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import org.jetbrains.anko.toast
 import org.json.JSONArray
 import java.io.File
@@ -37,9 +40,28 @@ object pubService{
 
     fun getPubpesqparasoUmresultado(URL:String): Pubpesq {
         val url = URL
-        val json = HttpHelper.get(url)
+        val json = HttpHelper.get2(url)
         val carros = fromJson<Pubpesq>(json)
         return carros
+    }
+
+    fun meta_dados_pesq():JSONObject{
+        var client = OkHttpClient()
+        var request = Request.Builder().url("http://orbeapp.com/web/sendpubpesq?_format=json&fields=_ meta").build();
+        var responses = client.newCall(request).execute();
+        var jsonData = responses.body()!!.string();
+        var Jobject = JSONObject(jsonData);
+        var Jarray = Jobject.getJSONObject("_meta");
+        return Jarray
+    }
+    fun meta_dados_user():JSONObject{
+        var client = OkHttpClient()
+        var request = Request.Builder().url("http://orbeapp.com/web/sendpubuser?_format=json&fields=_ meta").build();
+        var responses = client.newCall(request).execute();
+        var jsonData = responses.body()!!.string();
+        var Jobject = JSONObject(jsonData);
+        val Jarray = Jobject.getJSONObject("_meta");
+        return Jarray
     }
 
     fun getPubuser(URL:String): MutableList<Pubuser>{
@@ -51,7 +73,7 @@ object pubService{
 
     fun getPubuserparasoUmresultado(URL:String): Pubuser{
         val url = URL
-        val json = HttpHelper.get(url)
+        val json = HttpHelper.get2(url)
         val carros = fromJson<Pubuser>(json)
         return carros
     }
@@ -69,7 +91,7 @@ object pubService{
     }
 
     fun getelemento(url:String):ArrayList<JSONObject>{
-        val json = HttpHelper.get(url)
+        val json = HttpHelper.get2(url)
     //    val json2 = "[" + json + "]"
         val arrayList = parserJson(json)
         if(arrayList.size == 0){

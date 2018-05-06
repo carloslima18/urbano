@@ -26,6 +26,7 @@ import android.support.v4.view.MenuItemCompat.getActionView
 import android.text.TextUtils
 import android.support.v4.view.MenuItemCompat.getActionView
 import android.view.Menu
+import org.json.JSONObject
 
 
 class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
@@ -39,7 +40,9 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     val MY_ACCESS_FINE_LOCATION = 1
     val STATE_LIST = "State Adapter Data"
 
-    var page = 1;
+
+    var pageCount_user:Int= 1;
+    var pageCount_pesq:Int= 1;
     var pageuser = 1;
     var pagepesq = 1;
     var ip = MainActivity().ipconfig
@@ -67,7 +70,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
 
         recyclerViewhome.layoutManager = LinearLayoutManager(applicationContext)
-        recyclerViewhome.itemAnimator = DefaultItemAnimator()
+       // recyclerViewhome.itemAnimator = DefaultItemAnimator()
         recyclerViewhome.setHasFixedSize(true)
 
         GetPermission()
@@ -88,7 +91,11 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         // StrictMode.setThreadPolicy(policy)*/
         simpleSearchView = findViewById(R.id.searchView) as SearchView
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
 
+        get_meta_dados()
 
     }
 
@@ -137,6 +144,13 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 toast("Aguarde um momento")
             }
 
+            if (pagepesq == pageCount_pesq) {
+                pagepesq = 0
+            }
+            if( pageuser == pageCount_user){
+                //toast("Pagina final de usuários")
+                pageuser = 0
+            }
         }
         if (parceble != null) {
             recyclerViewhome.layoutManager.onRestoreInstanceState(parceble)
@@ -248,21 +262,21 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     // val longitude: ArrayList<String> = arrayListOf()
 
 
-    fun addaoadapter(URL:String){
+    fun get_meta_dados(){
         if(AndroidUtils.isNetworkAvailable(applicationContext) ) {
            // progressBarHome.visibility = View.VISIBLE
-            toast("mais publição")
             val handle = Handler()
             try {
                 Thread {
-                    pubpesq = pubService.getPubpesq(URL)
+                    val meta_dados_pesq = pubService.meta_dados_pesq()
+                    val meta_dados_user = pubService.meta_dados_user()
                     handle.post {
-                        if(pubpesq.size != 0) {
-                            //addMaisPub(recyclerViewhome,pubpesq)
-                            recyclerViewhome.adapter = HomeAdapter(pubpesq,1, { onClickact(it) }, { SendServer(it) })
-                            progressBarHome.visibility = View.GONE
+                        if(meta_dados_pesq != null || meta_dados_user != null) {
+                            pageCount_pesq = meta_dados_pesq.getString("pageCount").toInt()
+                            pageCount_user = meta_dados_user.getString("pageCount").toInt()
+                            //toast("user $pageCount_user and pesq $pageCount_pesq")
                         }else{
-                            toast("tente novamente")
+                            toast("Meta dados não encontrados")
                         }
                     }
                 }.start()
@@ -297,8 +311,6 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return pubpesq
     }
 
-    var nomedapublicao_passada_user :String ?=null
-    var nomedapublicao_passada_pesq :String ?=null
     fun PreenchePubFirst(categoria:String?,searchuser:String,searchpesq:String){
         verifica_se_esta_buscando_publicacoes = 1
         //comentadox
@@ -325,6 +337,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     pubuser = pubService.getPubuser(URL)
                     pubpesq = pubService.getPubpesq(URLpesq)
                     handle.post {
+
                         /*  //vefica se a publicação passada veio dnv, se vir, zera a contagem da pagina
                           if(nomedapublicao_passada_pesq != null) {
                               if (pubpesq[0].nome == nomedapublicao_passada_pesq) {

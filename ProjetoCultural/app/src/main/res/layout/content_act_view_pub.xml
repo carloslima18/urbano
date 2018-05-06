@@ -33,7 +33,7 @@
             <LinearLayout
                 android:id="@+id/ll1"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="100dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -47,19 +47,7 @@
                     android:textStyle="bold|italic"
                     tools:text="nome da publicacao" />
 
-                <TextView
-                    android:id="@+id/textviewAvl"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="3dp"
-                    android:fontFamily="@font/nunito"
-                    android:text="Calculando..."
-                    android:textAlignment="textStart"
-                    android:textColor="@color/colorbutton"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:visibility="visible"
-                    tools:text="Calculando..." />
+
             </LinearLayout>
 
 
@@ -69,107 +57,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
                 android:orientation="vertical">
-
-                <!--RelativeLayout
-                    android:id="@+id/rimg2"
-                    android:layout_width="170dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="66dp">
-
-                    <ImageView
-                        android:id="@+id/imgViewPub1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:adjustViewBounds="true"
-                        android:padding="1dp" />
-
-                    <ProgressBar
-                        android:id="@+id/progressbaract1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:visibility="visible" />
-                </RelativeLayout-->
-
-                <!--RelativeLayout
-                    android:id="@+id/rimg1"
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="18dp">
-
-                    <ImageView
-                        android:id="@+id/imgViewPub2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:adjustViewBounds="true"
-                        android:padding="1dp" />
-
-                    <ProgressBar
-                        android:id="@+id/progressbaract2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:visibility="visible" />
-                </RelativeLayout-->
-
-                <!--RelativeLayout
-     android:id="@+id/rimg3"
-     android:layout_width="180dp"
-     android:layout_height="150dp"
-     android:layout_alignParentStart="true"
-     android:layout_below="@+id/rimg1"
-     android:layout_marginTop="45dp">
-
-     <ImageView
-         android:id="@+id/imgViewPub3"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:layout_alignParentStart="true"
-         android:layout_alignParentTop="true"
-         android:adjustViewBounds="true"
-         android:padding="1dp" />
-
-     <ProgressBar
-         android:id="@+id/progressbaract3"
-         android:layout_width="50dp"
-         android:layout_height="50dp"
-         android:layout_centerInParent="true"
-         android:visibility="visible" />
- </RelativeLayout-->
-
-                <!--RelativeLayout
-                    android:id="@+id/rimg4"
-                    android:layout_width="170dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/rimg2"
-                    android:layout_marginTop="30dp">
-
-                    <ImageView
-                        android:id="@+id/imgViewPub4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:adjustViewBounds="true"
-                        android:padding="1dp" />
-
-                    <ProgressBar
-                        android:id="@+id/progressbaract4"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_centerInParent="true"
-                        android:visibility="visible" />
-                </RelativeLayout-->
-
                 <!--campo para as imagens-->
 
 
@@ -201,9 +90,9 @@
 
                     <android.support.v7.widget.CardView
                         android:id="@+id/rimg1"
-                        android:layout_width="165dp"
+                        android:layout_width="180dp"
                         android:layout_height="175dp"
-                        android:layout_marginRight="40dp"
+                        android:layout_marginRight="10dp"
                         app:cardCornerRadius="5dp">
 
                         <ProgressBar
@@ -218,8 +107,6 @@
                             android:id="@+id/imgViewPub2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
                             android:scaleType="centerCrop" />
                     </android.support.v7.widget.CardView>
 
@@ -252,16 +139,14 @@
                     android:id="@+id/llimg34"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="right"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
                     <android.support.v7.widget.CardView
                         android:id="@+id/rimg3"
                         android:layout_width="180dp"
-                        android:layout_height="150dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_height="175dp"
+                        android:layout_marginRight="10dp"
                         app:cardCornerRadius="5dp">
 
                         <ProgressBar
@@ -276,17 +161,14 @@
                             android:id="@+id/imgViewPub3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
                             android:scaleType="centerCrop" />
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
                         android:id="@+id/rimg4"
-                        android:layout_width="150dp"
-                        android:layout_height="170dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="160dp"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="15dp"
                         android:elevation="10dp"
                         app:cardCornerRadius="5dp">
 
@@ -302,8 +184,6 @@
                             android:id="@+id/imgViewPub4"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentTop="true"
                             android:scaleType="centerCrop" />
                     </android.support.v7.widget.CardView>
 
@@ -317,8 +197,9 @@
                 android:id="@+id/ender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
 
@@ -326,7 +207,7 @@
                     android:id="@+id/textvInfoPub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="2dp"
                     android:fontFamily="@font/nunito"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
@@ -399,6 +280,7 @@
             <LinearLayout
                 android:id="@+id/avl"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -409,10 +291,23 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/colorPrimaryDark"
                     android:text="Avaliar Publicação"
                     android:textColor="@color/colorbranco" />
+
+                <TextView
+                    android:id="@+id/textviewAvl"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Calculando Avl..."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:text="Calculando avl..." />
 
             </LinearLayout>
 

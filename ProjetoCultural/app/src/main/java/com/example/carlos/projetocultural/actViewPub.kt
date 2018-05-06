@@ -137,7 +137,7 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
 
         titulo.text =  " $nome \n"
 
-        texto.text = "rede social: " + redesocial + "\n" + "contato: " + contato + "\n" + "atividade exercida: " + atvex + "\n" + "Categoria: "+ categoria + " " + "\n" + "endereço: " + endereco + "\n "
+        texto.text = "REDE SOCIAL: " + redesocial + "\n" + "CONTATO: " + contato + "\n" + "ATIVIDADE EXERCIDA: " + atvex + "\n" + "CATEGORUA: "+ categoria + " " + "\n" + "endereço: " + endereco + "\n "
 
         infodepub.text = "O ano de inicío das atividades deste local ocorreu em $anoinicio \n " +
                         "O local tem recurso retirado de maneira $recurso  \n " +
@@ -383,10 +383,10 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
     fun setacor(categoria:String){
         var color = ""
         if(categoria == "ESCOLA" || categoria == "escola"){
-            relativell.setBackgroundColor((Color.rgb(200, 229, 0)))//verde
+            relativell.setBackgroundColor((Color.rgb(200, 229, 0)))//verde florescente
             ll1.setBackgroundColor((Color.rgb(200, 229, 0)))
         }
-        if(categoria == "OUTRO" || categoria == "outro"){
+        if(categoria == "OUTRO" || categoria == "OUTROS" || categoria == "outro" || categoria == "outros"){
             relativell.setBackgroundColor((Color.rgb(194, 121, 236)))//roxo
             ll1.setBackgroundColor((Color.rgb(194, 121, 236)))
         }
@@ -399,6 +399,10 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
             ll1.setBackgroundColor((Color.rgb(31, 248, 219)))
         }
         if(categoria == "MUSEU" || categoria == "museu"){
+            relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
+            ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
+        }
+        if(categoria == "TEATRO" || categoria == "teatro"){
             relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
             ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
         }

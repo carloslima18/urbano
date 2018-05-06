@@ -84,7 +84,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
     implementation "org.jetbrains.anko:anko-sqlite:0.10.3"
-
+    implementation 'com.android.support:multidex:1.0.3'
 
 
     //add a parte

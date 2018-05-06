@@ -155,6 +155,8 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
         mapView?.onCreate(savedInstanceState)
         mapView?.getMapAsync(this)
 
+        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
+
         return view
     }
 
@@ -367,7 +369,7 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
 
         mapView?.onResume();
         layoutaddcamposop.visibility = View.GONE
-        context?.registerReceiver(broadcastReceive(), IntentFilter(MapPub.loc_receiver))
+       //
 
         editMapop.setOnClickListener(){
             getlocation()

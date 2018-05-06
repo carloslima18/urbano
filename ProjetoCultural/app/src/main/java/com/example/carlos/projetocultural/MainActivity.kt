@@ -19,6 +19,7 @@ import android.os.*
 import android.provider.Settings
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.multidex.MultiDex
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
@@ -56,7 +57,7 @@ import kotlin.concurrent.thread
 import kotlin.concurrent.timerTask
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
 
 
@@ -109,6 +110,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+
+        MultiDex.install(this);
     }
 
 
@@ -547,5 +550,6 @@ teste que deu errado, mas pode servir para algo um dia
      }*/
 
  } */
+
 
 }
