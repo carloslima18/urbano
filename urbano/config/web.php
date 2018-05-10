@@ -15,17 +15,16 @@ $config = [
         'file'=>array(
             'class'=>'application.extensions.file.CFile',
         ),
-        'mailer' => [
+        'mail' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'userFileTransport'=> false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username'=>'carlosficherfalqueiro@gmail.com',
-                'password' => 'computacao3@1',
-                'port' => '587',
+                'host' => 'mail.orbeapp.com',
+                'username' => 'orbeapp@orbeapp.com',
+                'password' => 'orbeapp123',
+                'port' => '465',
                 'encryption' => 'tls',
-            ]
+            ],
         ],
 
         'assetManager' => [

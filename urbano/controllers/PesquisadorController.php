@@ -88,8 +88,8 @@ class PesquisadorController extends Controller
     }
 
     public function sendEmail($model){
-        Yii::$app->mailer->compose()
-            ->setFrom('carlosficherfalqueiro@gmail.com')
+        Yii::$app->mailer->compose('contact/html')
+            ->setFrom('orbeapp@orbeapp.com')
             ->setTo($model->email)
             ->setSubject('URBANO')
             ->setTextBody('Senhor'.$model->nome.'venho informa que recebemos

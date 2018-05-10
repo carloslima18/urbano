@@ -43,10 +43,11 @@ class PublicacaopesqSearch extends Publicacaopesq
     public function search($params)
     {
         $query = Publicacaopesq::find();
-
+        $count = $query->count();
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
+            'totalCount' => $count,
             'query' => $query,
             'pagination' => [
                 'pageSize' => 2,
@@ -68,6 +69,8 @@ class PublicacaopesqSearch extends Publicacaopesq
             'longitude' => $this->longitude,
             'pesquisador' => $this->pesquisador,
         ]);
+
+
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'redesocial', $this->redesocial])

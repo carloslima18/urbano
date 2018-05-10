@@ -17,11 +17,10 @@ class SendpubuserController extends ActiveController
 {
     private $format = 'json';
     public $modelClass = 'app\models\Publicacaouser';
-	    public $serializer = [
+    public $serializer = [
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'items',
     ];
-
     /**
      * @param $id
      * @return array
