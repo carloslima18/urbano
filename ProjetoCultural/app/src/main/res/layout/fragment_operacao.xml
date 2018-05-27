@@ -50,11 +50,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="NOME:"
                     android:textColor="@color/colorbutton"
                     android:textStyle="bold" />
@@ -72,11 +72,11 @@
                 android:id="@+id/redesclnop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="REDE SOCIAL:"
                     android:textColor="@color/colorbutton"
                     android:textStyle="bold" />
@@ -94,11 +94,11 @@
                 android:id="@+id/endlnop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:text="ENDEREÇO:"
                     android:textColor="@color/colorbutton"
                     android:textStyle="bold" />
@@ -116,11 +116,11 @@
                 android:id="@+id/contatolnop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:text="CONTATO:"
                     android:textColor="@color/colorbutton"
                     android:textStyle="bold" />
@@ -141,11 +141,11 @@
                 android:id="@+id/emailllop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="EMAIL:"
                     android:textColor="@color/colorbutton"
                     android:textStyle="bold" />
@@ -153,40 +153,19 @@
                 <EditText
                     android:id="@+id/emailop"
                     android:layout_width="match_parent"
-                    android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_height="60dp"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
             </LinearLayout>
 
-            <!-- atv exercida -->
-            <LinearLayout
-                android:id="@+id/atvexllop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="visible">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:text="ATV. EXERCIDA:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/atvexop"
-                    android:layout_width="match_parent"
-                    android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
-                    android:hint="atividade exercida" />
-            </LinearLayout>
 
             <!--spinner para a categoria -->
             <LinearLayout
                 android:id="@+id/categoriallop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="visible">
 
 
@@ -201,7 +180,30 @@
                 <Spinner
                     android:id="@+id/categoriaop"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp" />
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <!-- atv exercida -->
+            <LinearLayout
+                android:id="@+id/atvexllop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/atvexop"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="Outro! Qual é?" />
             </LinearLayout>
 
 
@@ -210,12 +212,12 @@
                 android:id="@+id/anoiniciollop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorbutton"
                     android:text="ANO INCIO: "
                     android:textStyle="bold" />
@@ -232,12 +234,12 @@
                 android:id="@+id/cnpjllop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorbutton"
                     android:text="CNPJ: "
                     android:textStyle="bold" />
@@ -254,12 +256,12 @@
                 android:id="@+id/representacaollop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorbutton"
                     android:text="REPRESENTAÇÃO: "
                     android:textStyle="bold" />
@@ -276,12 +278,12 @@
                 android:id="@+id/recursollop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/colorbutton"
                     android:text="RECURSO: "
                     android:textStyle="bold" />
@@ -297,7 +299,7 @@
             <!--botes de add e remover perguntas-->
             <LinearLayout
                 android:id="@+id/layoutaddcamposop"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -317,6 +319,7 @@
                     style="@android:style/Widget.Holo.Light.Button.Toggle"
                     android:layout_width="70dp"
                     android:layout_height="36dp"
+                    android:layout_marginLeft="5dp"
                     android:background="@color/colorPrimaryDark"
                     android:text="- PGT"
                     android:textColor="@color/colorbranco"
@@ -336,16 +339,18 @@
                 <EditText
                     android:id="@+id/campo1aaop"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:hint="pergunta 1:"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:hint="pergunta 1:" />
+                  />
 
                 <EditText
                     android:id="@+id/campo1aop"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:inputType="textAutoCorrect|textAutoComplete"
-                    android:hint="resposta 1:" />
+                    android:layout_height="wrap_content"
+                    android:hint="resposta 1:"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -362,14 +367,15 @@
                 <EditText
                     android:id="@+id/campo2aaop"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:hint="pergunta 2:" />
 
                 <EditText
                     android:id="@+id/campo2aop"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:hint="resposta 2:" />
 
@@ -389,15 +395,16 @@
                 <EditText
                     android:id="@+id/campo3aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 3:" />
 
                 <EditText
                     android:id="@+id/campo3aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 3:" />
 
                 <ImageView
@@ -417,14 +424,15 @@
                     android:id="@+id/campo4aaop"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:hint="pergunta 4:" />
 
                 <EditText
                     android:id="@+id/campo4aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 4:" />
 
                 <ImageView
@@ -443,15 +451,16 @@
                 <EditText
                     android:id="@+id/campo5aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 5:" />
 
                 <EditText
                     android:id="@+id/campo5aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 5:" />
 
                 <ImageView
@@ -470,15 +479,16 @@
                 <EditText
                     android:id="@+id/campo6aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 6:" />
 
                 <EditText
                     android:id="@+id/campo6aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 6:" />
 
                 <ImageView
@@ -497,15 +507,16 @@
                 <EditText
                     android:id="@+id/campo7aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 7:" />
 
                 <EditText
                     android:id="@+id/campo7aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 7:" />
 
                 <ImageView
@@ -524,15 +535,16 @@
                 <EditText
                     android:id="@+id/campo8aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 8:" />
 
                 <EditText
                     android:id="@+id/campo8aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 8:" />
 
                 <ImageView
@@ -551,15 +563,16 @@
                 <EditText
                     android:id="@+id/campo9aaop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="pergunta 9:" />
 
                 <EditText
                     android:id="@+id/campo9aop"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textAutoCorrect|textAutoComplete"
-                    android:layout_height="60dp"
                     android:hint="resposta 9:" />
 
                 <ImageView
@@ -579,14 +592,15 @@
                     android:id="@+id/campo10aaop"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:hint="pergunta 10:" />
 
                 <EditText
                     android:id="@+id/campo10aop"
                     android:inputType="textAutoCorrect|textAutoComplete"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:hint="resposta 10:" />
 
                 <ImageView
@@ -595,259 +609,6 @@
                     android:background="@color/colorPrimaryDark" />
 
             </LinearLayout>
-            <!--
-            <LinearLayout
-                android:id="@+id/campo11layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo11aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 11:" />
-
-                <EditText
-                    android:id="@+id/campo11aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 11:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo12layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo12aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 12:" />
-
-                <EditText
-                    android:id="@+id/campo12aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 12:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo13layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo13aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 13:" />
-
-                <EditText
-                    android:id="@+id/campo13aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 13:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo14layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo14aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 14:" />
-
-                <EditText
-                    android:id="@+id/campo14aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 14:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo15layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo15aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 15:" />
-
-                <EditText
-                    android:id="@+id/campo15aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 15:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo16layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo16aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 16:" />
-
-                <EditText
-                    android:id="@+id/campo16aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 16:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo17layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo17aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 17:" />
-
-                <EditText
-                    android:id="@+id/campo17aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 17:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo18layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo18aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 18:" />
-
-                <EditText
-                    android:id="@+id/campo18aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 18:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo19layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo19aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 19:" />
-
-                <EditText
-                    android:id="@+id/campo19aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 19:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/campo20layoutlrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <EditText
-                    android:id="@+id/campo20aaop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="pergunta 20:" />
-
-                <EditText
-                    android:id="@+id/campo20aop"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:hint="resposta 20:" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/colorPrimaryDark" />
-
-            </LinearLayout>
-            -->
-
 
             <!--campos para imagem 1 e 2-->
             <LinearLayout
@@ -950,8 +711,6 @@
                 android:id="@+id/figMapAddop"
                 android:layout_width="match_parent"
                 android:layout_height="220sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp" />
 
             <!-- edita localizacao butao -->

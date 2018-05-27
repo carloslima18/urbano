@@ -9,7 +9,6 @@ import android.database.Cursor
 import android.support.v7.app.AppCompatActivity
 import android.widget.*
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
-import br.edu.computacaoifg.todolist.ToDoAdapter
 import com.example.carlos.projetocultural.utils.CameraHelper
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -39,9 +38,11 @@ import com.example.carlos.projetocultural.domain.PubpesqService
 import com.example.carlos.projetocultural.domain.PubuserService
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.AndroidUtils
+import com.example.carlos.projetocultural.utils.Validacpf
 
 import kotlinx.android.synthetic.main.activity_listviewpubpesq.*
 import kotlinx.android.synthetic.main.content_principal.*
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_operacao.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -49,7 +50,7 @@ import org.jetbrains.anko.uiThread
 class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.OnItemSelectedListener  {
 
 
-    var CA: ToDoAdapter?= null //Adapter para preencher a listRow(cada item da ListView, referente a publicação que foi salva)  (envia os dados passados do BD, para p toDoAdapter para ser mapeados na listRow)
+    //Adapter para preencher a listRow(cada item da ListView, referente a publicação que foi salva)  (envia os dados passados do BD, para p toDoAdapter para ser mapeados na listRow)
     //variaveis para receber os dados da principalActivity
     var nome:String= "" ;var categoria:String= "" ;var endereco:String= "" ;var redesc:String= "" ;var contato:String= "" ;var atvex:String= "" ;var email:String= ""
     var cnpj:String = "" ;var representacao:String = "" ;var recurso:String = "" ;var anoinicio:String = "" ;var campo1:String= "" ;var campo2:String= ""
@@ -200,6 +201,11 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // On selecting a spinner item
         val item = parent?.getItemAtPosition(position).toString();
+        if(item == "OUTRO") {
+            atvexllop.visibility = View.VISIBLE
+        }else{
+            atvexllop.visibility = View.GONE
+        }
         // Showing selected spinner item
         //Toast.makeText(parent?.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
@@ -538,8 +544,10 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         pubpesq?.contato =  contatoop.text.toString()
         pubpesq?.email =  emailop.text.toString()
         pubpesq?.atvexercida =  atvexop.text.toString()
+        if(pubpesq?.atvexercida == ""){
+            pubpesq?.atvexercida = spinner?.getSelectedItem().toString();
+        }
         pubpesq?.categoria = spinner?.getSelectedItem().toString();
-
         pubpesq?.cnpj = etcnpjop.text.toString()
         pubpesq?.representacao = etrepresentacaoop.text.toString()
         pubpesq?.recurso = etrecursoop.text.toString()
@@ -571,16 +579,25 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         pubpesq?.latitude =  latitude.toString()
         pubpesq?.longitude =  longitude.toString()
 
-        val handle = Handler()
-        Thread{
-            val mainact = activity as ListviewpubpesqActivity
-            val tes = PubpesqService.updatepesq(pubpesq)
-            handle.post{
-                toast("editado")
-                mainact.taskPubpesq()
-                dismiss()
+        if(pubpesq?.img1 != "" && pubpesq?.img2 != "" && pubpesq?.img3 != "" && pubpesq?.img4 != "" && pubpesq?.nome != "" && pubpesq?.contato != ""&& pubpesq?.categoria != "") {
+            if (Validacpf().validateEmailFormat(email) || email == "") {
+
+                val handle = Handler()
+                Thread {
+                    val mainact = activity as ListviewpubpesqActivity
+                    val tes = PubpesqService.updatepesq(pubpesq)
+                    handle.post {
+                        toast("editado")
+                        mainact.taskPubpesq()
+                        dismiss()
+                    }
+                }.start()
+            }else{
+                toast("Email inválido")
             }
-        }.start()
+        }else{
+            toast("Dados como nome, imagens, contato, categoria devem ser preenchidos")
+        }
 
     }
 

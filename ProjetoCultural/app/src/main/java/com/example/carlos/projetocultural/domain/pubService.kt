@@ -151,8 +151,12 @@ object pubService{
         data.put("endereco", pubpesq.endereco)
         data.put("contato",pubpesq.contato)
         data.put("email", pubpesq.email)
-        data.put("atvexercida",pubpesq.atvexercida)
         data.put("categoria", pubpesq.categoria)
+        if(pubpesq.atvexercida == ""){
+            data.put("atvexercida", pubpesq.categoria)
+        }else {
+            data.put("atvexercida",pubpesq.atvexercida)
+        }
         data.put("anoinicio", pubpesq.anoinicio)
         data.put("cnpj", pubpesq.cnpj)
         data.put("representacao", pubpesq.representacao)
@@ -180,8 +184,12 @@ object pubService{
         data.put("endereco", pubpesq.endereco)
         data.put("contato",pubpesq.contato)
         data.put("email", pubpesq.email)
-        data.put("atvexercida",pubpesq.atvexercida)
         data.put("categoria", pubpesq.categoria)
+        if(pubpesq.atvexercida == ""){
+            data.put("atvexercida", pubpesq.categoria)
+        }else {
+            data.put("atvexercida",pubpesq.atvexercida)
+        }
         data.put("aprovado", "N")
         data.put("latitude", pubpesq.latitude)
         data.put("longitude", pubpesq.longitude)

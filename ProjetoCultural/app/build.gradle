@@ -26,6 +26,10 @@ android {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    //implementation "org.apache.poi:poi-ooxml:3.17"
+    //implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -61,8 +65,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
 
     // Google Play Services - Mapas e Localização
-    implementation 'com.google.android.gms:play-services-maps:15.0.0'
-    implementation 'com.google.android.gms:play-services-location:15.0.0'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
 
     // HTTP e Download Imagens
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'

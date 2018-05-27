@@ -1,64 +1,36 @@
 package com.example.carlos.projetocultural
 
 import android.Manifest
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.*
 import android.content.pm.PackageManager
-import android.database.Cursor
 
 
-import org.jetbrains.anko.db.*
-
-import android.graphics.Bitmap
-import android.graphics.Camera
-import android.location.Location
-import android.media.Image
-import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.FileProvider
 import android.view.View
-import android.view.Window
-import android.webkit.WebView
-import android.webkit.WebChromeClient
-import android.webkit.WebViewClient
 import android.widget.*
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
-import br.edu.computacaoifg.todolist.ToDoAdapter
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService
-import com.example.carlos.projetocultural.domain.Pubuser
-import com.example.carlos.projetocultural.domain.PubuserService
 import com.example.carlos.projetocultural.extensions.toast
 
 import com.example.carlos.projetocultural.utils.CameraHelper
-import com.example.carlos.projetocultural.utils.ActionsForMaps
-import com.example.carlos.projetocultural.utils.AndroidUtils
 import com.example.carlos.projetocultural.utils.Validacpf
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
-import kotlinx.android.synthetic.main.activity_form.*
+import kotlinx.android.synthetic.main.activity_vizualizapesq.*
 import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_operacao.*
-import kotlinx.android.synthetic.main.list_row_main.*
-import org.jetbrains.anko.act
-import org.jetbrains.anko.db.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
-import org.jetbrains.anko.uiThread
-import java.util.*
-import java.util.Arrays.asList
-
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.parseList
+import org.jetbrains.anko.db.select
 
 
 //PESQUISADOR AONDE ADICIONA
@@ -77,6 +49,7 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
     var idpesquisador:String="0"
     var pubpesq= Pubpesq()
 
+    var database: MyDatabaseOpenHelper?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mapView?.onCreate(savedInstanceState)
@@ -84,11 +57,11 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
         setContentView(R.layout.fragment_add)
 
         //para identificar o pesquisador logado, que vai ser amndado da outra act
-        val extras = intent.extras
-        idpesquisador = extras.getString("idpesq")
-        if(idpesquisador == "0" || idpesquisador == ""){
-            toast("problema de pesquisador")
-        }
+//        val extras = intent.extras
+//        idpesquisador = extras.getString("idpesq")
+//        if(idpesquisador == "0" || idpesquisador == ""){
+//            toast("problema de pesquisador")
+//        }
 
         //como aq é publicacao de pesquisador, abilita os campos adicionais
         anoinicioa.visibility = View.VISIBLE
@@ -103,6 +76,8 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build()
+
+        database = MyDatabaseOpenHelper.getInstance(applicationContext)
 
         // Spinner click listener, que pega a lista do arquivo 'strings'
         val spinner=findViewById<Spinner>(R.id.spinneradd) as Spinner
@@ -123,6 +98,11 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item = parent?.getItemAtPosition(position).toString();
+        if(item == "OUTRO") {
+            atvexll.visibility = View.VISIBLE
+        }else{
+            atvexll.visibility = View.GONE
+        }
         spinneradd.setOnItemSelectedListener(this);
     }
 
@@ -177,7 +157,7 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
             //verifica se o gps ta ligado, se n tiver vai da problema e cair no catch
             val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if (provider == null || provider.length == 0) {
-                toast("gps desabilitado")
+                toast("Ligue seu GPS")
             } else {
                 try {//pega a latitude e longitude atual da pessoa para assim enviar quando for adicionar uma publicação já tiver os dados
                     val lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
@@ -460,7 +440,7 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this@FormActivity, PesquisadorhomeActivity::class.java)
-        intent.putExtra("idpesq",idpesquisador)
+        //intent.putExtra("idpesq",idpesquisador)
         startActivity(intent)
     }
 
@@ -484,7 +464,10 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
        pubpesq.endereco = enderecoa.text.toString()
        pubpesq.contato = contatoa.text.toString()
        pubpesq.email = emaila.text.toString()
-       pubpesq.atvexercida = atvexa.text.toString()
+       pubpesq.atvexercida = atvexet.text.toString()
+       if(pubpesq.atvexercida == ""){
+           pubpesq.atvexercida = spinneradd.selectedItem.toString()
+       }
        pubpesq.categoria = spinneradd.selectedItem.toString()
        pubpesq.anoinicio = anoinicio.text.toString()
        pubpesq.cnpj = cnpj.text.toString()
@@ -504,6 +487,11 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
        pubpesq.campo10 = campo10a.text.toString()
 
 
+       val pes = database!!.use {
+           select("pesquisador", "idweb").exec { parseList<String>(classParser()) }
+       }
+
+       pubpesq.pesquisador = pes.get(0).toInt()
        pubpesq.campo11 = campo11a.text.toString()
        pubpesq.campo12 = campo12a.text.toString()
        pubpesq.campo13 = campo13a.text.toString()
@@ -516,24 +504,31 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
        pubpesq.campo19 = campo19a.text.toString()
        pubpesq.campo20 = campo20a.text.toString()
 
-
+       if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.nome != "" && pubpesq.categoria != "") {
+           if (Validacpf().validateEmailFormat(pubpesq.email) || pubpesq.email == "") {
                // val tes=   pubpesq?.img1
-       pubpesq.longitude = longitude.toString()
-       pubpesq.latitude = latitude.toString()
-       if (pubpesq.latitude != "0.0") {
-           val handle = Handler()
-           Thread {
-               val tes = PubpesqService.salvar(pubpesq)
-               handle.post {
-                   toast("salvo")
-                   val intent = Intent(this@FormActivity, ListviewpubpesqActivity::class.java)
-                   intent.putExtra("idpesq", idpesquisador)
-                   startActivity(intent)
-                   finish()
+               pubpesq.longitude = longitude.toString()
+               pubpesq.latitude = latitude.toString()
+               if (pubpesq.latitude != "0.0") {
+                   val handle = Handler()
+                   Thread {
+                       val tes = PubpesqService.salvar(pubpesq)
+                       handle.post {
+                           toast("salvo")
+                           val intent = Intent(this@FormActivity, ListviewpubpesqActivity::class.java)
+                           //intent.putExtra("idpesq", idpesquisador)
+                           startActivity(intent)
+                           finish()
+                       }
+                   }.start()
+               } else {
+                   toast("localização indisponivel, ligue o gps")
                }
-           }.start()
-       } else {
-           toast("localização indisponivel, ligue o gps")
+           }else{
+               toast("email incorreto")
+           }
+       }else{
+           toast("Dados como nome, contato, fotos, atv. exercida não podem ser nulos.")
        }
    }
 

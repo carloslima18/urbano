@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput() ?>
 
-    <?= $form->field($model, 'senha')->passwordInput() ?> <!-- a senha pode ser usada como o cpf -->
+    <!--?= $form->field($model, 'senha')->passwordInput() ?> <!-- a senha pode ser usada como o cpf -->
 
    <?= $form->field($model, 'campo1')->textInput() ?> <!--destinado para cpf-->
 

@@ -40,23 +40,20 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     val MY_ACCESS_FINE_LOCATION = 1
     val STATE_LIST = "State Adapter Data"
 
-
+//para armazenar a quantidade de paginas que tem la no servidor
     var pageCount_user:Int= 1;
     var pageCount_pesq:Int= 1;
     var pageuser = 1;
     var pagepesq = 1;
-    var ip = MainActivity().ipconfig
 
     val TAG = HomeActivity::class.java!!.getSimpleName() //para pesquisa no recycleView
-    private var mInstance: HomeActivity = getInstance() //para pesquisa no recycleView
-
-
+    private var mInstance: HomeActivity = getInstance() //para pesquisa no recycleView(ainda n terminado)
     private var parceble: Parcelable ?= null
     private var chave_state = "recycler_state"
-
     var verifica_se_esta_buscando_publicacoes = 0;
     var simpleSearchView :SearchView?=null
     var textoPesquisa:String ?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -64,7 +61,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this@HomeActivity, MainActivity::class.java)
-            intent.putExtra("sem splash","0")
+            intent.putExtra("sem splash","0") // para quando clicaar na seta de voltar, n rode o splash
             startActivity(intent)
         }
 
@@ -75,30 +72,26 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         GetPermission()
             val extras = intent.extras //verifica se tem algo pois o mainActivitu, manda as requisicoes especificas de escolas etc etc etc.
-            if (extras != null) {
+            if (extras != null) {//se n tiver alguma restrição vinda de main actvity para pegar alguma publicação pespecifica
                 PreenchePubFirst(extras.getString("param"),"","")
             }else{
-                PreenchePubFirst(null,"","")
+                PreenchePubFirst(null,"","") //busca todas as publicações sem restriçÕes
             }
 
 
-        /*  } else {
-        //      val param = extras.getString("param")
-        //      PreenchePubFirst(paramrecyclerViewhome.layoutManager =)
-        //  }
         //  recyclerViewhome.addOnScrollListener(recyclerViewOnScrollListener);
         // val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         // StrictMode.setThreadPolicy(policy)*/
-        simpleSearchView = findViewById(R.id.searchView) as SearchView
+        simpleSearchView = findViewById(R.id.searchView) as SearchView // caixa para pesquisa especifica
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_PHONE_CALL)
         }
 
+        //pega a quantidade de paginas que tem no servidor e armazena nas variaveis globais mostradas acima
         get_meta_dados()
 
     }
-
 
     override fun onQueryTextSubmit(query: String): Boolean {
         toast("submeteu $query")
@@ -112,11 +105,9 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return true
     }
 
-
-
+    //para paginação (eu acho) ainda n terminado
     override fun onSaveInstanceState(state: Bundle?) {
         super.onSaveInstanceState(state)
-
         // Save list state
         parceble = recyclerViewhome.layoutManager.onSaveInstanceState()
         state!!.putParcelable(chave_state, parceble)
@@ -124,27 +115,28 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onRestoreInstanceState(state: Bundle?) {
         super.onRestoreInstanceState(state)
-
         // Retrieve list state and list/item positions
         if (state != null)
             parceble = state.getParcelable(chave_state)
     }
+
+
+
     override fun onResume() {
         super.onResume()
 
-
-
+        //se o usuario buscar mais publicações na seta (->)
         FAB_att.setOnClickListener(){
             if(verifica_se_esta_buscando_publicacoes == 0) {
                 //addaoadapter(3)
-                pagepesq++
+                pagepesq++//se estiver buscando, adiciona ++ a cada pagina
                 pageuser++
                 PreenchePubFirst(null,"","")
             }else{
                 toast("Aguarde um momento")
             }
-
             if (pagepesq == pageCount_pesq) {
+                //toast("")
                 pagepesq = 0
             }
             if( pageuser == pageCount_user){
@@ -152,9 +144,13 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 pageuser = 0
             }
         }
+        //para manter a instancia da pagina (eu acho)
+
         if (parceble != null) {
             recyclerViewhome.layoutManager.onRestoreInstanceState(parceble)
         }
+
+        //se o usuario clicar em voltar
         imagemback.setOnClickListener {
             if(verifica_se_esta_buscando_publicacoes == 0) {
                 if (pagepesq != 1 || pageuser != 1) {
@@ -174,6 +170,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
 
 
+        // para pesquisar
         simpleSearchView?.setOnClickListener {
             textoPesquisa = (simpleSearchView!!.query.toString())
             toast("buscando $textoPesquisa")
@@ -198,12 +195,8 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
 
-    fun addMaisPub(r:RecyclerView,l:MutableList<Pubpesq>){
-        val h:HomeAdapter?=null
-        h?.addAll(r,l)
-    }
 
-
+    // para clicar e ir para ActViewPub (onde vizualiza as publicações clicadas)
     open fun onClickact(pubpesq: Pubpesq?):Unit {
         if(AndroidUtils.isNetworkAvailable(applicationContext)) {
             //viewPubFragment(savedInstanceState)
@@ -217,8 +210,6 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }else{
                 intent.putExtra("pesquisador", pubpesq?.pesquisador.toString())
             }
-
-
             intent.putExtra("atvex",  pubpesq?.atvexercida)
             intent.putExtra("redesocial", pubpesq?.redesocial)
             intent.putExtra("endereco", pubpesq?.endereco)
@@ -245,7 +236,6 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     open fun SendServer(pubuser: Pubpesq):Boolean{
-
         return true
     }
 
@@ -261,7 +251,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     var pubpesq : MutableList<Pubpesq> = mutableListOf()
     // val longitude: ArrayList<String> = arrayListOf()
 
-
+    //busca os dados de quantas paginas tem no servidor
     fun get_meta_dados(){
         if(AndroidUtils.isNetworkAvailable(applicationContext) ) {
            // progressBarHome.visibility = View.VISIBLE
@@ -286,7 +276,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
     }
 
-
+    //junta as publicações de pesquisadores
     fun juntaPubpesqWithPubuser(pubuser: MutableList<Pubuser>,pubpesq: MutableList<Pubpesq>):MutableList<Pubpesq>{
         for (user in pubuser) {
             val pesqAux = Pubpesq()
@@ -311,18 +301,22 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return pubpesq
     }
 
+
+    //faz a busca para preenchimento do recyclview
     fun PreenchePubFirst(categoria:String?,searchuser:String,searchpesq:String){
         verifica_se_esta_buscando_publicacoes = 1
-        //comentadox
-
+        //comentadox // faz a busca
         var URL = "http://orbeapp.com/web/sendpubuser?_format=json&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
         var URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
+
+        //verifica se a categoria ta com alguma coisa, pois se tiver, ele faz a busca por categoria
         if(categoria != null) {
             if (categoria != null) {
                 URL = "http://orbeapp.com/web/sendpubuser?_format=json&PublicacaouserSearch[categoria]=$categoria&PublicacaouserSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,latitude,longitude,img1&page=$pageuser"
                 URLpesq = "http://orbeapp.com/web/sendpubpesq?_format=json&PublicacaopesqSearch[categoria]=$categoria&PublicacaopesqSearch[aprovado]=S&fields=id,nome,redesocial,endereco,contato,email,atvexercida,categoria,anoinicio,cnpj,representacao,recurso,latitude,longitude,pesquisador,campo1,campo2,campo3,campo4,campo5,img1&page=$pagepesq"
             }
         }
+        //verifica se existe alguma coisa na caixa de pesquisa, para caso tiver, ele buscar especificadamente
         if(searchuser != "" || searchpesq != ""){
             URL = searchuser
             URLpesq = searchpesq
@@ -337,41 +331,20 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     pubuser = pubService.getPubuser(URL)
                     pubpesq = pubService.getPubpesq(URLpesq)
                     handle.post {
-
-                        /*  //vefica se a publicação passada veio dnv, se vir, zera a contagem da pagina
-                          if(nomedapublicao_passada_pesq != null) {
-                              if (pubpesq[0].nome == nomedapublicao_passada_pesq) {
-                                  toast("Vontando as primeiras p")
-                                  pagepesq = 1
-                              }
-                          }
-                          if(nomedapublicao_passada_user != null) {
-                              if (pubuser[0].nome == nomedapublicao_passada_user) {
-                                  toast("Vontando as primeiras u")
-                                  pagepesq = 1
-                              }
-                          }
-
-                          if(pubuser.size != 0){
-                              nomedapublicao_passada_user = pubuser[0].nome
-                          }
-                          if(pubpesq.size != 0){
-                              nomedapublicao_passada_pesq = pubpesq[0].nome
-                          }
-                          */
                         if(pubuser.size != 0 || pubpesq.size != 0){
                             pubpesq = juntaPubpesqWithPubuser(pubuser, pubpesq)
                             if (pubpesq.size != 0) {//0 era para fala se tinha paginaçao ou n(qual pagina que era?)
                                 recyclerViewhome.adapter = HomeAdapter(pubpesq, 0, { onClickact(it) }, { SendServer(it) })
                                 progressBarHome.visibility = View.GONE
-                                verifica_se_esta_buscando_publicacoes = 0
-                            } else {
+                                verifica_se_esta_buscando_publicacoes = 0 // seta com 0, pois se estiver buscando uma pub, e o usuario requisitar mais, vai mostra a msg "aguarde" pois já esta buscando
+                            }else {
                                 toast("Nenhuma publicação referente encontrada!")
                                 finish()
                             }
                         }else{
                             progressBarHome.visibility = View.GONE
                             toast("Nenhuma publicação referente encontrada")
+                            finish()
                         }
                     }
                 }.start()
@@ -380,6 +353,7 @@ class HomeActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         }else{
             toast("sem conecção")
+            finish()
         }
     }
 

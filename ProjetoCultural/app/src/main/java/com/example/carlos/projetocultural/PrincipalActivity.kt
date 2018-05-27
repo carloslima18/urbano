@@ -111,7 +111,7 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
             //verifica se o gps ta ligado, se n tiver vai da problema e cair no catch
             val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if (provider == null || provider.length == 0) {
-                toast("gps desabilitado")
+                toast("Ligue seu GPS")
                 finish()
             } else {
                 try {//pega a latitude e longitude atual da pessoa para assim enviar quando for adicionar uma publicação já tiver os dados
@@ -162,7 +162,7 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     private fun addFragment(context: Context){
         val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
         if(provider == null || provider.length == 0){
-            toast("gps desabilitado")
+            toast("Ligue seu GPS")
         }else {
             val ft = supportFragmentManager.beginTransaction()
             val fragAnterior = supportFragmentManager.findFragmentByTag(AddFragment.KEY)
@@ -212,9 +212,19 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     fun Enviadados(pubuser:Pubuser){
         if(AndroidUtils.isNetworkAvailable(applicationContext)) {
             if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && pubuser.nome != "" &&
-                    pubuser.atvexercida != "" && pubuser.categoria != "" && pubuser.contato != "" || pubuser.email != "" && pubuser.endereco != "" &&
-                    pubuser.latitude != "" && pubuser.longitude != "" && pubuser.redesocial != "") {
-
+                    pubuser.atvexercida != "" && pubuser.categoria != "" && pubuser.latitude != "" && pubuser.longitude != "") {
+                if(pubuser.endereco == ""){
+                    pubuser.endereco = "não informado"
+                }
+                if(pubuser.contato == ""){
+                    pubuser.contato = "não informado"
+                }
+                if(pubuser.redesocial == ""){
+                    pubuser.redesocial = "não informado"
+                }
+                if(pubuser.email == ""){
+                    pubuser.email = "não informado"
+                }
                 val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
                 dialog.setCancelable(false);
                 try {

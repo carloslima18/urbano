@@ -1,23 +1,12 @@
 package com.example.carlos.projetocultural
 
-import com.example.carlos.projetocultural.extensions.fromJson
-import com.example.carlos.projetocultural.utils.HttpHelper
-import com.example.carlos.projetocultural.extensions.*
-
 import android.Manifest
-import android.app.Activity
-import android.app.PendingIntent
 import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
-import android.location.LocationListener
 import android.location.LocationManager
-import android.media.DrmInitData
 import android.os.*
 import android.provider.Settings
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.multidex.MultiDex
 import android.support.v4.app.ActivityCompat
@@ -43,6 +32,7 @@ import com.example.carlos.projetocultural.domain.*
 import org.jetbrains.anko.custom.async
 import org.json.JSONObject
 import com.example.carlos.projetocultural.extensions.setupToolbar
+import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.MapUtils
 
 import kotlinx.android.synthetic.main.activity_map_pub.*
@@ -52,29 +42,18 @@ import kotlinx.android.synthetic.main.list_row_main.*
 //import kotlinx.coroutines.experimental.channels.*
 import org.jetbrains.anko.browse
 import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.collections.*
 import kotlin.concurrent.thread
 import kotlin.concurrent.timerTask
 
 
+import java.io.FileOutputStream
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
-
-
-
-    public var ipconfig = "192.168.15.4"
-    fun getInstance(): String? {
-        return ipconfig
-    }
 
     var database: MyDatabaseOpenHelper?=null
     val MY_PERMISSIONS_REQUEST_PHONE_CALL = 1 //variaveis para permissões
-    val MY_WRITE_EXTERNAL_STORAGE = 1
-    val MY_READ_EXTERNAL_STORAGE = 1
-    val MY_MANEGER_DOCUMENT = 1
-    val MY_INTERNET = 1
-    val MY_ACCESS_FINE_LOCATION = 1
-
-    val SPLASH_TIME = 4000;
     var locationManager:LocationManager ?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,7 +64,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(actt)
         }
 
-
         setContentView(R.layout.activity_main)
         // setupToolbar(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -94,13 +72,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .setAction("Action", null).show()
         }*/
         GetPermission()
-      /* if(Andro.idUtils.isNetworkAvailable(applicationContext)) {
-            val listV: ListView = findViewById<ListView>(R.id.lvPubFirst) as ListView
-            val getp = GetRequisitaPub(this.applicationContext,listV,"&fields=id,nome,redesocial,endereco,contato,atvexercida,categoria,latitude,longitude,img1")
-            getp.execute()
-        }else {
-            toast("sem conexão")
-        } */
+
+        /* if(Andro.idUtils.isNetworkAvailable(applicationContext)) {
+              val listV: ListView = findViewById<ListView>(R.id.lvPubFirst) as ListView
+              val getp = GetRequisitaPub(this.applicationContext,listV,"&fields=id,nome,redesocial,endereco,contato,atvexercida,categoria,latitude,longitude,img1")
+              getp.execute()
+          }else {
+              toast("sem conexão")
+          } */
 
        // vermais.visibility = View.VISIBLE
       //  texto2.visibility = View.INVISIBLE
@@ -140,6 +119,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onPause()
     }
 
+    //função para chamar quando o usuario clica em mapa online
     fun mapa(){
         var listuser :MutableList<Pubuser>
         var listItems :MutableList<Pubpesq>
@@ -148,18 +128,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val dialog = ProgressDialog.show(this, "Um momento","buscando lugares",false,true)
         Thread{
-            listuser = pubService.getPubuser(URL)
-
-            listItems = pubService.getPubpesq(URLpesq)
+            listuser = pubService.getPubuser(URL) //pega a lista de publicações de usuarios
+            listItems = pubService.getPubpesq(URLpesq)//pega a de pesquisadores
             runOnUiThread{
-                val h = HomeActivity()
+                val h = HomeActivity() //estancia para chamar a função junta lista de pesquisadores e usuarios
                 listItems = h.juntaPubpesqWithPubuser(listuser,listItems)
-                val lat:MutableList<String> = mutableListOf()
-                val log:MutableList<String> = mutableListOf()
-                val nome:MutableList<String> = mutableListOf()
-                val idpub:MutableList<String> = mutableListOf()
-                val atv:MutableList<String> = mutableListOf()
-                val pesq:MutableList<String> = mutableListOf()
+                //listas para adicionar  informações de ambos
+                val lat:MutableList<String> = mutableListOf();val log:MutableList<String> = mutableListOf() ;val nome:MutableList<String> = mutableListOf()
+                val idpub:MutableList<String> = mutableListOf() ;val atv:MutableList<String> = mutableListOf() ;val pesq:MutableList<String> = mutableListOf()
                 var i = 0
                 while(i < listItems.size){
                     idpub.add(listItems[i].id.toString())
@@ -168,15 +144,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     lat.add(listItems[i].latitude.toString())
                     atv.add(listItems[i].atvexercida.toString())
                     val p = listItems[i].pesquisador.toString()
-                    if(p != "") {
-                        pesq.add(p.toString())
+                    if(p != "") { //seta qual é pesquisador e qual não é, para ser verificado la no mapa
+                        pesq.add(p.toString()) //adiciona o id do pesquisador
                     }else{
-                        pesq.add("n")
+                        pesq.add("n") //add n se caso n for pesquisador
                     }
                     i++
                 }
                 if(listItems.size != 0) {
                     val intent = Intent(applicationContext, MapPub::class.java)
+                    //manda as informações para a atividade do map pub para assim mostrar os pontos disponivieis
                     intent.putExtra("mostrar", "todosLocais")
                     intent.putExtra("idpub", idpub.toTypedArray())
                     intent.putExtra("longitude", log.toTypedArray())
@@ -243,38 +220,61 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.escolas -> {
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                intent.putExtra("param","ESCOLA")
-                startActivity(intent)
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    intent.putExtra("param", "ESCOLA")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
             }
             R.id.praças -> {
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                //intent.putExtra("local","pracas")
-                intent.putExtra("param","PRAÇA")
-                startActivity(intent)
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    //intent.putExtra("local","pracas")
+                    intent.putExtra("param","PRAÇA")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
+
             }
             R.id.museus ->{
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-               // intent.putExtra("local","museus")
-                intent.putExtra("param","MUSEU")
-                startActivity(intent)
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    // intent.putExtra("local","museus")
+                    intent.putExtra("param","MUSEU")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
+
             }
             R.id.feiras ->{
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-               // intent.putExtra("local","feiras")
-                intent.putExtra("param","FEIRA")
-                startActivity(intent)
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    // intent.putExtra("local","feiras")
+                    intent.putExtra("param","FEIRA")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
+
             }
             R.id.suas_pub -> {
-
                     startActivity(Intent(this, PrincipalActivity::class.java))
 
             }
             R.id.outros->{
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                // intent.putExtra("local","feiras")
-                intent.putExtra("param","OUTRO")
-                startActivity(intent)
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    // intent.putExtra("local","feiras")
+                    intent.putExtra("param","OUTRO")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
+
             }
             R.id.pub_recentes -> {
                 if(AndroidUtils.isNetworkAvailable(applicationContext)) {
@@ -296,18 +296,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, LoginActivity::class.java))
             }
             R.id.mapaonline-> {
-                if(AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    toast("Aguarde...")
-                    mapa()
-                }else{
-                    val mapUtils=MapUtils()
-                    toast("Sem conexão...")
-                    mapUtils.mapaoffline("user",this)
+                val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+                if(provider == null){
+                    toast("Ligue seu GPS")
+                }else {
+                    if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                        toast("Aguarde...")
+                        mapa()
+                    } else {
+                        //val mapUtils=MapUtils()
+                        toast("Sem conexão para Mapa-Online")
+                        //mapUtils.mapaoffline("user",this)
+                    }
                 }
             }
             R.id.mapaoffline->{
-                val mapUtils=MapUtils()
-                mapUtils.mapaoffline("user",this)
+                val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+                if(provider == null){
+                    toast("Ligue seu GPS")
+                }else {
+                    val mapUtils = MapUtils()
+                    mapUtils.mapaoffline("user", this)
+                }
             }
         }
 
@@ -353,6 +363,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), MY_PERMISSIONS_REQUEST_PHONE_CALL)
         }
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.INTERNET), MY_PERMISSIONS_REQUEST_PHONE_CALL)
@@ -360,6 +373,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_DOCUMENTS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.MANAGE_DOCUMENTS), MY_PERMISSIONS_REQUEST_PHONE_CALL)
         }
+      /*  if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_CONTACTS), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        } */
     }
 
 

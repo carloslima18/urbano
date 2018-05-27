@@ -18,8 +18,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.Pubuser
 import com.example.carlos.projetocultural.domain.PubuserService
@@ -37,7 +35,8 @@ import kotlinx.android.synthetic.main.content_act_view_pub.*
 import org.jetbrains.anko.runOnUiThread
 import org.jetbrains.anko.toast
 import org.json.JSONObject
-import java.util.ArrayList
+import org.jetbrains.anko.browse
+
 
 class actViewPub : AppCompatActivity(), OnMapReadyCallback {
 
@@ -69,7 +68,6 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
     var base643:String?=null
     var base644:String?=null
     var e_pesquisador:String = ""
-    var idd = MainActivity().ipconfig
     var save :Bundle?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,15 +127,34 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
 
     //para visualizar os dados a partir do click de uma view da listView na atividade principal
     fun getViewPub(){
-        val texto = findViewById<TextView>(R.id.textvInfoPub) as TextView
         val titulo = findViewById<TextView>(R.id.tituloPub) as TextView
         //val dialog = ProgressDialog.show(this, "Um momento","buscando dados",false,true)
         carregaimg(pesquisador)
         carrega_alv(pesquisador)
 
-        titulo.text =  " $nome \n"
+        titulo.text = nome
 
-        texto.text = "REDE SOCIAL: " + redesocial + "\n" + "CONTATO: " + contato + "\n" + "ATIVIDADE EXERCIDA: " + atvex + "\n" + "CATEGORUA: "+ categoria + " " + "\n" + "endereço: " + endereco + "\n "
+
+        if(contato == "" || contato == "não informado" ){
+            tablerow_contato.visibility = View.GONE
+            viewcontato.visibility = View.GONE
+        }else{
+            Contato2.text = contato
+        }
+        if(atvex == categoria){
+            tablerow_atividadeex.visibility = View.GONE
+            viewatv.visibility = View.GONE
+        }else{
+            atividadeexercida2.text = atvex
+        }
+        if(endereco == "" || endereco == "não informado" ){
+            tablerow_endereco.visibility = View.GONE
+            viewend.visibility = View.GONE
+        }else{
+            endereco2.text = endereco
+        }
+        categoria2.text = categoria
+
 
         infodepub.text = "O ano de inicío das atividades deste local ocorreu em $anoinicio \n " +
                         "O local tem recurso retirado de maneira $recurso  \n " +
@@ -264,6 +281,7 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
                     llimg12.visibility = View.GONE
                     llimg34.visibility = View.GONE
                 }
+
                 rimg3.setOnClickListener {
                     //  Glide.with(this).load(base643).asBitmap().override(200, 200).diskCacheStrategy(DiskCacheStrategy.ALL).into(imgViewPubbig)
                     imgViewPubbig.setImageBitmap(camera.base64ForBitmap2(base643))
@@ -278,6 +296,16 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
                     llimg12.visibility = View.GONE
                     llimg34.visibility = View.GONE
                 }
+
+             /*   var imgspubs:ArrayList<Bitmap> = ArrayList()
+                imgspubs.add(camera.base64ForBitmap2(base641))
+                imgspubs.add(camera.base64ForBitmap2(base642))
+                imgspubs.add(camera.base64ForBitmap2(base643))
+                imgspubs.add(camera.base64ForBitmap2(base644))
+
+
+                Gallery.setAdapter(AdapterImgs(this,imgspubs)); */
+
 
             }
         }.start()
@@ -314,26 +342,13 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
         super.onResume()
         mapView?.onResume();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if(redesocial == "" || redesocial == "não informado"){
+            button_redesocial.visibility = View.GONE
+        }else{
+            button_redesocial.setOnClickListener {
+                browse(redesocial)
+            }
+        }
 
 
 
@@ -383,28 +398,28 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
     fun setacor(categoria:String){
         var color = ""
         if(categoria == "ESCOLA" || categoria == "escola"){
-            relativell.setBackgroundColor((Color.rgb(200, 229, 0)))//verde florescente
-            ll1.setBackgroundColor((Color.rgb(200, 229, 0)))
+            relativell.setBackgroundColor((Color.rgb(255, 255, 0)))//amarelho
+            ll1.setBackgroundColor((Color.rgb(255, 255, 0)))
         }
-        if(categoria == "OUTRO" || categoria == "OUTROS" || categoria == "outro" || categoria == "outros"){
-            relativell.setBackgroundColor((Color.rgb(194, 121, 236)))//roxo
-            ll1.setBackgroundColor((Color.rgb(194, 121, 236)))
+        if(categoria == "OUTRO" || categoria == "OUTRO" || categoria == "outro" || categoria == "outros"){
+            relativell.setBackgroundColor((Color.rgb(145, 30, 213)))//roxo
+            ll1.setBackgroundColor((Color.rgb(145, 30, 213)))
         }
         if(categoria == "FEIRA" || categoria == "feira"){
-            relativell.setBackgroundColor((Color.rgb(39, 237, 131)))//verde claro
-            ll1.setBackgroundColor((Color.rgb(39, 237, 131)))
+            relativell.setBackgroundColor((Color.rgb(0, 128, 255)))//azul
+            ll1.setBackgroundColor((Color.rgb(0, 128, 255)))
         }
         if(categoria == "PRAÇA" || categoria == "praça"){
-            relativell.setBackgroundColor((Color.rgb(31, 248, 219)))//verde agua
-            ll1.setBackgroundColor((Color.rgb(31, 248, 219)))
+            relativell.setBackgroundColor((Color.rgb(12, 231, 61)))//verde
+            ll1.setBackgroundColor((Color.rgb(12, 231, 61)))
         }
         if(categoria == "MUSEU" || categoria == "museu"){
             relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
             ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
         }
         if(categoria == "TEATRO" || categoria == "teatro"){
-            relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
-            ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
+            relativell.setBackgroundColor((Color.rgb(150, 97, 111)))//marrom
+            ll1.setBackgroundColor((Color.rgb(150, 97, 111)))
         }
 
     }

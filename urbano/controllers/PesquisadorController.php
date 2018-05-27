@@ -72,13 +72,13 @@ class PesquisadorController extends Controller
         $model = new Pesquisador();
         //https://github.com/yiisoft/yii2/blob/master/docs/guide/security-passwords.md#encryption-and-decryption
         if ($model->load(Yii::$app->request->post())) {
-          //  $model->senha = MD5($model->senha);//Yii::$app->getSecurity()->generatePasswordHash($model->senha);
+            //  $model->senha = MD5($model->senha);//Yii::$app->getSecurity()->generatePasswordHash($model->senha);
             if(!$model->save()){
                 return $this->render('create', [
                     'model' => $model,
                 ]);
             }
-           //$model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
+            //$model->senha = password_hash($model->senha, PASSWORD_DEFAULT);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -88,18 +88,12 @@ class PesquisadorController extends Controller
     }
 
     public function sendEmail($model){
-        Yii::$app->mailer->compose('contact/html')
+        Yii::$app->mailer->compose()
             ->setFrom('orbeapp@orbeapp.com')
             ->setTo($model->email)
             ->setSubject('URBANO')
-            ->setTextBody('Senhor'.$model->nome.'venho informa que recebemos
-            a solicitação de cadastro do senhor, e após a verificação,
-            a equipe do URBANO confirmou a aprovação para o uso da nossa área de 
-            pesquisador em nosso aplicativo.
-            
-            Seu loguin é formado pelo seu endereço de email, e sua senha será seu CPF.
-            Obrigado!
-            ')
+            ->setTextBody('Senhor(a)'." ".$model->nome." ".'venho informar que sua requisição para pesquisador no urbano foi aceita!!
+            Acesse nosso aplicativo colocando como usuário o seu endereço de e-mail e sua senha como seu CPF.')
             ->send();
     }
 

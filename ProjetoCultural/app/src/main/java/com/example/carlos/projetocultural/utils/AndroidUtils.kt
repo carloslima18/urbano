@@ -5,7 +5,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
-import br.edu.computacaoifg.todolist.ToDoAdapter
 import com.example.carlos.projetocultural.ListviewpubpesqActivity
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService

@@ -36,9 +36,6 @@ class FrontActivity : AppCompatActivity() {
             email("carloslima519@outlook.com", assunto)
         }
 
-        ligueparanos.setOnClickListener {
-            sendSMS("62993437996","")
-        }
 
 
         vermais.setOnClickListener{

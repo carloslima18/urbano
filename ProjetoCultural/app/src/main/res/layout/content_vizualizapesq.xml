@@ -17,7 +17,6 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="13dp">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,611 +34,632 @@
                 android:textStyle="bold|italic"
                 tools:text="NOME DA PUBLICACAO" />
 
-            <!--nome-->
             <LinearLayout
-                android:id="@+id/ll1"
+                android:id="@+id/ender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/nome"
+                <LinearLayout
+                    android:id="@+id/llt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TableLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:stretchColumns="0,1">
+                        <TableRow
+                            android:id="@+id/tablerow_nome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/nome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorbutton"
+                            android:text="NOME: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/nomev"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorbutton"
+                            android:text="NOME:" />
+
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_redesocial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/redesocial"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="REDE SOCIAL: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/redecoailv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="Rede social:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_endereco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/endereco"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="ENDEREÇO: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/enderecov"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="Endereço: "
+                                 />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_contato"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/contato"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="CONTATO: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/contatov"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Contato"
+                                />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="EMAIL:"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/emailv"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Email" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_atvex"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/atividadeexercidade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:textStyle="bold"
+                                android:text="ATIVIDADE EXERCIDA:" />
+                            <TextView
+                                android:id="@+id/atvexv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="ATIVIDADE EXERCIDA" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_categoria"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/categoria"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="CATEGORIA:"
+                                android:textStyle="bold"
+                                />
+                            <TextView
+                                android:id="@+id/categoriav"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Categoria" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_incio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/inicio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="ANO DE INICIO: "
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:id="@+id/anoiniciov"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Inicio das atividades:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_cnpj"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/cnpj"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="CNPJ: "
+                                android:textStyle="bold"
+                                />
+                            <TextView
+                                android:id="@+id/cnpjv"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Cnpj:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_recurso"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/recurso"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="RECURSO: "
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/recursov"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Recurso:"
+                                android:textColor="@color/colorbutton" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_representacao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/representaco"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="REPRESENTAÇÃO: "
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:id="@+id/representacaov"
+                                android:textColor="@color/colorbutton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Representação:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                    </TableLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llmapa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NOME:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="NOME:" />
+                    android:visibility="gone">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapViewPub"
+                        android:layout_width="340dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/mostrarinfo"
+                    style="@android:style/Widget.DeviceDefault.Button.Toggle"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="visualizar info"
+                    android:textColor="@color/colorbranco"
+                    android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/nomev"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/infodepub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone"
+                    tools:text="mais informação como tudo, ano inicio, representacao, recursos, história em geral" />
+
             </LinearLayout>
-            <!--redesec-->
+
             <LinearLayout
-                android:id="@+id/ll2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/redesocial"
+                <!--botao para add map-->
+                <Button
+                    android:id="@+id/btperguntaserespostas"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="REDE SOCIAL:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-
-                <TextView
-                    android:id="@+id/redecoailv"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="PGT+"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+                <!--botao para add map-->
+                <Button
+                    android:id="@+id/btescondeperguntas"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="PGT-"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
             </LinearLayout>
-            <!--end-->
+
             <LinearLayout
-                android:id="@+id/ll3"
+                android:id="@+id/llc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginRight="4dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ENDEREÇO:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-
-                <TextView
-                    android:id="@+id/enderecov"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--contato-->
-            <LinearLayout
-                android:id="@+id/ll4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:id="@+id/cont"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CONTATO/CELL:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="CONTATO/CELL" />
-
-                <TextView
-                    android:id="@+id/contatov"
-                    android:layout_width="wrap_content"
+                <TableLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
+                    android:layout_weight="1"
+                    android:stretchColumns="0,1">
+                    <TableRow
+                        android:id="@+id/ll12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
+                        <TextView
+                            android:id="@+id/pgt1v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp1vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-            </LinearLayout>
-            <!--email-->
-            <LinearLayout
-                android:id="@+id/ll5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                    <TableRow
+                        android:visibility="gone"
+                        android:id="@+id/ll13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EMAIL:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                        <TextView
+                            android:id="@+id/pgt2v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp2vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                <TextView
-                    android:id="@+id/emailv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--atvex-->
-            <LinearLayout
-                android:id="@+id/ll6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ATVIDADE EXERCIDA:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                    <TableRow
+                        android:id="@+id/ll14"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/atvexv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--categ-->
-            <LinearLayout
-                android:id="@+id/llcat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                        <TextView
+                            android:id="@+id/pgt3v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp3vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
+                    <TableRow
+                        android:id="@+id/ll15"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CATEGORIA:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                        <TextView
+                            android:id="@+id/pgt4v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp4vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view4"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                <TextView
-                    android:id="@+id/categoriav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                    <TableRow
+                        android:id="@+id/ll16"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            </LinearLayout>
-            <!--inicio-->
-            <LinearLayout
-                android:id="@+id/ll8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/pgt5v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp5vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view5"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                <TextView
+                    <TableRow
+                        android:id="@+id/ll17"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ANO DE INICIO:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                        <TextView
+                            android:id="@+id/pgt6v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp6vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                <TextView
-                    android:id="@+id/anoiniciov"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--cnpj-->
-            <LinearLayout
-                android:id="@+id/ll9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
+                    <TableRow
+                        android:id="@+id/ll18"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
+                        <TextView
+                            android:id="@+id/pgt7v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp7vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view7"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CNPJ:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                    <TableRow
+                        android:id="@+id/ll19"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/cnpjv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--represemtacao-->
-            <LinearLayout
-                android:id="@+id/ll10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/pgt8v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp8vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view8"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                <TextView
-                   android:text="REPRESENTAÇÃO:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
+                    <TableRow
+                        android:id="@+id/ll20"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/representacaov"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <!--recurso-->
-            <LinearLayout
-                android:id="@+id/ll11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
+                        <TextView
+                            android:id="@+id/pgt9v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp9vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view9"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
+                    <TableRow
+                        android:id="@+id/ll21"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
+                        <TextView
+                            android:id="@+id/pgt10v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp10vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view10"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RECURSO:"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-
-                <TextView
-                    android:id="@+id/recursov"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <!--botao para add map-->
-            <Button
-                android:id="@+id/btperguntaserespostas"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="PGT+"
-                android:textColor="@color/colorbranco"
-                android:textSize="10sp"
-                android:visibility="visible" />
-            <!--botao para add map-->
-            <Button
-                android:id="@+id/btescondeperguntas"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="PGT-"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/colorbranco"
-                android:textSize="10sp"
-                android:visibility="visible" />
-
-            </LinearLayout>
-
-            <!--perguntas e responstas-->
-            <LinearLayout
-                android:id="@+id/ll12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt1v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp1vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt2v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp2vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt3v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp3vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt4v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp4vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:visibility="gone"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt5v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp5vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
+                </TableLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/pgt6v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-
-                <TextView
-                    android:id="@+id/resp6vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="gone"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt7v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp7vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt8v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp8vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt9v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp9vv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll21"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:visibility="gone"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pgt10v"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:textColor="@color/colorbutton"
-                    android:textStyle="bold"
-                    tools:text="informação completa do individuo" />
-                <TextView
-                    android:id="@+id/resp10vv"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorbutton"
-                    tools:text="informaão completa do individuo" />
-            </LinearLayout>
 
 
             <!--botao para add map-->
@@ -685,7 +705,6 @@
                 android:visibility="visible" />
 
             <!--campo para as imagens-->
-
             <LinearLayout
                 android:id="@+id/llimg3"
                 android:layout_width="match_parent"
@@ -794,7 +813,6 @@
 
 
             </LinearLayout>
-
 
         </LinearLayout>
 

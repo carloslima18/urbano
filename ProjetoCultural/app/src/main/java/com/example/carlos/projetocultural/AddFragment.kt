@@ -1,58 +1,46 @@
 package com.example.carlos.projetocultural
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.Activity.RESULT_CANCELED
 import android.app.Activity.RESULT_OK
 import android.app.Dialog
-import android.app.Fragment
-import android.app.ProgressDialog
 import android.content.*
 import android.os.Bundle
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.support.v4.app.DialogFragment
 //import kotlinx.android.synthetic.main.content_add.*
-import android.provider.MediaStore
-import android.net.Uri
-import android.os.Environment
-import org.jetbrains.anko.alert
-import java.io.File
 import kotlinx.android.synthetic.main.fragment_add.*
-import android.support.v4.content.FileProvider
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
 import com.example.carlos.projetocultural.utils.CameraHelper
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import kotlin.collections.ArrayList
-import kotlin.concurrent.thread
-import android.util.Base64
 import android.widget.*
-import br.edu.computacaoifg.todolist.ToDoAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.carlos.projetocultural.domain.Pubuser
 import com.example.carlos.projetocultural.domain.PubuserService
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.Validacpf
-import kotlinx.android.synthetic.main.fragment_operacao.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import java.net.URI
 
 //import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 
 import android.content.Context
-import android.location.LocationManager
-import android.os.Build
-import android.provider.Settings
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import kotlinx.android.synthetic.main.content_vizualizapesq.*
+import android.support.v4.content.FileProvider
+import com.example.carlos.projetocultural.domain.Pubpesq
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
+import java.io.File
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 // e talvez você precisa em alguns ocations
 /**
@@ -61,11 +49,6 @@ import org.jetbrains.anko.toast
 // fragment para adicionar uma publicação
 class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemSelectedListener {
 
-    val MY_PERMISSIONS_REQUEST = 3 // para permissões
-    var base64_1:String?=null  //variaveis que recebe a string BASE64 das imagens para..
-    var base64_2:String?=null  //..salvar no banco de dados
-    var base64_3:String?=null
-    var base64_4:String?=null
     private val REQUEST_IMAGE_CODE = 1888; //variaveis obrigatorias para parametro da funcao "startActivityForResult"
     val PICK_FROM_FILE = 2;     //para tirar foto, ou importa da galeria
     var latitude:Double?= null // variaveis para pegar via intentPut extra a long e lat enviadas..
@@ -73,7 +56,6 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
     var mapView : MapView?=null //variavel para amostragem do mapa no neste fragment
     val camera = CameraHelper() // variavel usada para estanciar a classe que cuida (de tirar foto entre conversões .......)
     var numImgx:Int= 0 //variavel para identificar qual imageView que o usuario clicou la no layout
-    var CA: ToDoAdapter?= null //Adapter para preencher a listRow(cada item da ListView, referente a publicação que foi salva)  (envia os dados passados do BD, para p toDoAdapter para ser mapeados na listRow)
 
     val mappub = MapPub()
     //create dialog
@@ -144,6 +126,12 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
          // On selecting a spinner item
         val item = parent?.getItemAtPosition(position).toString();
+
+        if(item == "OUTRO") {
+            atvexll.visibility = View.VISIBLE
+        }else{
+            atvexll.visibility = View.GONE
+        }
         // Showing selected spinner item
         //Toast.makeText(parent?.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
@@ -296,7 +284,6 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
             intent.putExtra("atvex",atvex?.toTypedArray())
             startActivity(intent)//estarta a atividade MapPub que mostra o mapa e da opcao da pessoa troca o marcador
         } */
-
         buttonSalvara.setOnClickListener(){onClickCreate()} // para salvar a publicação, adicionando os dados no banco de dados
         // Refresh the state of the +1 button each time the activity receives focus.
     }
@@ -343,27 +330,30 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
     }  */
 
 
+
+
+
     //referencia foi para salvar a imagem e fica salvo na galeria
     //https://stackoverflow.com/questions/22178041/getting-permission-denial-exception
     //referencia: https://stackoverflow.com/questions/22178041/getting-permission-denial-exception
     //ARMAZENA SE TIVER TIRADO OU SELECIONADO EM UM IMAGE VIEW, metodo que trata o resultado da camera ou seleção de imagem
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        camera.supportForOnActivityResult(requireContext(),null,pubuser,data,resultCode,requestCode,"add")//0 pq só vai ter que passar o valor do id, se for em caso de update/alterar o dado, e add, pq quando é no caso tbm de alteração..
-//a mudança nesse arquivo foi o requeire context
+        camera.supportForOnActivityResult(context,null,pubuser,data,resultCode,requestCode,"add") //0 pq só vai ter que passar o valor do id, se for em caso de update/alterar o dado, e add, pq quando é no caso tbm de alteração..
+    //a mudança nesse arquivo foi o requeire context
     }
+
 
 
     // quando clica no salvar, para salvar os dados da publicação
     //insere os dados da publicação no banco de dados
      fun onClickCreate(){
-
                 val nome = nomea.text.toString()
                 val redesocial = redesociala.text.toString()
                 val endereco = enderecoa.text.toString()
                 val contato = contatoa.text.toString()
                 val email = emaila.text.toString()
-                val atvexercida = atvexa.text.toString()
+                val atvexercida = atvexet.text.toString()
                 val categoria = spinneradd.selectedItem.toString()
                 //val aprovado = categoriaa.aprovadoa.toString()
                 val campo1 = campo1a.text.toString()
@@ -371,48 +361,51 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
                 val campo3 = campo3a.text.toString()
                 val campo4 = campo4a.text.toString()
                 val campo5 = campo5a.text.toString()
-        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != ""
-                && nome != "" && redesocial != "" && endereco != "" && contato != ""&& atvexercida != "" &&
-                categoria != "") {
-                if (Validacpf().validateEmailFormat(email)) {
-                    pubuser.nome = nome;
-                    pubuser.redesocial = redesocial
-                    pubuser.endereco = endereco
-                    pubuser.contato = contato
-                    pubuser.email = email
-                    pubuser.atvexercida = atvexercida
-                    pubuser.categoria = categoria
-                    pubuser.campo1 = campo1
-                    pubuser.campo2 = campo2
-                    pubuser.campo3 = campo3
-                    pubuser.campo4 = campo4
-                    pubuser.campo5 = campo5
-                    pubuser.longitude = longitude.toString()
-                    pubuser.latitude = latitude.toString()
 
-                    if (pubuser.latitude == "0.0") {
-                        toast("localização indisponivel, ligue o gps")
-                        dismiss()
-                    } else {
-
-                        val mainact = activity as PrincipalActivity
-                        doAsync {
-                            val tes = PubuserService.salvar(pubuser)
-                            //val tes2 = PubuserService.getPubuser()
-                            uiThread {
-                                // Alerta de sucesso
-                                // Dispara um evento para atualizar a lista
-                                mainact.taskCarros()
-                            }
-                        }
-                        dismiss()
-                    }
-                }else{
-                    toast("E-mail invalido!")
+        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && nome != ""  && categoria != "") {
+            if (Validacpf().validateEmailFormat(email) || email == "") {
+                pubuser.nome = nome;
+                pubuser.redesocial = redesocial
+                pubuser.endereco = endereco
+                pubuser.contato = contato
+                pubuser.email = email
+                pubuser.atvexercida = atvexercida
+                if(pubuser.atvexercida == ""){
+                    pubuser.atvexercida = categoria
                 }
+                pubuser.categoria = categoria
+                pubuser.campo1 = campo1
+                pubuser.campo2 = campo2
+                pubuser.campo3 = campo3
+                pubuser.campo4 = campo4
+                pubuser.campo5 = campo5
+                pubuser.longitude = longitude.toString()
+                pubuser.latitude = latitude.toString()
+
+                if (pubuser.latitude == "0.0") {
+                    toast("localização indisponivel, ligue o gps")
+                    dismiss()
+                } else {
+
+                    val mainact = activity as PrincipalActivity
+                    doAsync {
+                        val tes = PubuserService.salvar(pubuser)
+                        //val tes2 = PubuserService.getPubuser()
+                        uiThread {
+                            // Alerta de sucesso
+                            // Dispara um evento para atualizar a lista
+                            mainact.taskCarros()
+                        }
+                    }
+                    dismiss()
+                }
+
             } else {
-                toast("Preencha todas informações/fotos")
+                toast("E-mail invalido!")
             }
+        } else {
+            toast("Dados como nome, fotos, categoria não podem ser vazios")
+        }
 
 
     }

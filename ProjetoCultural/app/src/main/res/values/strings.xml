@@ -115,7 +115,7 @@
         <item>MUSEU</item>
         <item>TEATRO</item>
         <item>FEIRA</item>
-        <item>OUTROS</item>
+        <item>OUTRO</item>
     </string-array>
     <string name="title_activity_vizualizapesq">vizualizapesqActivity</string>
 </resources>

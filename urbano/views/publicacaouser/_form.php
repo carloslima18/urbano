@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Publicacaouser */
@@ -10,7 +11,8 @@ use yii\widgets\ActiveForm;
 
 <div class="publicacaouser-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+    <!--?php $form = ActiveForm::begin(); ?-->
 
     <?= $form->field($model, 'nome')->textInput() ?>
 
@@ -62,8 +64,38 @@ use yii\widgets\ActiveForm;
 
     <!--?= $form->field($model, 'campo10')->textarea(['rows' => 6]) ?-->
 
+
+    <?= $form->field($model, 'img1')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*','multiple'=>true],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img2')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img3')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img4')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <!--https://github.com/kalyabin/yii2-select-google-map-location-->
+    <?= $form->field($model, 'campo5' )->widget(\kalyabin\maplocation\SelectMapLocationWidget::className(), [
+        'attributeLatitude' => 'latitude',
+        'attributeLongitude' => 'longitude',
+        'googleMapApiKey' => 'AIzaSyDpcX-GScOiQX3IxBAu_Drpet-YqjM8t0U',
+        'draggable' => true,
+        ]);  ?>
+
+
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

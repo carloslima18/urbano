@@ -116,14 +116,14 @@ class MapPub : AppCompatActivity(), OnMapReadyCallback{
             mMap.setInfoWindowAdapter(object : InfoWindowAdapter {
                 override fun getInfoContents(marker: Marker): View {
                     val tv = TextView(this@MapPub)//vermelho
-                    tv.text = Html.fromHtml("<b><font color=\"#F44336\">" + marker.title + ":</font></b> " + marker.snippet)
+                    tv.text = Html.fromHtml("<b><font color=\"#ffffff\">" + marker.title + ":</font></b> " + marker.snippet)
                     return tv
                 }
                 override fun getInfoWindow(marker: Marker): View {
 
                     val ll = LinearLayout(this@MapPub)
                     ll.setPadding(10, 10, 10, 10)
-                    ll.setBackgroundColor(Color.LTGRAY)
+                    ll.setBackgroundColor(Color.WHITE)
                     val tv = TextView(this@MapPub)//preto
                     tv.text = Html.fromHtml("<b><font color=\"#000000\">" + marker.title + ":</font></b> " + marker.snippet)
                     ll.addView(tv)
@@ -182,7 +182,7 @@ class MapPub : AppCompatActivity(), OnMapReadyCallback{
                // toast("clicado no marcador")
                 false
             }
-            val ipx = MainActivity().ipconfig
+
             //realizar algo quando toca na etiqueta (caixa de texto) sobre a marcação
             if(semnet != "sim" && mostrar != "atualiza") {//esta sem net
                 mMap.setOnInfoWindowClickListener { marker ->

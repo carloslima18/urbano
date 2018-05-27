@@ -1,7 +1,6 @@
 package com.example.carlos.projetocultural
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bumptech.glide.Glide
@@ -19,8 +18,11 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
-class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
+import android.os.Environment.getExternalStorageDirectory
+import java.io.File
 
+
+class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
     var idx:Int = 0
     var pubpesq:Pubpesq?=null
     var mapView : MapView?=null
@@ -95,17 +97,27 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
         //para esconder todos os campos perguntas respostas;
 
         btescondeperguntas.setOnClickListener {
-            ll12.visibility = View.GONE
-            ll13.visibility = View.GONE
-            ll14.visibility = View.GONE
-            ll15.visibility = View.GONE
-            ll16.visibility = View.GONE
-            ll17.visibility = View.GONE
-            ll18.visibility = View.GONE
-            ll19.visibility = View.GONE
-            ll20.visibility = View.GONE
-            ll21.visibility = View.GONE
-            addcampo= 1
+             ll12.visibility = View.GONE
+             ll13.visibility = View.GONE
+             ll14.visibility = View.GONE
+             ll15.visibility = View.GONE
+             ll16.visibility = View.GONE
+             ll17.visibility = View.GONE
+             ll18.visibility = View.GONE
+             ll19.visibility = View.GONE
+             ll20.visibility = View.GONE
+             ll21.visibility = View.GONE
+             view1.visibility = View.GONE
+             view2.visibility = View.GONE
+             view3.visibility = View.GONE
+             view4.visibility = View.GONE
+             view5.visibility = View.GONE
+             view6.visibility = View.GONE
+             view7.visibility = View.GONE
+             view8.visibility = View.GONE
+             view9.visibility = View.GONE
+             view10.visibility = View.GONE
+             addcampo= 1
         }
 
 
@@ -218,6 +230,8 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                     if(pgt1v.text != "") {
                         ll12.visibility = View.VISIBLE
                         ll13.visibility = View.VISIBLE
+                        view1.visibility = View.VISIBLE
+                        view2.visibility = View.VISIBLE
                     }else{
                         toast("pgt 1 e 2 vazia")
                     }
@@ -227,6 +241,8 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                     if (pgt3v.text != "") {
                         ll14.visibility = View.VISIBLE
                         ll15.visibility = View.VISIBLE
+                        view3.visibility = View.VISIBLE
+                        view4.visibility = View.VISIBLE
                     } else{
                         toast("pgt 3 e 4 vazio")
                     }
@@ -236,6 +252,8 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                     if (pgt5v.text != "") {
                         ll16.visibility = View.VISIBLE
                         ll17.visibility = View.VISIBLE
+                        view5.visibility = View.VISIBLE
+                        view6.visibility = View.VISIBLE
                     } else{
                         toast("pgt 5 e 6 vazio")
                     }
@@ -245,6 +263,8 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                     if (pgt7v.text != "") {
                         ll18.visibility = View.VISIBLE
                         ll19.visibility = View.VISIBLE
+                        view7.visibility = View.VISIBLE
+                        view8.visibility = View.VISIBLE
                     } else{
                         toast("pgt 7 e 8 vazio")
                     }
@@ -254,6 +274,8 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                     if (pgt9v.text != "") {
                         ll20.visibility = View.VISIBLE
                         ll21.visibility = View.VISIBLE
+                        view9.visibility = View.VISIBLE
+                        view10.visibility = View.VISIBLE
                     } else{
                         toast("pgt 9 e 10 vazio")
                     }
@@ -350,8 +372,12 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
                 img4v.visibility = View.GONE
             }
 
-
-
-
+            /*
+            val imgspubs:MutableList<Uri> = mutableListOf()
+            imgspubs.add(Uri.parse(pubpesq!!.img1.toString()))
+            imgspubs.add(Uri.parse(pubpesq!!.img2.toString()))
+            imgspubs.add(Uri.parse(pubpesq!!.img3.toString()))
+            imgspubs.add(Uri.parse(pubpesq!!.img4.toString()))
+            Gallery.setAdapter(AdapterImgs(this,imgspubs)); */
     }
 }

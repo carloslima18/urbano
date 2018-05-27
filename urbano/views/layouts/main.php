@@ -49,11 +49,11 @@ AppAsset::register($this);
                 'label' => 'Publicações',
                 'items'=>[
 
-                    ['label'=>'Pub. de usuários', 'url'=>['/publicacaouser/index']],
-                    ['label'=>'Pub. de pesquisadores', 'url'=>['/publicacaopesq/index']],
-                    ['label'=>'Avaliar pub. de usuários', 'url'=>['/avaliacaopubuser/index']],
-                    ['label'=>'Avaliar pub. de pesquisadores', 'url'=>['/avaliacaopubpesq/index']],
-                    ['label' => 'Cadastrar pesquisador', 'url' => ['/pesquisador/index']],
+                    ['label'=>'Usuários', 'url'=>['/publicacaouser/index']],
+                    ['label'=>'Pesquisadores', 'url'=>['/publicacaopesq/index']],
+                    ['label'=>'Notas usuários', 'url'=>['/avaliacaopubuser/index']],
+                    ['label'=>'Notas pesquisadores', 'url'=>['/avaliacaopubpesq/index']],
+                    ['label' => 'Pesquisador', 'url' => ['/pesquisador/index']],
                 ],
             ],
             [

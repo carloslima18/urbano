@@ -92,16 +92,6 @@
                     android:text="ver mais"
                     android:textColor="@color/colorbranco" />
 
-                <Button
-                    android:id="@+id/ligueparanos"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="Ligar "
-                    android:textColor="@color/colorbranco" />
 
 
                 <Button
@@ -112,7 +102,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="8dp"
                     android:background="@color/colorPrimaryDark"
-                    android:text="E-mail"
+                    android:text="Enviar e-mail"
                     android:textColor="@color/colorbranco" />
 
             </LinearLayout>

@@ -12,7 +12,7 @@ import com.example.carlos.projetocultural.R
 import org.jetbrains.anko.toast
 import org.json.JSONObject
 import android.widget.Toast
-import com.example.carlos.projetocultural.adapters.HomeAdapter
+
 
 
 /**
@@ -22,8 +22,7 @@ class GetRequisitaPub(context: Context, listV: RecyclerView, param:String) : Asy
 
     val lv = listV
     var context = context
-    var param = param//192.168.137.113
-    var id = MainActivity().ipconfig
+
     val URL = "http://orbeapp.com/web/sendpubuser?_format=json$param"
 
     override fun onPreExecute(){

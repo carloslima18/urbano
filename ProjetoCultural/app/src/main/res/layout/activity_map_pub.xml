@@ -7,6 +7,7 @@
     tools:context="com.example.carlos.projetocultural.MapPub">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -15,19 +16,31 @@
             android:id="@+id/toolbarmap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:subtitleTextColor="@color/ef_white"
-            app:titleTextColor="@color/ef_white"
             android:background="@color/colorPrimary"
-            android:theme="@style/AppTheme.NoActionBar"
             android:textAlignment="center"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            android:theme="@style/AppTheme.NoActionBar"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:subtitleTextColor="@color/ef_white"
+            app:titleTextColor="@color/ef_white">
 
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_map_pub" />
-
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btn_draw_State"
+        android:layout_marginBottom="8dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:context="com.example.carlos.projetocultural.MapPub"
+        tools:layout_editor_absoluteX="0dp" />
 
 </android.support.constraint.ConstraintLayout>
 

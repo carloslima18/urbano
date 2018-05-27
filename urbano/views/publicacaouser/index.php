@@ -24,11 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
     echo \kartik\export\ExportMenu::widget([
         'dataProvider'=>$dataProvider,
         'columns'=> [
-
             'nome:ntext',
-            'redesocial:ntext',
-            'endereco:ntext',
             'contato:ntext',
+            'endereco:ntext',
+            'email:ntext',
+            'redesocial:ntext',
+            'atvexercida:ntext',
+            'categoria:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
@@ -42,13 +44,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'nome:ntext',
-            'redesocial:ntext',
-            'endereco:ntext',
             'contato:ntext',
+            'endereco:ntext',
+            'email:ntext',
+            'redesocial:ntext',
+            'atvexercida:ntext',
+            'categoria:ntext',
             //'email:ntext',
             //'atvexercida:ntext',
             //'categoria:ntext',
-            //'aprovado',
+            'aprovado',
             //'latitude',
             //'longitude',
             //'geo_gps',

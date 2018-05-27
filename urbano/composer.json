@@ -22,7 +22,8 @@
         "kartik-v/yii2-widgets": "*",
         "2amigos/yii2-google-maps-library" : "*",
         "kartik-v/yii2-export": "dev-master",
-        "moonlandsoft/yii2-phpexcel": "*"
+        "moonlandsoft/yii2-phpexcel": "*",
+        "kalyabin/yii2-select-google-map-location": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -5,7 +5,6 @@ import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.carlos.projetocultural.HomeActivity
 import com.example.carlos.projetocultural.extensions.toast
 import okhttp3.*
 import java.io.IOException
@@ -78,11 +77,10 @@ object HttpHelper{
 
     //Lê a resposta do servidor no formato JSON
     fun getJson2(request: Request):String{
-        var strcatcherroraaaa:String ?=null ;
+        //var strcatcherroraaaa:String ?=null ;
         try {
             client = build
             val response = client.newCall(request).execute()
-
             val responseBody = response.body()
             if (responseBody != null) {
                 val json = responseBody.string()

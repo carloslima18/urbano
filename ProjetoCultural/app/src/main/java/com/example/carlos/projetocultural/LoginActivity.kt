@@ -31,7 +31,7 @@ import java.security.MessageDigest
 class LoginActivity : AppCompatActivity() {
 
     var database: MyDatabaseOpenHelper?=null
-    val ip = MainActivity().ipconfig
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
             //var obj :ArrayList<JSONObject> ?= null
             val loguin = tlogin.text.toString()
             val senha = tsenha.text.toString()
-            val url = "http://orbeapp.com/web/sendpesquisador?_format=json&&PesquisadorSearch[campo2]=S&PesquisadorSearch[nome]=$loguin&fields=id,nome,senha" //&PesquisadorSearch[campo2]=S
+            val url = "http://orbeapp.com/web/sendpesquisador?_format=json&&PesquisadorSearch[campo2]=S&PesquisadorSearch[email]=$loguin&fields=id,nome,email,senha" //&PesquisadorSearch[campo2]=S
             if (AndroidUtils.isNetworkAvailable(applicationContext)) {
                 Thread {
                     arrayList = pubService.getelemento(url)
@@ -94,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
                         if (resul != null) {
                             val intent = Intent(this@LoginActivity, PesquisadorhomeActivity::class.java)
                             var idpesquisador = resul.getString("id").toInt()
-                            intent.putExtra("idpesq", resul.getString("id").toInt())
+                         //   intent.putExtra("idpesq", resul.getString("id").toInt())
                             insere(idpesquisador.toString(),senha,loguin)
                             startActivity(intent)
                             dialog?.dismiss()
@@ -157,25 +157,28 @@ class LoginActivity : AppCompatActivity() {
             )
         }
 
-        val id = database?.use {
-            select("pesquisador", "idweb").exec { parseList<String>(classParser()) }
-        }
+
     }
 
     fun buscapesquisadorsalvo(){
-
         val id = database?.use {
             select("pesquisador", "nome").exec { parseList<String>(classParser()) }
         }
+        val idweb = database?.use {
+            select("pesquisador", "idweb").exec { parseList<String>(classParser()) }
+        }
         if(id?.size != 0 && id != null){
-            startActivity(Intent(this, PesquisadorhomeActivity::class.java))
-            toast("Bem vindo\"" + id[0] + "\"")
+            val intent = Intent(this@LoginActivity, PesquisadorhomeActivity::class.java)
+        //    intent.putExtra("idpesq",idweb?.get(0)?.toInt())
+        //    toast("Bem vindo" + id[0] + "")
+            startActivity(intent)
             finish()
         }
     }
 
 
-    /*   val dialog = ProgressDialog.show(this, "Um momento","Verificando",false,true)
+    /*
+       val dialog = ProgressDialog.show(this, "Um momento","Verificando",false,true)
        Thread{
            //&PublicacaoSearch[categoria]=feiras&fields=id,nome,redesocial,endereco,contato,atvexercida,categoria,latitude,longitude,img1"
            var listItems :ArrayList<JSONObject> = arrayListOf()
@@ -192,7 +195,8 @@ class LoginActivity : AppCompatActivity() {
                    toast("dados incorretos")
                }
            }
-       }.start() */
+       }.start()
+       */
 
 
 

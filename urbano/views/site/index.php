@@ -11,7 +11,7 @@ $this->title = 'My Yii Application';
 
         <p class="lead">Publicações, fotos, pesquisas e muito mais!.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://localhost/urbano/apkapp/app.apk">Baixe Aqui nosso aplicativo!!</a></p>
+        <p><a class="btn btn-lg btn-success" href="http://orbeapp.com/web/apkapp/app.apk">Baixe Aqui nosso aplicativo!!</a></p>
     </div>
 
     <div class="body-content">

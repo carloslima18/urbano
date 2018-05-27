@@ -24,26 +24,25 @@ class PesquisadorhomeActivity : AppCompatActivity() {
         toolbarHome.setNavigationOnClickListener {
             finish()
         }
-        database = MyDatabaseOpenHelper.getInstance(applicationContext)
-
         val extras = intent.extras
-        idpesq = extras?.getInt("idpesq").toString()
+     //   idpesq = extras?.getInt("idpesq").toString()
+        database = MyDatabaseOpenHelper.getInstance(applicationContext)
     }
 
     override fun onResume() {
         super.onResume()
         buttonviewpubpesq.setOnClickListener {
             val intent = Intent(this@PesquisadorhomeActivity, ListviewpubpesqActivity::class.java)
-            intent.putExtra("idpesq",idpesq)
+         //   intent.putExtra("idpesq",idpesq)
             startActivity(intent)
         }
         buttonaddpubpesq.setOnClickListener {
             val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if(provider == null){
-                toast("gps desabilitado")
+                toast("Ligue seu GPS")
             }else {
                 val intent = Intent(this@PesquisadorhomeActivity, FormActivity::class.java)
-                intent.putExtra("idpesq", idpesq)
+             //   intent.putExtra("idpesq", idpesq)
                 startActivity(intent)
             }
         }

@@ -19,7 +19,6 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.TextView
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
-import br.edu.computacaoifg.todolist.ToDoAdapter
 import com.example.carlos.projetocultural.adapters.PubpesqAdapter
 import com.example.carlos.projetocultural.adapters.PubuserAdapter
 import com.example.carlos.projetocultural.domain.*
@@ -64,7 +63,10 @@ class ListviewpubpesqActivity : AppCompatActivity() {
         recyclerViewpesq.itemAnimator = DefaultItemAnimator()
         recyclerViewpesq.setHasFixedSize(true)
         val extras = intent.extras
-        idpesquisador = extras.getString("idpesq")
+        val pes = database!!.use {
+            select("pesquisador", "idweb").exec { parseList<String>(classParser()) }
+        }
+        idpesquisador = pes.get(0)
         if(idpesquisador == "0" || idpesquisador == ""){
             toast("problema de pesquisador")
         }
@@ -107,10 +109,10 @@ class ListviewpubpesqActivity : AppCompatActivity() {
         FAB_pesq.setOnClickListener {
             val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if(provider == null){
-                toast("gps desabilitado")
+                toast("Ligue seu GPS")
             }else {
                 val intent = Intent(this@ListviewpubpesqActivity, FormActivity::class.java)
-                intent.putExtra("idpesq", idpesquisador)
+            //    intent.putExtra("idpesq", idpesquisador)
                 startActivity(intent)
             }
         }
@@ -155,8 +157,23 @@ class ListviewpubpesqActivity : AppCompatActivity() {
         }
         if(id?.size != 0 && id != null) {
             if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                if (Validacpf().validateEmailFormat(pubpesq.email)) {
-                    if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.nome != "" && pubpesq.redesocial != "" && pubpesq.endereco != "" && pubpesq.contato != "" && pubpesq.atvexercida != "" && pubpesq.categoria != "") {
+                if (Validacpf().validateEmailFormat(pubpesq.email) || pubpesq.email == "") {
+                    if(pubpesq.endereco == ""){
+                        pubpesq.endereco = "não informado"
+                    }
+                    if(pubpesq.contato == ""){
+                        pubpesq.contato = "não informado"
+                    }
+                    if(pubpesq.email == ""){
+                        pubpesq.email = "não informado"
+                    }
+                    if(pubpesq.redesocial == ""){
+                        pubpesq.redesocial = "não informado"
+                    }
+                    if(pubpesq.atvexercida == ""){
+                        pubpesq.atvexercida = pubpesq.categoria
+                    }
+                    if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.contato != "" && pubpesq.endereco != "" && pubpesq.nome != "" && pubpesq.atvexercida != "" && pubpesq.categoria != "") {
                             val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
                             dialog.setCancelable(false);
                             Thread {
@@ -190,7 +207,7 @@ class ListviewpubpesqActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this@ListviewpubpesqActivity, PesquisadorhomeActivity::class.java)
-        intent.putExtra("idpesq",idpesquisador)
+       // intent.putExtra("idpesq",idpesquisador)
         startActivity(intent)
     }
 

@@ -45,6 +45,7 @@ import android.R.attr.bitmap
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.transition.Transition
+import com.example.carlos.projetocultural.utils.Validacpf
 
 
 /**
@@ -199,7 +200,13 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // On selecting a spinner item
-        parent?.getItemAtPosition(position).toString();
+        var item = parent?.getItemAtPosition(position).toString();
+        if(item == "OUTRO") {
+            atvexllop.visibility = View.VISIBLE
+        }else{
+            atvexllop.visibility = View.GONE
+        }
+
         // Showing selected spinner item
         //Toast.makeText(parent?.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
@@ -517,6 +524,9 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
         pubuser?.contato =  contatoop.text.toString()
         pubuser?.email =  emailop.text.toString()
         pubuser?.atvexercida =  atvexop.text.toString()
+        if( pubuser?.atvexercida == ""){
+            pubuser?.atvexercida = spinner?.selectedItem.toString()
+        }
         pubuser?.categoria = spinner?.selectedItem.toString()
     //    pubuser?.campo1 =  campo1op.text.toString()
     //    pubuser?.campo2 =  campo2op.text.toString()
@@ -529,17 +539,26 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
         pubuser?.img4 =  base64_4
         pubuser?.latitude =  latitude.toString()
         pubuser?.longitude =  longitude.toString()
+        if(pubuser?.img1 != "" && pubuser?.img2 != "" && pubuser?.img3 != "" && pubuser?.img4 != "" && pubuser?.nome != ""  && pubuser?.contato != "" && pubuser?.categoria != "") {
+            if (Validacpf().validateEmailFormat(email) || email == "") {
 
-        val mainact = activity as PrincipalActivity
-        doAsync {
-            val tes = PubuserService.updateuser(pubuser)
-            //val tes2 = PubuserService.getPubuser()
-            uiThread {
-                // Alerta de sucesso
-                // Dispara um evento para atualizar a lista
-                mainact.taskCarros()
-                dismiss() //fecha o fragment
+
+                val mainact = activity as PrincipalActivity
+                doAsync {
+                    val tes = PubuserService.updateuser(pubuser)
+                    //val tes2 = PubuserService.getPubuser()
+                    uiThread {
+                        // Alerta de sucesso
+                        // Dispara um evento para atualizar a lista
+                        mainact.taskCarros()
+                        dismiss() //fecha o fragment
+                    }
+                }
+            } else {
+                toast("Email inválido")
             }
+        }else{
+            toast("Dados como nome, imagens, categoria devem ser preenchidos")
         }
     }
 

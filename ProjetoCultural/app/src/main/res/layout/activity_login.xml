@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito"
-            android:text="Usuario"
+            android:text="EMAIL"
             android:textColor="@color/colorPrimaryDark" />
 
         <EditText
@@ -54,7 +54,7 @@
             style="@android:style/Widget.Holo.Light.EditText"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="nome"
+            android:hint="DIGITE SEU EMAIL"
             android:inputType="text"
             android:singleLine="true" />
 
@@ -63,14 +63,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/nunito"
-            android:text="senha"
+            android:text="SENHA"
             android:textColor="@color/colorPrimaryDark" />
 
         <EditText
             android:id="@+id/tSenha"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="senha"
+            android:hint="DIGITE SUA SENHA"
             android:inputType="textPassword"
             android:singleLine="true" />
 

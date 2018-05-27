@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\Publicacaopesq */
 /* @var $form yii\widgets\ActiveForm */
@@ -87,8 +87,37 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'campo19')->textInput() ?>
     <?= $form->field($model, 'campo20')->textInput() ?>
 
+
+
+    <?= $form->field($model, 'img1')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*','multiple'=>true],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img2')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img3')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'img4')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    ) ?>
+
+    <?= $form->field($model, 'geo_gps' )->widget(\kalyabin\maplocation\SelectMapLocationWidget::className(), [
+        'attributeLatitude' => 'latitude',
+        'attributeLongitude' => 'longitude',
+        'googleMapApiKey' => 'AIzaSyDpcX-GScOiQX3IxBAu_Drpet-YqjM8t0U',
+        'draggable' => true,
+    ]);  ?>
+
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

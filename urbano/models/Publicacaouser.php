@@ -38,6 +38,10 @@ use Yii;
  */
 class Publicacaouser extends \yii\db\ActiveRecord
 {
+
+    public $imageFiles;
+
+
     const SCENARIO_CREATE = 'create';
     /**
      * @inheritdoc
@@ -53,10 +57,11 @@ class Publicacaouser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'endereco', 'contato', 'atvexercida', 'categoria'], 'required'],
+            [['nome', 'endereco', 'contato', 'atvexercida', 'categoria','aprovado'], 'required'],
             [['img1','img2','img3','img4'],'safe'],
+            [['email'],'email'],
             [['nome', 'redesocial', 'endereco', 'contato', 'email', 'atvexercida', 'categoria', 'aprovado', 'campo1', 'campo2', 'campo3', 'campo4', 'campo5', 'campo6', 'campo7', 'campo8', 'campo9', 'campo10'], 'string'],
-            [['latitude', 'longitude'], 'number'],
+            [['latitude', 'longitude', 'contato'], 'number'],
         ];
     }
 
@@ -78,15 +83,15 @@ class Publicacaouser extends \yii\db\ActiveRecord
             'latitude' => 'Latitude',
             'longitude' => 'Longitude',
             'geo_gps' => 'Geo Gps',
-            'img1' => 'Img1',
-            'img2' => 'Img2',
-            'img3' => 'Img3',
-            'img4' => 'Img4',
+            'img1' => 'Imagem 1',
+            'img2' => 'Imagem 2',
+            'img3' => 'Imagem 3',
+            'img4' => 'Imagem 4',
             'campo1' => 'Campo1',
             'campo2' => 'Campo2',
             'campo3' => 'Campo3',
             'campo4' => 'Campo4',
-            'campo5' => 'Campo5',
+            'campo5' => 'Local',
             'campo6' => 'Campo6',
             'campo7' => 'Campo7',
             'campo8' => 'Campo8',
