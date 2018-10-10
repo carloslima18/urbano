@@ -36,13 +36,15 @@
                 <group android:id="@+id/cat"
                     android:checkableBehavior="single">
                     <item android:id="@+id/escolas"
-                        android:title="Escolas" />
+                        android:title="Escolas públicas" />
                     <item android:id="@+id/museus"
-                        android:title="Museus" />
-                    <item android:id="@+id/feiras"
-                        android:title="Feiras" />
+                        android:title="Espaço público de cultura" />
                     <item android:id="@+id/praças"
                         android:title="Praças" />
+                    <item android:id="@+id/feiras"
+                        android:title="Feiras" />
+                    <item android:id="@+id/saude"
+                        android:title="Posto de saúde" />
                     <item android:id="@+id/outros"
                         android:title="OUTRO" />
                 </group>

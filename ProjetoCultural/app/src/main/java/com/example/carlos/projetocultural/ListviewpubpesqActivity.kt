@@ -158,22 +158,7 @@ class ListviewpubpesqActivity : AppCompatActivity() {
         if(id?.size != 0 && id != null) {
             if (AndroidUtils.isNetworkAvailable(applicationContext)) {
                 if (Validacpf().validateEmailFormat(pubpesq.email) || pubpesq.email == "") {
-                    if(pubpesq.endereco == ""){
-                        pubpesq.endereco = "não informado"
-                    }
-                    if(pubpesq.contato == ""){
-                        pubpesq.contato = "não informado"
-                    }
-                    if(pubpesq.email == ""){
-                        pubpesq.email = "não informado"
-                    }
-                    if(pubpesq.redesocial == ""){
-                        pubpesq.redesocial = "não informado"
-                    }
-                    if(pubpesq.atvexercida == ""){
-                        pubpesq.atvexercida = pubpesq.categoria
-                    }
-                    if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.contato != "" && pubpesq.endereco != "" && pubpesq.nome != "" && pubpesq.atvexercida != "" && pubpesq.categoria != "") {
+                    if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.contato != "" && pubpesq.endereco != "" && pubpesq.nome != "" && pubpesq.categoria != "") {
                             val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
                             dialog.setCancelable(false);
                             Thread {

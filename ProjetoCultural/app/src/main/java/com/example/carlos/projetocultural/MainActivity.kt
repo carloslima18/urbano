@@ -276,6 +276,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
 
             }
+            R.id.saude->{
+                if (AndroidUtils.isNetworkAvailable(applicationContext)) {
+                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    // intent.putExtra("local","feiras")
+                    intent.putExtra("param","SAUDE")
+                    startActivity(intent)
+                }else{
+                    toast("Sem conexão")
+                }
+
+            }
             R.id.pub_recentes -> {
                 if(AndroidUtils.isNetworkAvailable(applicationContext)) {
                     toast("Aguarde...")
@@ -328,9 +339,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-    fun GetPermission(){
-
-
+    public fun GetPermission(){
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 10)
         }

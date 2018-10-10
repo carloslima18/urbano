@@ -57,7 +57,7 @@ class Publicacaouser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'endereco', 'contato', 'atvexercida', 'categoria','aprovado'], 'required'],
+            [['nome', 'categoria','aprovado'], 'required'],
             [['img1','img2','img3','img4'],'safe'],
             [['email'],'email'],
             [['nome', 'redesocial', 'endereco', 'contato', 'email', 'atvexercida', 'categoria', 'aprovado', 'campo1', 'campo2', 'campo3', 'campo4', 'campo5', 'campo6', 'campo7', 'campo8', 'campo9', 'campo10'], 'string'],

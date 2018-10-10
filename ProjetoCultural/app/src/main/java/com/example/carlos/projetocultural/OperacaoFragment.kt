@@ -139,10 +139,9 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
         // Spinner click listener
         spinner?.setOnItemSelectedListener(this);
         // Spinner Drop down elements
-        categories.add("ESCOLA");
+        categories.add("ESCOLA PÚBLICA");
         categories.add("PRAÇA");
-        categories.add("MUSEU");
-        categories.add("TEATRO");
+        categories.add("ESPAÇO PÚBLICO DE CULURA");
         categories.add("FEIRA");
         categories.add("OUTRO");
         // Creating adapter for spinner
@@ -523,10 +522,8 @@ class OperacaoFragment : DialogFragment(), OnMapReadyCallback, AdapterView.OnIte
         pubuser?.endereco = enderecoop.text.toString()
         pubuser?.contato =  contatoop.text.toString()
         pubuser?.email =  emailop.text.toString()
+        pubuser?.redesocial =  redesocialop.text.toString()
         pubuser?.atvexercida =  atvexop.text.toString()
-        if( pubuser?.atvexercida == ""){
-            pubuser?.atvexercida = spinner?.selectedItem.toString()
-        }
         pubuser?.categoria = spinner?.selectedItem.toString()
     //    pubuser?.campo1 =  campo1op.text.toString()
     //    pubuser?.campo2 =  campo2op.text.toString()

@@ -110,11 +110,11 @@
     <string name="title_activity_cadastrapesq_">CADASTRO PESQUISADOR</string>
 
     <string-array name="planets_array">
-        <item>ESCOLA</item>
+        <item>ESCOLA PÚBLICA</item>
+        <item>ESPAÇO PÚBLICO DE CULTURA</item>
         <item>PRAÇA</item>
-        <item>MUSEU</item>
-        <item>TEATRO</item>
         <item>FEIRA</item>
+        <item>POSTO DE SAÚDE</item>
         <item>OUTRO</item>
     </string-array>
     <string name="title_activity_vizualizapesq">vizualizapesqActivity</string>

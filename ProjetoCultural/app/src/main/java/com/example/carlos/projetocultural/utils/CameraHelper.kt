@@ -5,9 +5,6 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.util.Base64
@@ -16,7 +13,7 @@ import android.provider.MediaStore.Images
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.database.Cursor
-import android.os.PersistableBundle
+import android.os.*
 import android.support.design.widget.Snackbar
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
@@ -65,7 +62,8 @@ class CameraHelper : AppCompatActivity(){
     var imgC4:ImageView ?= null
     var contextx:Context?=null
     var numImgx:Int?=null
-
+    private var parceble: Parcelable?= null
+    private var chave_state = "camerastate"
     var database: MyDatabaseOpenHelper?=null //para usar o BD
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -74,6 +72,16 @@ class CameraHelper : AppCompatActivity(){
 
     //pegar foto já tirada (pega da galeria)
 
+
+   // override fun onSaveInstanceState(state: Bundle?) {
+   //     super.onSaveInstanceState(state)
+   //     state?.putString("urix", uri2.toString());
+   // }
+
+   // override fun onRestoreInstanceState(state: Bundle?) {
+   //     super.onRestoreInstanceState(state)
+   //     uri2 =  Uri.parse(state?.getString("urix"))
+   // }
 
     fun getSdCardFile2(fileName: String): File {
         val dir = Environment.getExternalStorageDirectory()
@@ -294,10 +302,9 @@ class CameraHelper : AppCompatActivity(){
         file = getSdCardFile(context, fileName)
         val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         file?.apply {
-            Log.d("camera", file.toString())
             val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName + ".provider", this)
             uri2 = uri
-            i.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+            i.putExtra(MediaStore.EXTRA_OUTPUT, uri2)
         }
         return i
     }
@@ -370,7 +377,7 @@ class CameraHelper : AppCompatActivity(){
                         }
                     }
                 }else {
-                    context?.toast("Falha na camera, tente novamente")
+                    context?.toast("Falha na camera, tente novamente $uri and $uri2")
                     //Toast.makeText(context, "Falha na uri", Toast.LENGTH_SHORT).show()
                 }
             }else if (resultCode == Activity.RESULT_CANCELED) {

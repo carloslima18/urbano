@@ -294,7 +294,7 @@ class vizualizapesqActivity : AppCompatActivity() , OnMapReadyCallback {
             enderecov.setText(pubuser?.endereco)
             redecoailv.setText(pubuser?.redesocial)
             contatov.setText(pubuser?.contato.toString())
-            atvexv.setText(pubuser?.atvexercida.toString())
+            //atvexv.setText(pubuser?.atvexercida.toString())
             emailv.setText(pubuser?.email)
 
 

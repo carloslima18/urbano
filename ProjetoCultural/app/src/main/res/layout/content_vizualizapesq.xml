@@ -170,29 +170,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Email" />
                         </TableRow>
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#000000" />
 
-                        <TableRow
-                            android:id="@+id/tablerow_atvex"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:id="@+id/atividadeexercidade"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorbutton"
-                                android:textStyle="bold"
-                                android:text="ATIVIDADE EXERCIDA:" />
-                            <TextView
-                                android:id="@+id/atvexv"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/colorbutton"
-                                android:text="ATIVIDADE EXERCIDA" />
-                        </TableRow>
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="2dp"

@@ -99,7 +99,12 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         // Spinner click listener
         spinner?.setOnItemSelectedListener(this);
         // Spinner Drop down elements
-        categories.add("ESCOLA");categories.add("PRAÇA");categories.add("MUSEU");categories.add("TEATRO");categories.add("FEIRA");categories.add("OUTRO");
+        categories.add("ESCOLA");
+        categories.add("PRAÇA");
+        categories.add("ESPAÇO PÚBLICO DE CULTURA");
+        categories.add("POSTO DE SAÚDE");
+        categories.add("FEIRA");
+        categories.add("OUTRO");
         // Creating adapter for spinner
         dataAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
         dataAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -544,9 +549,6 @@ class UpdatepubpesqActivity : DialogFragment(), OnMapReadyCallback, AdapterView.
         pubpesq?.contato =  contatoop.text.toString()
         pubpesq?.email =  emailop.text.toString()
         pubpesq?.atvexercida =  atvexop.text.toString()
-        if(pubpesq?.atvexercida == ""){
-            pubpesq?.atvexercida = spinner?.getSelectedItem().toString();
-        }
         pubpesq?.categoria = spinner?.getSelectedItem().toString();
         pubpesq?.cnpj = etcnpjop.text.toString()
         pubpesq?.representacao = etrepresentacaoop.text.toString()

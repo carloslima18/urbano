@@ -68,17 +68,17 @@ AppAsset::register($this);
                     'url' => ['/user-management/auth/logout'],
                     'linkOptions' => ['data-method' => 'post']],
 
-           /* [
+            [
                 'label' => 'Frontend routes',
                 'items'=>[
                     ['label'=>'Login', 'url'=>['/user-management/auth/login']],
                     ['label'=>'Logout', 'url'=>['/user-management/auth/logout']],
-                 //   ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
+                    ['label'=>'Registration', 'url'=>['/user-management/auth/registration']],
                     ['label'=>'Change own password', 'url'=>['/user-management/auth/change-own-password']],
                     ['label'=>'Password recovery', 'url'=>['/user-management/auth/password-recovery']],
-                 //   ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
+                    ['label'=>'E-mail confirmation', 'url'=>['/user-management/auth/confirm-email']],
                 ],
-            ], */
+            ], 
         ],
     ]);
 
@@ -108,7 +108,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Início', 'url' => ['/site/index']],
-          //  ['label' => 'Contato', 'url' => ['/site/contact']],
+            //['label' => 'Contato', 'url' => ['/site/contact']],
         ],
     ]);
 

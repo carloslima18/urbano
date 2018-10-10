@@ -96,7 +96,7 @@ $config = [
         'user-management' => [
             'class' => 'webvimark\modules\UserManagement\UserManagementModule',
 
-            // 'enableRegistration' => true,			//descomentar se as pessoas poder se alto registrar
+            'enableRegistration' => true,			//descomentar se as pessoas poder se alto registrar
 
             // Add regexp validation to passwords. Default pattern does not restrict user and can enter any set of characters.			//e aqui temos que tipo de senha pode ser aceitas, e aq e para usar expressoe regulares
             // The example below allows user to enter :

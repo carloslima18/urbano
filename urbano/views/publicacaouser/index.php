@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\Url;
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PublicacaouserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -15,10 +16,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!--p>
+        <--?= Html::a('Adicionar', ['create'], ['class' => 'btn btn-success']) ?-->
+    <!--p-->
 
+    <p>
+        <?= Html::button('Adicionar ', ['value'=>Url::to(['/publicacaouser/create']),'class' => 'btn btn-success','id'=>'modalButton'])?>
+    </p>
+    <?php
+
+        Modal::begin([
+            'header'=>'<h4>Adicionar</h4>',
+            'id' => 'modal',
+            'size'=> 'modal-lg',
+        ]);
+    echo "<div id='modalContent'></div>";
+        Modal::end()
+    ?>
+
+    <?php \yii\widgets\Pjax::begin();?>
     <?php
 
     echo \kartik\export\ExportMenu::widget([
@@ -75,4 +91,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+
 </div>

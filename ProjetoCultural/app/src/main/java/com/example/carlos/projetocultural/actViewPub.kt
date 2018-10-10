@@ -401,25 +401,29 @@ class actViewPub : AppCompatActivity(), OnMapReadyCallback {
             relativell.setBackgroundColor((Color.rgb(255, 255, 0)))//amarelho
             ll1.setBackgroundColor((Color.rgb(255, 255, 0)))
         }
-        if(categoria == "OUTRO" || categoria == "OUTRO" || categoria == "outro" || categoria == "outros"){
-            relativell.setBackgroundColor((Color.rgb(145, 30, 213)))//roxo
-            ll1.setBackgroundColor((Color.rgb(145, 30, 213)))
-        }
-        if(categoria == "FEIRA" || categoria == "feira"){
-            relativell.setBackgroundColor((Color.rgb(0, 128, 255)))//azul
-            ll1.setBackgroundColor((Color.rgb(0, 128, 255)))
-        }
-        if(categoria == "PRAÇA" || categoria == "praça"){
-            relativell.setBackgroundColor((Color.rgb(12, 231, 61)))//verde
-            ll1.setBackgroundColor((Color.rgb(12, 231, 61)))
+        if(categoria == "TEATRO" || categoria == "teatro"){
+            relativell.setBackgroundColor((Color.rgb(150, 97, 111)))//marrom
+            ll1.setBackgroundColor((Color.rgb(150, 97, 111)))
         }
         if(categoria == "MUSEU" || categoria == "museu"){
             relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
             ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
         }
-        if(categoria == "TEATRO" || categoria == "teatro"){
-            relativell.setBackgroundColor((Color.rgb(150, 97, 111)))//marrom
-            ll1.setBackgroundColor((Color.rgb(150, 97, 111)))
+        if(categoria == "PRAÇA" || categoria == "praça"){
+            relativell.setBackgroundColor((Color.rgb(12, 231, 61)))//verde
+            ll1.setBackgroundColor((Color.rgb(12, 231, 61)))
+        }
+        if(categoria == "FEIRA" || categoria == "feira"){
+            relativell.setBackgroundColor((Color.rgb(0, 128, 255)))//azul
+            ll1.setBackgroundColor((Color.rgb(0, 128, 255)))
+        }
+        if(categoria == "SAUDE" || categoria == "SAUDE"){
+            relativell.setBackgroundColor((Color.rgb(249, 251, 98)))//amarelo
+            ll1.setBackgroundColor((Color.rgb(249, 251, 98)))
+        }
+        if(categoria == "OUTRO" || categoria == "OUTRO" || categoria == "outro" || categoria == "outros"){
+            relativell.setBackgroundColor((Color.rgb(145, 30, 213)))//roxo
+            ll1.setBackgroundColor((Color.rgb(145, 30, 213)))
         }
 
     }

@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 
+use yii\bootstrap\BootstrapAsset;
 use dosamigos\google\maps\LatLng;
 use dosamigos\google\maps\services\DirectionsWayPoint;
 use dosamigos\google\maps\services\TravelMode;
@@ -116,7 +117,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-    <div class="col-md-6">
 <?php
 $coord = new LatLng(['lat' => $model->latitude, 'lng' => $model->longitude]);
 $map = new Map([
@@ -148,7 +148,13 @@ $map->appendScript($bikeLayer->getJs());
 
 // Display the map -finally :)
 echo $map->display();
+
 ?>
+
+
+
+
+
 
 
 

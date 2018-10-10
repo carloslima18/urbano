@@ -7,9 +7,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.Settings
+import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
@@ -33,15 +37,18 @@ import org.jetbrains.anko.*
 import org.json.JSONObject
 
 //CUIDA DAS PUBLICAÇÕES DO USUARIO (AONDE SALVA ELA, EDITA ELAS)
-class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
+class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks{
     var permission = false  //variavel para verificar permissão
     val REQUEST_PESMISSION_GPS=1 //para GPS
     var googleApiClient : GoogleApiClient ?= null //..
     var latitude: Double = 0.0//variaveis para as coordenadas
     var longitude: Double = 0.0
 
-    val camera =CameraHelper()
 
+    private var locationManager : LocationManager? = null
+
+
+    val camera =CameraHelper()
     val pubuser = Pubuser
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +69,38 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
         recyclerViewc.layoutManager = LinearLayoutManager(applicationContext)
         //recyclerViewc.itemAnimator = DefaultItemAnimator()
         recyclerViewc.setHasFixedSize(true)
-
-
+        GetPermission()
         taskCarros()
-        googleApiClient = GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build()
+        //googleApiClient = GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build()
 
+
+
+
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?;
+
+        try {
+            // Solicitar atualizações de localização
+            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener);
+        } catch(ex: SecurityException) {
+           toast("erro de gps");
+        }
     }
     protected var carros = listOf<Pubuser>()
+
+
+
+    //define the listener
+    private val locationListener: LocationListener = object : LocationListener {
+        override fun onLocationChanged(location: Location) {
+           // toast("" + location.longitude + ":" + location.latitude)
+            latitude = location.latitude
+            longitude = location.longitude
+            //thetext.setText("" + location.longitude + ":" + location.latitude);
+        }
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onProviderDisabled(provider: String) {}
+    }
 
 
     open fun taskCarros() {
@@ -100,12 +132,15 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     //para estarta a função onConnected quando abrir a atv para assim pegar as coordenadas
     override fun onStart() {
         super.onStart()
-        if (googleApiClient != null) {
-            googleApiClient?.connect()
-        }
+        //if (googleApiClient != null) {
+       //     googleApiClient?.connect()
+        //}
     }
 
-    //função para conectar no serviço do GPS para obter a posição atual do usuario(lat e long)
+    override fun onConnected(p0: Bundle?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    /*função para conectar no serviço do GPS para obter a posição atual do usuario(lat e long)
     override fun onConnected(p0: Bundle?) {
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //verifica se o gps ta ligado, se n tiver vai da problema e cair no catch
@@ -114,19 +149,21 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
                 toast("Ligue seu GPS")
                 finish()
             } else {
-                try {//pega a latitude e longitude atual da pessoa para assim enviar quando for adicionar uma publicação já tiver os dados
+                  //googleApiClient = GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build()
+
+              /*   try {//pega a latitude e longitude atual da pessoa para assim enviar quando for adicionar uma publicação já tiver os dados
                     val lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient)
-                    latitude = lastLocation.latitude //
+                     latitude = lastLocation.latitude //
                     longitude = lastLocation.longitude
                 } catch (e: Exception) {
                     Toast.makeText(applicationContext, "Conexão com gps falha", Toast.LENGTH_SHORT).show()
                     finish()
-                }
+                }*/
             }
         }else{
             toast("Permissão para GPS negada!")
         }
-    }
+    }*/
 
     //broadcast vai ser usado quando ativar o serviço (que foi ativado no oncrate para receber as coordenadas do usuario na hora que estarta essa atividade)
     public inner class broadcastReceiver: BroadcastReceiver(){
@@ -161,7 +198,7 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     //chama o fragment de adicionar a publicação
     private fun addFragment(context: Context){
         val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        if(provider == null || provider.length == 0){
+        if(provider == null || provider.length == 0 ){//|| latitude == 0.0 || longitude == 0.0
             toast("Ligue seu GPS")
         }else {
             val ft = supportFragmentManager.beginTransaction()
@@ -178,7 +215,7 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
             val width = metrics.widthPixels;
 
             val bundle = Bundle()//cria um bundle para enviar os dados necessarios para o fragment
-            onConnected(bundle) // ativa a função onConnecte para atualizar os dados da localização do usuario
+            //onConnected(bundle) // ativa a função onConnecte para atualizar os dados da localização do usuario
             bundle.putDouble("latitude", latitude)//pega os dados da localização
             bundle.putDouble("longitude", longitude)
             bundle.putInt("height", height)//pega os daddos da tela
@@ -212,20 +249,8 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     fun Enviadados(pubuser:Pubuser){
         if(AndroidUtils.isNetworkAvailable(applicationContext)) {
             if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && pubuser.nome != "" &&
-                    pubuser.atvexercida != "" && pubuser.categoria != "" && pubuser.latitude != "" && pubuser.longitude != "") {
-                if(pubuser.endereco == ""){
-                    pubuser.endereco = "não informado"
-                }
-                if(pubuser.contato == ""){
-                    pubuser.contato = "não informado"
-                }
-                if(pubuser.redesocial == ""){
-                    pubuser.redesocial = "não informado"
-                }
-                if(pubuser.email == ""){
-                    pubuser.email = "não informado"
-                }
-                val dialog = ProgressDialog.show(this, "Um momento", "Enviando sua publicação", false, true)
+                    pubuser.categoria != "" && pubuser.latitude != "" && pubuser.longitude != "") {
+                val dialog = ProgressDialog.show( this, "Um momento", "Enviando sua publicação", false, true)
                 dialog.setCancelable(false);
                 try {
                     Thread {
@@ -256,10 +281,40 @@ class PrincipalActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     }
 
 
-    override fun onConnectionFailed(p0: ConnectionResult) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
     override fun onConnectionSuspended(p0: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+    val MY_PERMISSIONS_REQUEST_PHONE_CALL = 1
+    public fun GetPermission(){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 10)
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.INTERNET), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.MANAGE_DOCUMENTS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.MANAGE_DOCUMENTS), MY_PERMISSIONS_REQUEST_PHONE_CALL)
+        }
     }
 }

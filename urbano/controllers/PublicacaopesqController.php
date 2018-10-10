@@ -62,17 +62,17 @@ class PublicacaopesqController extends Controller
         ]);
     }
 
-    public function getphotos($model){
+    public function getphotos($model,$oldAttributes){
         $path1 =  UploadedFile::getInstance($model, 'img1');
         $path2 =  UploadedFile::getInstance($model, 'img2');
         $path3 =  UploadedFile::getInstance($model, 'img3');
         $path4 =  UploadedFile::getInstance($model, 'img4');
 
         //$type = pathinfo($path, PATHINFO_EXTENSION);
+
+
         if($path1 != null && $path1->tempName != null) {
-            $data1 = file_get_contents($path1->tempName);
-            $img1 = base64_encode($data1);
-            $model->img1 = (string)$img1;
+            $model->img1 = (string)base64_encode(file_get_contents($path1->tempName));
         }
         if($path2 != null && $path2->tempName != null) {
             $data2 = file_get_contents($path2->tempName);
@@ -105,11 +105,22 @@ class PublicacaopesqController extends Controller
         $model->latitude = -16.3364897;
         $model->longitude = -48.9413023;
 
-
+        $oldAttributes = $model->oldAttributes;
         if ($model->load(Yii::$app->request->post())) {
             if(Yii::$app->request->isPost){
                 $model =$this->getphotos($model);
-                //$model->img2 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                if($model->img1 == null){
+                    $model->img1 = $oldAttributes['img1'];
+                }
+                if($model->img2 == null){
+                    $model->img2 = $oldAttributes['img2'];
+                }
+                if($model->img3 == null){
+                    $model->img3 = $oldAttributes['img3'];
+                }
+                if($model->img4 == null){
+                    $model->img4 = $oldAttributes['img4'];
+                }
             }
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -135,9 +146,22 @@ class PublicacaopesqController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldAttributes = $model->oldAttributes;
         if ($model->load(Yii::$app->request->post())) {
             if(Yii::$app->request->isPost){
-                $model =$this->getphotos($model);
+                $model = $this->getphotos($model,$oldAttributes);
+                if($model->img1 == null){
+                    $model->img1 = $oldAttributes['img1'];
+                }
+                if($model->img2 == null){
+                    $model->img2 = $oldAttributes['img2'];
+                }
+                if($model->img3 == null){
+                    $model->img3 = $oldAttributes['img3'];
+                }
+                if($model->img4 == null){
+                    $model->img4 = $oldAttributes['img4'];
+                }
             }
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);

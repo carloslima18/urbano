@@ -14,25 +14,25 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'nome')->textInput() ?>
 
-    <?= $form->field($model, 'redesocial')->textInput() ?>
+    <!--?= $form->field($model, 'redesocial')->textInput() ?-->
 
-    <?= $form->field($model, 'endereco')->textInput() ?>
+    <!--?= $form->field($model, 'endereco')->textInput() ?>
 
-    <?= $form->field($model, 'contato')->textInput() ?>
+    <!--?= $form->field($model, 'contato')->textInput() ?>
 
-    <?= $form->field($model, 'email')->textInput() ?>
+    <!--?= $form->field($model, 'email')->textInput() ?>
 
-    <?= $form->field($model, 'atvexercida')->textInput() ?>
+    <!--?= $form->field($model, 'atvexercida')->textInput() ?>
 
-    <?= $form->field($model, 'categoria')->textInput() ?>
+    <!--?= $form->field($model, 'categoria')->textInput() ?>
 
-    <?= $form->field($model, 'anoinicio')->textInput() ?>
+    <!--?= $form->field($model, 'anoinicio')->textInput() ?>
 
-    <?= $form->field($model, 'cnpj')->textInput() ?>
+    <!--?= $form->field($model, 'cnpj')->textInput() ?>
 
-    <?= $form->field($model, 'representacao')->textInput() ?>
+    <!--?= $form->field($model, 'representacao')->textInput() ?>
 
-    <?= $form->field($model, 'recurso')->textInput() ?>
+    <!--?= $form->field($model, 'recurso')->textInput() ?-->
 
     <?= $form->field($model, 'aprovado')->dropDownList([ 'S' => 'S', 'N' => 'N', ], ['prompt' => '']) ?>
 
@@ -44,9 +44,12 @@ use kartik\file\FileInput;
 
     <!--?= $form->field($model, 'pesquisador')->textInput() ?-->
 
-    <?php								  		 	//usa se o conjunto de classe que auxilia o controle do arrya, colocando o ""USE yii\helpers\ArrayHelper;"" e como vc vai precisa do models, "USE app\models\Fisioterapeuta"
+    <?php
     $aluno = \yii\helpers\ArrayHelper::map(			           			// utiliza em map para criar um vetor de fisioterapeuta, como 1° parametro a classe estatica que retorna o conjunto de objetos do tipo fisioterapeuta, em 2° parametro o valor html que vai ser exibido e o html armazenado (quando vc faz um dropDown vc tem o valor armazenado e o valor exibido), vc precisa dizer quais campos eu vou inserir, (id -> valor armazenado e nome-> valor exibido)
         \app\models\Pesquisador::find()->all(), 'id', 'nome');	 	// em find vc pode dizer que "quer alguns" com o metodo find()->where("nome"=>"carlos") e para TODOS, find()->all();..
+
+
+    //usa se o conjunto de classe que auxilia o controle do arrya, colocando o ""USE yii\helpers\ArrayHelper;"" e como vc vai precisa do models, "USE app\models\Fisioterapeuta"
     echo $form->field($model, 'pesquisador')->widget(\kartik\select2\Select2::classname(),								//para os parametros aqui vc tem os mesmo na pagina do kartik "demos.krajee.com/widget-details/selec2
         [
             'data'=> $aluno,							//coloca o vetor criado aqui dentro, que sao os dados
@@ -66,48 +69,74 @@ use kartik\file\FileInput;
 
     <!--?= $form->field($model, 'img4')->textInput() ?-->
 
-    <?= $form->field($model, 'campo1')->textInput() ?>
-    <?= $form->field($model, 'campo2')->textInput() ?>
-    <?= $form->field($model, 'campo3')->textInput() ?>
-    <?= $form->field($model, 'campo4')->textInput() ?>
-    <?= $form->field($model, 'campo5')->textInput() ?>
-    <?= $form->field($model, 'campo6')->textInput() ?>
-    <?= $form->field($model, 'campo7')->textInput() ?>
-    <?= $form->field($model, 'campo8')->textInput() ?>
-    <?= $form->field($model, 'campo9')->textInput() ?>
-    <?= $form->field($model, 'campo10')->textInput() ?>
-    <?= $form->field($model, 'campo11')->textInput() ?>
-    <?= $form->field($model, 'campo12')->textInput() ?>
-    <?= $form->field($model, 'campo13')->textInput() ?>
-    <?= $form->field($model, 'campo14')->textInput() ?>
-    <?= $form->field($model, 'campo15')->textInput() ?>
-    <?= $form->field($model, 'campo16')->textInput() ?>
-    <?= $form->field($model, 'campo17')->textInput() ?>
-    <?= $form->field($model, 'campo18')->textInput() ?>
-    <?= $form->field($model, 'campo19')->textInput() ?>
-    <?= $form->field($model, 'campo20')->textInput() ?>
+    <!--?= $form->field($model, 'campo1')->textInput() ?>
+    <!--?= $form->field($model, 'campo2')->textInput() ?>
+    <!--?= $form->field($model, 'campo3')->textInput() ?>
+    <!--?= $form->field($model, 'campo4')->textInput() ?>
+    <!--?= $form->field($model, 'campo5')->textInput() ?>
+    <!--?= $form->field($model, 'campo6')->textInput() ?>
+    <!--?= $form->field($model, 'campo7')->textInput() ?>
+    <!--?= $form->field($model, 'campo8')->textInput() ?>
+    <!--?= $form->field($model, 'campo9')->textInput() ?>
+    <!--?= $form->field($model, 'campo10')->textInput() ?>
+    <!--?= $form->field($model, 'campo11')->textInput() ?>
+    <!--?= $form->field($model, 'campo12')->textInput() ?>
+    <!--?= $form->field($model, 'campo13')->textInput() ?>
+    <!--?= $form->field($model, 'campo14')->textInput() ?>
+    <!--?= $form->field($model, 'campo15')->textInput() ?>
+    <!--?= $form->field($model, 'campo16')->textInput() ?>
+    <!--?= $form->field($model, 'campo17')->textInput() ?>
+    <!--?= $form->field($model, 'campo18')->textInput() ?>
+    <!--?= $form->field($model, 'campo19')->textInput() ?>
+    <!--?= $form->field($model, 'campo20')->textInput() ?-->
 
 
 
-    <?= $form->field($model, 'img1')->widget(FileInput::classname(),[
-            'options' => ['accept' => 'image/*','multiple'=>true],
-        ]
-    ) ?>
 
-    <?= $form->field($model, 'img2')->widget(FileInput::classname(),[
+    <?php
+
+
+
+    echo $form->field($model, 'img1')->widget(FileInput::classname(),[
             'options' => ['accept' => 'image/*'],
         ]
-    ) ?>
-
-    <?= $form->field($model, 'img3')->widget(FileInput::classname(),[
+    );
+    echo $form->field($model, 'img2')->widget(FileInput::classname(),[
             'options' => ['accept' => 'image/*'],
         ]
-    ) ?>
-
-    <?= $form->field($model, 'img4')->widget(FileInput::classname(),[
+    );
+    echo $form->field($model, 'img3')->widget(FileInput::classname(),[
             'options' => ['accept' => 'image/*'],
         ]
-    ) ?>
+    );
+    echo $form->field($model, 'img4')->widget(FileInput::classname(),[
+            'options' => ['accept' => 'image/*'],
+        ]
+    );
+
+
+   /* echo FileInput::widget([
+     file_put_contents('../uploads/image.png', base64_decode($model->img4));
+
+        'model' => $model,
+        'attribute' => 'img4',
+        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'allowedFileExtensions' => ['jpg', 'png', 'jpeg'],
+            'initialPreview' => [
+                "../uploads/image.png"
+            ],
+            'initialPreviewAsData' => true,
+        ],
+    ]); */
+
+
+
+
+
+    ?>
+
+
 
     <?= $form->field($model, 'geo_gps' )->widget(\kalyabin\maplocation\SelectMapLocationWidget::className(), [
         'attributeLatitude' => 'latitude',

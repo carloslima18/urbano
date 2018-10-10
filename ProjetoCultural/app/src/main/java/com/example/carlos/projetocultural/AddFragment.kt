@@ -81,10 +81,10 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
         // Spinner Drop down elements
         val categories = ArrayList<String>();
         categories.add("ESCOLA");
+        categories.add("ESPAÇO PÚBLICO DE CULTURA");
         categories.add("PRAÇA");
-        categories.add("MUSEU");
-        categories.add("TEATRO");
         categories.add("FEIRA");
+        categories.add("POSTO DE SAÚDE");
         categories.add("OUTRO");
         // Creating adapter for spinner
         val dataAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, categories);
@@ -362,7 +362,7 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
                 val campo4 = campo4a.text.toString()
                 val campo5 = campo5a.text.toString()
 
-        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && nome != ""  && categoria != "") {
+        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && nome != ""  && contato != "" && categoria != "") {
             if (Validacpf().validateEmailFormat(email) || email == "") {
                 pubuser.nome = nome;
                 pubuser.redesocial = redesocial
@@ -370,9 +370,6 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
                 pubuser.contato = contato
                 pubuser.email = email
                 pubuser.atvexercida = atvexercida
-                if(pubuser.atvexercida == ""){
-                    pubuser.atvexercida = categoria
-                }
                 pubuser.categoria = categoria
                 pubuser.campo1 = campo1
                 pubuser.campo2 = campo2
@@ -404,7 +401,7 @@ class AddFragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemS
                 toast("E-mail invalido!")
             }
         } else {
-            toast("Dados como nome, fotos, categoria não podem ser vazios")
+            toast("Dados como nome, fotos, contato e categoria não podem ser vazios")
         }
 
 

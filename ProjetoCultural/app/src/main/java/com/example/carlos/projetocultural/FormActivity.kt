@@ -4,6 +4,9 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.*
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
 
 
 import android.support.v7.app.AppCompatActivity
@@ -31,6 +34,10 @@ import kotlinx.android.synthetic.main.fragment_add.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.parseList
 import org.jetbrains.anko.db.select
+import org.jetbrains.anko.toast
+import android.content.Context.LOCATION_SERVICE
+
+
 
 
 //PESQUISADOR AONDE ADICIONA
@@ -41,6 +48,10 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
     var googleApiClient : GoogleApiClient ?= null
     var latitude: Double ?= 0.0//variaveis para as coordenadas
     var longitude: Double ?= 0.0
+
+    var latitude_nv: Double ?= 0.0//variaveis para as coordenadas
+    var longitude_nv: Double ?= 0.0
+
     var permission = false  //variavel para verificar permissão
     val REQUEST_PESMISSION_GPS=1 //para GPS
     val mappub = MapPub()
@@ -48,6 +59,9 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
     var numImgx:Int ?= 0
     var idpesquisador:String="0"
     var pubpesq= Pubpesq()
+
+    private var locationManager : LocationManager? = null
+
 
     var database: MyDatabaseOpenHelper?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +76,6 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
 //        if(idpesquisador == "0" || idpesquisador == ""){
 //            toast("problema de pesquisador")
 //        }
-
         //como aq é publicacao de pesquisador, abilita os campos adicionais
         anoinicioa.visibility = View.VISIBLE
         cnpja.visibility = View.VISIBLE
@@ -71,11 +84,18 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
         buttonAddMapa.visibility = View.GONE
         layoutaddcampos.visibility = View.VISIBLE
         //para o googlemap
-        googleApiClient = GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build()
+       // googleApiClient = GoogleApiClient.Builder(this).addConnectionCallbacks(this).addOnConnectionFailedListener(this).addApi(LocationServices.API).build()
+
+
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?;
+
+        try {
+            // Solicitar atualizações de localização
+            locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener);
+        } catch(ex: SecurityException) {
+            toast("erro de gps");
+        }
+
 
         database = MyDatabaseOpenHelper.getInstance(applicationContext)
 
@@ -93,6 +113,28 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
         mapView = findViewById<MapView>(R.id.figMapAdda) as MapView
         mapView?.onCreate(savedInstanceState)
         mapView?.getMapAsync(this)
+    }
+
+
+
+ 
+
+    //define the listener
+    private val locationListener: LocationListener = object : LocationListener {
+        override fun onLocationChanged(location: Location) {
+            if(longitude_nv == 0.0) {
+                //toast("" + location.longitude + ":" + location.latitude)
+                latitude = location.latitude
+                longitude = location.longitude
+            }else{
+                latitude = latitude_nv
+                longitude = longitude_nv
+            }
+            //thetext.setText("" + location.longitude + ":" + location.latitude);
+        }
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+        override fun onProviderEnabled(provider: String) {}
+        override fun onProviderDisabled(provider: String) {}
     }
 
 
@@ -150,9 +192,14 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
         }
         mapView?.onStart();//padrão para o mapView
     }
+
+
+    override fun onConnected(p0: Bundle?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
     //função para conectar no serviço do GPS para obter a posição atual do usuario(lat e long)
     //CONECTADO AO GOOGLE PLAY SERVICE, PODEMOS USAR QUALQUER API AGORA
-    override fun onConnected(p0: Bundle?) {
+   /* override fun onConnected(p0: Bundle?) {
         if (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //verifica se o gps ta ligado, se n tiver vai da problema e cair no catch
             val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
@@ -171,7 +218,7 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
         }else{
             toast("Permissão para GPS negada!")
         }
-    }
+    } */
 
 
 
@@ -179,10 +226,11 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
     //broadcast vai ser usado quando ativar o serviço (que foi ativado no oncrate para receber as coordenadas do usuario na hora que estarta essa atividade)
     //OBSERVAÇÃO::::::::::::;; verificar o unreceiver no onPause
     //atualiza as variaveis com as coordenadas novas, selecionadas pelo usuario la no atv MapPub
+    //dps que mudei a maneira de atualizar as coordenadas pdoe ser que de problema, pois o nova maneira fica atualizando as variaveis a todo momento
     inner class broadcastReceive:BroadcastReceiver(){
         override fun onReceive(context: Context?,intent: Intent?){
-            latitude = intent?.getStringExtra("latMap")?.toDouble()
-            longitude = intent?.getStringExtra("logMap")?.toDouble()
+            latitude_nv = intent?.getStringExtra("latMap")?.toDouble()
+            longitude_nv = intent?.getStringExtra("logMap")?.toDouble()
             //          context?.unregisterReceiver(broadcastReceive())
         }
     }
@@ -251,6 +299,16 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
 
     override fun onResume() {
         super.onResume()
+
+
+        val manager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val isOn = manager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+        if(isOn == false){
+            toast("Ligue o GPS")
+            finish()
+        }
+
+
         var controla_button_foto = 1
         addfoto.setOnClickListener {
             when(controla_button_foto) {
@@ -465,9 +523,6 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
        pubpesq.contato = contatoa.text.toString()
        pubpesq.email = emaila.text.toString()
        pubpesq.atvexercida = atvexet.text.toString()
-       if(pubpesq.atvexercida == ""){
-           pubpesq.atvexercida = spinneradd.selectedItem.toString()
-       }
        pubpesq.categoria = spinneradd.selectedItem.toString()
        pubpesq.anoinicio = anoinicio.text.toString()
        pubpesq.cnpj = cnpj.text.toString()
@@ -504,11 +559,18 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
        pubpesq.campo19 = campo19a.text.toString()
        pubpesq.campo20 = campo20a.text.toString()
 
-       if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.nome != "" && pubpesq.categoria != "") {
+
+       if(pubpesq.img1 != "" && pubpesq.img2 != "" && pubpesq.img3 != "" && pubpesq.img4 != "" && pubpesq.nome != "" && pubpesq.contato != "" && pubpesq.categoria != "") {
            if (Validacpf().validateEmailFormat(pubpesq.email) || pubpesq.email == "") {
                // val tes=   pubpesq?.img1
-               pubpesq.longitude = longitude.toString()
-               pubpesq.latitude = latitude.toString()
+               if(longitude_nv != 0.0){
+                   pubpesq.longitude = longitude_nv.toString()
+                   pubpesq.latitude = latitude_nv.toString()
+               }else{
+                   pubpesq.longitude = longitude.toString()
+                   pubpesq.latitude = latitude.toString()
+               }
+
                if (pubpesq.latitude != "0.0") {
                    val handle = Handler()
                    Thread {
@@ -531,5 +593,4 @@ class FormActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, G
            toast("Dados como nome, contato, fotos, atv. exercida não podem ser nulos.")
        }
    }
-
 }

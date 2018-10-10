@@ -105,21 +105,32 @@ class PublicacaouserController extends Controller
 
         $model->latitude = -16.3364897;
         $model->longitude = -48.9413023;
-
+        $oldAttributes = $model->oldAttributes;
         if ($model->load(Yii::$app->request->post())) {
             if(Yii::$app->request->isPost){
                 $model =$this->getphotos($model);
-                //$model->img2 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                if($model->img1 == null){
+                    $model->img1 = $oldAttributes['img1'];
+                }
+                if($model->img2 == null){
+                    $model->img2 = $oldAttributes['img2'];
+                }
+                if($model->img3 == null){
+                    $model->img3 = $oldAttributes['img3'];
+                }
+                if($model->img4 == null){
+                    $model->img4 = $oldAttributes['img4'];
+                }
             }
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
-                return $this->render('create', [
+                return $this->renderAjax('create', [
                     'model' => $model,
                 ]);
             }
         }
-        return $this->render('create', [
+        return $this->renderAjax('create', [
             'model' => $model,
         ]);
     }
@@ -135,9 +146,22 @@ class PublicacaouserController extends Controller
     public function actionUpdate($id){
 
         $model = $this->findModel($id);
+        $oldAttributes = $model->oldAttributes;
         if ($model->load(Yii::$app->request->post())) {
             if(Yii::$app->request->isPost){
                 $model =$this->getphotos($model);
+                if($model->img1 == null){
+                    $model->img1 = $oldAttributes['img1'];
+                }
+                if($model->img2 == null){
+                    $model->img2 = $oldAttributes['img2'];
+                }
+                if($model->img3 == null){
+                    $model->img3 = $oldAttributes['img3'];
+                }
+                if($model->img4 == null){
+                    $model->img4 = $oldAttributes['img4'];
+                }
             }
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
