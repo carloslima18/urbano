@@ -15,39 +15,19 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.*
-import android.widget.*
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
 import com.example.carlos.projetocultural.utils.AndroidUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import org.jetbrains.anko.db.*
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
-import org.jetbrains.anko.uiThread
-import org.json.JSONArray
-import com.example.carlos.projetocultural.PubAdapter
 import com.example.carlos.projetocultural.domain.*
 
-import org.jetbrains.anko.custom.async
-import org.json.JSONObject
-import com.example.carlos.projetocultural.extensions.setupToolbar
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.MapUtils
 
-import kotlinx.android.synthetic.main.activity_map_pub.*
-import kotlinx.android.synthetic.main.list_row_main.*
 //import kotlinx.coroutines.experimental.*
 //import kotlinx.coroutines.experimental.android.UI
 //import kotlinx.coroutines.experimental.channels.*
-import org.jetbrains.anko.browse
-import java.util.*
 import kotlin.collections.*
-import kotlin.concurrent.thread
-import kotlin.concurrent.timerTask
-
-
-import java.io.FileOutputStream
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -60,7 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val extras = intent.extras
         if(extras == null){
-            val actt = Intent(this@MainActivity, splashActivity::class.java)
+            val actt = Intent(this@MainActivity, Tela_splash_Activity::class.java)
             startActivity(actt)
         }
 
@@ -131,7 +111,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             listuser = pubService.getPubuser(URL) //pega a lista de publicações de usuarios
             listItems = pubService.getPubpesq(URLpesq)//pega a de pesquisadores
             runOnUiThread{
-                val h = HomeActivity() //estancia para chamar a função junta lista de pesquisadores e usuarios
+                val h = Tela_listagem_pub_recentes_Activity() //estancia para chamar a função junta lista de pesquisadores e usuarios
                 listItems = h.juntaPubpesqWithPubuser(listuser,listItems)
                 //listas para adicionar  informações de ambos
                 val lat:MutableList<String> = mutableListOf();val log:MutableList<String> = mutableListOf() ;val nome:MutableList<String> = mutableListOf()
@@ -152,7 +132,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     i++
                 }
                 if(listItems.size != 0) {
-                    val intent = Intent(applicationContext, MapPub::class.java)
+                    val intent = Intent(applicationContext, Configuracao_google_maps_Activity::class.java)
                     //manda as informações para a atividade do map pub para assim mostrar os pontos disponivieis
                     intent.putExtra("mostrar", "todosLocais")
                     intent.putExtra("idpub", idpub.toTypedArray())
@@ -189,7 +169,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     fun tela_auto_ajuda():Boolean{
-        val intent = Intent(this@MainActivity, NoticiasActivity::class.java)
+        val intent = Intent(this@MainActivity, Tela_pgts_frequentes_ajuda_Activity::class.java)
         startActivity(intent)
         return true
     }
@@ -221,7 +201,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.escolas -> {
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     intent.putExtra("param", "ESCOLA")
                     startActivity(intent)
                 }else{
@@ -230,7 +210,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.praças -> {
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     //intent.putExtra("local","pracas")
                     intent.putExtra("param","PRAÇA")
                     startActivity(intent)
@@ -241,7 +221,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.museus ->{
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     // intent.putExtra("local","museus")
                     intent.putExtra("param","MUSEU")
                     startActivity(intent)
@@ -252,7 +232,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.feiras ->{
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     // intent.putExtra("local","feiras")
                     intent.putExtra("param","FEIRA")
                     startActivity(intent)
@@ -262,12 +242,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.suas_pub -> {
-                    startActivity(Intent(this, PrincipalActivity::class.java))
+                    startActivity(Intent(this, Tela_listagem_pub_user_comum_Activity::class.java))
 
             }
             R.id.outros->{
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     // intent.putExtra("local","feiras")
                     intent.putExtra("param","OUTRO")
                     startActivity(intent)
@@ -278,7 +258,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.saude->{
                 if (AndroidUtils.isNetworkAvailable(applicationContext)) {
-                    val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                    val intent = Intent(this@MainActivity, Tela_listagem_pub_recentes_Activity::class.java)
                     // intent.putExtra("local","feiras")
                     intent.putExtra("param","SAUDE")
                     startActivity(intent)
@@ -290,7 +270,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.pub_recentes -> {
                 if(AndroidUtils.isNetworkAvailable(applicationContext)) {
                     toast("Aguarde...")
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, Tela_listagem_pub_recentes_Activity::class.java))
 
                 }else{
                     toast("Sem conexão...")
@@ -298,13 +278,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
               //  PreenchePubFirst("&fields=id,nome,redesocial,endereco,contato,atvexercida,categoria,latitude,longitude,img1")
             }
          //   R.id.pesquisas -> {
-          //      startActivity(Intent(this, NoticiasActivity::class.java))
+          //      startActivity(Intent(this, Tela_pgts_frequentes_ajuda_Activity::class.java))
           //  }
             R.id.contato -> {
-                startActivity(Intent(this, FrontActivity::class.java))
+                startActivity(Intent(this, Tela_fale_conosco_Activity::class.java))
             }
             R.id.pesquisador -> {
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, Tela_login_user_pesquisador_Activity::class.java))
             }
             R.id.mapaonline-> {
                 val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
@@ -560,7 +540,7 @@ teste que deu errado, mas pode servir para algo um dia
              listItems = pubService.getPub()
          runOnUiThread {
              val listV: ListView = findViewById<ListView>(R.id.lvPubMain) as ListView
-             listV.adapter = Listadapter(this, R.layout.list_row_main, R.id.textViewnomeM, listItems)
+             listV.adapter = Listadapter(this, R.layout.item_da_listagem_pub_recentes, R.id.textViewnomeM, listItems)
          }
      }.start()
 
@@ -571,7 +551,7 @@ teste que deu errado, mas pode servir para algo um dia
          Thread {
              listItems = pubService.getPub()
              runOnUiThread {
-                 listV.adapter = Listadapter(this, R.layout.list_row_main, R.id.textViewnomeM, listItems)
+                 listV.adapter = Listadapter(this, R.layout.item_da_listagem_pub_recentes, R.id.textViewnomeM, listItems)
              }
          }.start()
 

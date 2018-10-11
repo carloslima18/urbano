@@ -1,0 +1,261 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "6959eadd4d7f753c489fa8e0d9cc1b18",
+    "entities": [
+      {
+        "tableName": "pubpesq",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT NOT NULL, `redesocial` TEXT NOT NULL, `endereco` TEXT NOT NULL, `contato` TEXT NOT NULL, `email` TEXT NOT NULL, `atvexercida` TEXT NOT NULL, `categoria` TEXT NOT NULL, `anoinicio` TEXT NOT NULL, `cnpj` TEXT NOT NULL, `representacao` TEXT NOT NULL, `recurso` TEXT NOT NULL, `pesquisador` INTEGER NOT NULL, `campo1` TEXT NOT NULL, `campo2` TEXT NOT NULL, `campo3` TEXT NOT NULL, `campo4` TEXT NOT NULL, `campo5` TEXT NOT NULL, `campo6` TEXT NOT NULL, `campo7` TEXT NOT NULL, `campo8` TEXT NOT NULL, `campo9` TEXT NOT NULL, `campo10` TEXT NOT NULL, `campo11` TEXT NOT NULL, `campo12` TEXT NOT NULL, `campo13` TEXT NOT NULL, `campo14` TEXT NOT NULL, `campo15` TEXT NOT NULL, `campo16` TEXT NOT NULL, `campo17` TEXT NOT NULL, `campo18` TEXT NOT NULL, `campo19` TEXT NOT NULL, `campo20` TEXT NOT NULL, `img1` TEXT, `img2` TEXT, `img3` TEXT, `img4` TEXT, `latitude` TEXT NOT NULL, `longitude` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "redesocial",
+            "columnName": "redesocial",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endereco",
+            "columnName": "endereco",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contato",
+            "columnName": "contato",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "atvexercida",
+            "columnName": "atvexercida",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoria",
+            "columnName": "categoria",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "anoinicio",
+            "columnName": "anoinicio",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cnpj",
+            "columnName": "cnpj",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "representacao",
+            "columnName": "representacao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recurso",
+            "columnName": "recurso",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pesquisador",
+            "columnName": "pesquisador",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo1",
+            "columnName": "campo1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo2",
+            "columnName": "campo2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo3",
+            "columnName": "campo3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo4",
+            "columnName": "campo4",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo5",
+            "columnName": "campo5",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo6",
+            "columnName": "campo6",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo7",
+            "columnName": "campo7",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo8",
+            "columnName": "campo8",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo9",
+            "columnName": "campo9",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo10",
+            "columnName": "campo10",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo11",
+            "columnName": "campo11",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo12",
+            "columnName": "campo12",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo13",
+            "columnName": "campo13",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo14",
+            "columnName": "campo14",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo15",
+            "columnName": "campo15",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo16",
+            "columnName": "campo16",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo17",
+            "columnName": "campo17",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo18",
+            "columnName": "campo18",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo19",
+            "columnName": "campo19",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo20",
+            "columnName": "campo20",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "img1",
+            "columnName": "img1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img2",
+            "columnName": "img2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img3",
+            "columnName": "img3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img4",
+            "columnName": "img4",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6959eadd4d7f753c489fa8e0d9cc1b18\")"
+    ]
+  }
+}

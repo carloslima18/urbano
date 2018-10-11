@@ -4,7 +4,7 @@ package com.example.carlos.projetocultural.domain
  * Created by carlo on 18/03/2018.
  */
 
-import com.example.carlos.projetocultural.PubuserApplication
+
 import com.example.carlos.projetocultural.domain.dao.DatabaseManager
 
 

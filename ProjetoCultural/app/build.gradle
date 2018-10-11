@@ -12,10 +12,14 @@ android {
         applicationId "com.example.carlos.projetocultural"
         minSdkVersion 19
         targetSdkVersion 27
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        //https://stackoverflow.com/questions/44322178/room-schema-export-directory-is-not-provided-to-the-annotation-processor-so-we
+
     }
     buildTypes {
         release {

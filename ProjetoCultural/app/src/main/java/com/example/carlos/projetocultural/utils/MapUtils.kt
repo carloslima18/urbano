@@ -1,16 +1,13 @@
 package com.example.carlos.projetocultural.utils
 
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Handler
-import android.view.WindowManager
-import com.example.carlos.projetocultural.MapPub
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService
 import com.example.carlos.projetocultural.domain.Pubuser
 import com.example.carlos.projetocultural.domain.PubuserService
-import org.jetbrains.anko.toast
 
 /**
  * Created by carlo on 23/03/2018.
@@ -63,7 +60,7 @@ class MapUtils {
                 //pegando o nome e coordenadas dos registrados no banco de dados
 
                 //intent para enviar para o MAPPUB para abrir a tela do mapa
-                val intent = Intent(activity.baseContext, MapPub::class.java)
+                val intent = Intent(activity.baseContext, Configuracao_google_maps_Activity::class.java)
                 intent.putExtra("mostrar", "todosLocais")
                 intent.putExtra("longitude", longitude?.toTypedArray())
                 intent.putExtra("latitude", latitude?.toTypedArray())

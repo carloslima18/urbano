@@ -1,0 +1,757 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Tela_altera_e_exclui_pub_user_comum_Fragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@color/ef_white"
+        android:padding="8dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="13dp">
+
+
+        <LinearLayout
+            android:id="@+id/llprinc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <!-- text da edicao -->
+            <TextView
+                android:id="@+id/tituloop"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Editar publicação"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.441"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.017" />
+
+            <!-- nome -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOME:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/nomeop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="nome do local" />
+            </LinearLayout>
+
+            <!-- rede social -->
+            <LinearLayout
+                android:id="@+id/redesclnop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REDE SOCIAL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/redesocialop"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="rede social"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
+            </LinearLayout>
+
+            <!-- endereco -->
+            <LinearLayout
+                android:id="@+id/endlnop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ENDEREÇO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/enderecoop"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="endereço" />
+            </LinearLayout>
+
+            <!-- contato -->
+            <LinearLayout
+                android:id="@+id/contatolnop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTATO:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/contatoop"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="contato"
+                    android:inputType="phone"
+                    android:textColor="@color/colorbutton" />
+
+            </LinearLayout>
+
+            <!-- email -->
+            <LinearLayout
+                android:id="@+id/emailllop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMAIL:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/emailop"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Email"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
+            </LinearLayout>
+
+
+
+            <!--spinner para a categoria -->
+            <LinearLayout
+                android:id="@+id/categoriallop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <TextView
+                    android:id="@+id/textviewcategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CATEGORIA:"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/categoriaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <!-- atv exercida -->
+            <LinearLayout
+                android:id="@+id/atvexllop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/atvexop"
+                    android:layout_width="match_parent"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp"
+                    android:hint="Outro! Qual é?" />
+            </LinearLayout>
+
+
+            <!--ano inicio-->
+            <LinearLayout
+                android:id="@+id/anoiniciollop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:text="ANO INCIO: "
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etanoinicioop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <!-- CNPJ -->
+            <LinearLayout
+                android:id="@+id/cnpjllop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:text="CNPJ: "
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etcnpjop"
+                    android:layout_width="300dp"
+                    android:inputType="number"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <!-- representacao -->
+            <LinearLayout
+                android:id="@+id/representacaollop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:text="REPRESENTAÇÃO: "
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etrepresentacaoop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+            <!-- recurso -->
+            <LinearLayout
+                android:id="@+id/recursollop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorbutton"
+                    android:text="RECURSO: "
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etrecursoop"
+                    android:layout_width="300dp"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+
+
+            <!--botes de add e remover perguntas-->
+            <LinearLayout
+                android:id="@+id/layoutaddcamposop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addcampolrop"
+                    style="@android:style/Widget.Holo.Light.Button.Toggle"
+                    android:layout_width="70dp"
+                    android:layout_height="36dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="+ PGT"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/removecampolrop"
+                    style="@android:style/Widget.Holo.Light.Button.Toggle"
+                    android:layout_width="70dp"
+                    android:layout_height="36dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="- PGT"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <!--perguntas e respostas-->
+            <LinearLayout
+                android:id="@+id/campo1layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo1aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:hint="pergunta 1:"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                  />
+
+                <EditText
+                    android:id="@+id/campo1aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="resposta 1:"
+                    android:inputType="textAutoCorrect|textAutoComplete" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo2layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo2aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 2:" />
+
+                <EditText
+                    android:id="@+id/campo2aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 2:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo3layoutrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo3aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 3:" />
+
+                <EditText
+                    android:id="@+id/campo3aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 3:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo4layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo4aaop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:hint="pergunta 4:" />
+
+                <EditText
+                    android:id="@+id/campo4aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 4:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo5layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo5aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 5:" />
+
+                <EditText
+                    android:id="@+id/campo5aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 5:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo6ayoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo6aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 6:" />
+
+                <EditText
+                    android:id="@+id/campo6aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 6:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo7layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo7aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 7:" />
+
+                <EditText
+                    android:id="@+id/campo7aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 7:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo8layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo8aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 8:" />
+
+                <EditText
+                    android:id="@+id/campo8aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 8:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo9layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo9aaop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="pergunta 9:" />
+
+                <EditText
+                    android:id="@+id/campo9aop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:hint="resposta 9:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/campo10layoutlrop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/campo10aaop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:hint="pergunta 10:" />
+
+                <EditText
+                    android:id="@+id/campo10aop"
+                    android:inputType="textAutoCorrect|textAutoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="resposta 10:" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <!--campos para imagem 1 e 2-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img1opp"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img1op"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img2opp"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img2op"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- campos para imagem 3 e 4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img3opp"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img3op"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img4opp"
+                    android:layout_width="95dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img4op"
+                        android:layout_width="95dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- campo para o google map-->
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/figMapAddop"
+                android:layout_width="match_parent"
+                android:layout_height="220sp"
+                android:layout_marginTop="20dp" />
+
+            <!-- edita localizacao butao -->
+            <Button
+                android:id="@+id/editMapop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Editar Localização"
+                android:visibility="gone" />
+
+            <!-- exclui e altera (botao) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/atteditop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimary"
+                    android:text="editar"
+                    android:textColor="@color/colorbranco" />
+
+                <Button
+                    android:id="@+id/attdeleteop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimary"
+                    android:text="deletar"
+                    android:textColor="@color/colorbranco" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

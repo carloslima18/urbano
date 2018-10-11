@@ -1,0 +1,141 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "02940a41f24fd81f8353ec898023c015",
+    "entities": [
+      {
+        "tableName": "pubuser",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT NOT NULL, `redesocial` TEXT NOT NULL, `endereco` TEXT NOT NULL, `contato` TEXT NOT NULL, `email` TEXT NOT NULL, `atvexercida` TEXT NOT NULL, `categoria` TEXT NOT NULL, `campo1` TEXT NOT NULL, `campo2` TEXT NOT NULL, `campo3` TEXT NOT NULL, `campo4` TEXT NOT NULL, `campo5` TEXT NOT NULL, `img1` TEXT, `img2` TEXT, `img3` TEXT, `img4` TEXT, `latitude` TEXT NOT NULL, `longitude` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "redesocial",
+            "columnName": "redesocial",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endereco",
+            "columnName": "endereco",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contato",
+            "columnName": "contato",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "atvexercida",
+            "columnName": "atvexercida",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoria",
+            "columnName": "categoria",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo1",
+            "columnName": "campo1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo2",
+            "columnName": "campo2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo3",
+            "columnName": "campo3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo4",
+            "columnName": "campo4",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "campo5",
+            "columnName": "campo5",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "img1",
+            "columnName": "img1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img2",
+            "columnName": "img2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img3",
+            "columnName": "img3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "img4",
+            "columnName": "img4",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"02940a41f24fd81f8353ec898023c015\")"
+    ]
+  }
+}

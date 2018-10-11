@@ -1,0 +1,3 @@
+Um objeto Adapter atua como uma ponte entre um AdapterView e os dados subjacentes para essa visualização.
+ O adaptador fornece acesso aos itens de dados. O Adaptador também é responsável por criar uma Visualização
+ para cada item no conjunto de dados.

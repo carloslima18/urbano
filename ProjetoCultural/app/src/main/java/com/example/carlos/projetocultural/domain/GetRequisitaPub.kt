@@ -38,7 +38,7 @@ class GetRequisitaPub(context: Context, listV: RecyclerView, param:String) : Asy
         super.onPostExecute(result)
         if(listItems.size != 0) {
 
-           // lv.adapter = HomeAdapter(listItems,context, R.layout.list_row_main, R.id.textViewnomeM, listItems)
+           // lv.adapter = Tela_listagem_pub_recentes_Adapter(listItems,context, R.layout.item_da_listagem_pub_recentes, R.id.textViewnomeM, listItems)
             context.toast("Concluido")
         }
         else{

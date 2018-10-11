@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.carlos.projetocultural.Tela_vizualiza_pub_pesquisador_Activity"
+    tools:showIn="@layout/activity_tela_vizualiza_pub_pesquisador"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="13dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titulov"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/colorbutton"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                tools:text="NOME DA PUBLICACAO" />
+
+            <LinearLayout
+                android:id="@+id/ender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TableLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:stretchColumns="0,1">
+                        <TableRow
+                            android:id="@+id/tablerow_nome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/nome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorbutton"
+                            android:text="NOME: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/nomev"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorbutton"
+                            android:text="NOME:" />
+
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_redesocial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/redesocial"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="REDE SOCIAL: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/redecoailv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="Rede social:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_endereco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/endereco"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="ENDEREÇO: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/enderecov"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="Endereço: "
+                                 />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_contato"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/contato"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="CONTATO: "
+                                android:textStyle="bold"  />
+                            <TextView
+                                android:id="@+id/contatov"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Contato"
+                                />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="EMAIL:"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/emailv"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Email" />
+                        </TableRow>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_categoria"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/categoria"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="CATEGORIA:"
+                                android:textStyle="bold"
+                                />
+                            <TextView
+                                android:id="@+id/categoriav"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Categoria" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_incio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/inicio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="ANO DE INICIO: "
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:id="@+id/anoiniciov"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Inicio das atividades:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_cnpj"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/cnpj"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:text="CNPJ: "
+                                android:textStyle="bold"
+                                />
+                            <TextView
+                                android:id="@+id/cnpjv"
+                                android:layout_width="match_parent"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="Cnpj:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_recurso"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/recurso"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="RECURSO: "
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/recursov"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Recurso:"
+                                android:textColor="@color/colorbutton" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                        <TableRow
+                            android:id="@+id/tablerow_representacao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/representaco"
+                                android:layout_width="wrap_content"
+                                android:textColor="@color/colorbutton"
+                                android:layout_height="wrap_content"
+                                android:text="REPRESENTAÇÃO: "
+                                android:textStyle="bold"/>
+                            <TextView
+                                android:id="@+id/representacaov"
+                                android:textColor="@color/colorbutton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Representação:" />
+                        </TableRow>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="#000000" />
+
+                    </TableLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llmapa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapViewPub"
+                        android:layout_width="340dp"
+                        android:layout_height="220dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/mostrarinfo"
+                    style="@android:style/Widget.DeviceDefault.Button.Toggle"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="visualizar info"
+                    android:textColor="@color/colorbranco"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/infodepub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorbutton"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone"
+                    tools:text="mais informação como tudo, ano inicio, representacao, recursos, história em geral" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--botao para add map-->
+                <Button
+                    android:id="@+id/btperguntaserespostas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="PGT+"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+                <!--botao para add map-->
+                <Button
+                    android:id="@+id/btescondeperguntas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="PGT-"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorbranco"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TableLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:stretchColumns="0,1">
+                    <TableRow
+                        android:id="@+id/ll12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/pgt1v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp1vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:visibility="gone"
+                        android:id="@+id/ll13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt2v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp2vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll14"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt3v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp3vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll15"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt4v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp4vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view4"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll16"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt5v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp5vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view5"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll17"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt6v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp6vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll18"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt7v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp7vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view7"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll19"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt8v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp8vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view8"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll20"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt9v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp9vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:id="@+id/view9"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                    <TableRow
+                        android:id="@+id/ll21"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pgt10v"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome: "
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/resp10vv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nenhum:" />
+                    </TableRow>
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/view10"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#000000" />
+
+                </TableLayout>
+            </LinearLayout>
+
+
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btmostramapa"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Vizualiza mapa"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+            <!--mapa-->
+            <LinearLayout
+                android:id="@+id/mostramapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+                <!-- campo para o google map-->
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/figMapAddav"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp" />
+            </LinearLayout>
+
+
+            <!--botao para add map-->
+            <Button
+                android:id="@+id/btmostraimg"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Imagens"
+                android:textColor="@color/colorbranco"
+                android:textSize="10sp"
+                android:visibility="visible" />
+
+            <!--campo para as imagens-->
+            <LinearLayout
+                android:id="@+id/llimg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="200dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bigimvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/bigim"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img1vv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img1v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img2vv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img2v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img4vv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img4v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/img3vv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:id="@+id/img3v"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/ic_menu_gallery"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:scaleType="centerCrop" />
+                </android.support.v7.widget.CardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
