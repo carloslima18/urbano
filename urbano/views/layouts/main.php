@@ -54,6 +54,7 @@ AppAsset::register($this);
                     ['label'=>'Notas usuários', 'url'=>['/avaliacaopubuser/index']],
                     ['label'=>'Notas pesquisadores', 'url'=>['/avaliacaopubpesq/index']],
                     ['label' => 'Pesquisador', 'url' => ['/pesquisador/index']],
+                    ['label' => 'Mapas', 'url' => ['/mapa/index']],
                 ],
             ],
             [

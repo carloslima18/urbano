@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.Manifest
 import android.app.ProgressDialog
@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.EditText
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
+import com.example.carlos.projetocultural.MainActivity
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.pubService
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.AndroidUtils

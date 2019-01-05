@@ -5,7 +5,7 @@
     android:id="@+id/nomecor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.carlos.projetocultural.Tela_vizualiza_publicacoes_recentes_Activity">
+    tools:context="com.example.carlos.projetocultural.publicacaoes_recentes.Tela_vizualiza_publicacoes_recentes_Activity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/nomeappbar"

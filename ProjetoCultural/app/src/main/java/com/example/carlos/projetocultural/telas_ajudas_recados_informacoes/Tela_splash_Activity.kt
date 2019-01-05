@@ -1,14 +1,13 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.telas_ajudas_recados_informacoes
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
-import com.example.carlos.projetocultural.extensions.toast
-import java.util.*
-import kotlin.concurrent.timerTask
 
 
 import android.os.Handler
+import com.example.carlos.projetocultural.MainActivity
+import com.example.carlos.projetocultural.R
 
 /**
  * A sample splash screen created by devdeeds.com

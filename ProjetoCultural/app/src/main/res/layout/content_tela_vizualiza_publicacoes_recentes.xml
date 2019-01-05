@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorbackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.carlos.projetocultural.Tela_vizualiza_publicacoes_recentes_Activity"
+    tools:context="com.example.carlos.projetocultural.publicacaoes_recentes.Tela_vizualiza_publicacoes_recentes_Activity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp"
     tools:showIn="@layout/activity_tela_vizualiza_publicacoes_recentes">

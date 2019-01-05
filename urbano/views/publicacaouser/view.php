@@ -13,6 +13,7 @@ use dosamigos\google\maps\services\DirectionsService;
 use dosamigos\google\maps\overlays\InfoWindow;
 use dosamigos\google\maps\overlays\Marker;
 use dosamigos\google\maps\Map;
+
 use dosamigos\google\maps\services\DirectionsRequest;
 use dosamigos\google\maps\overlays\Polygon;
 use dosamigos\google\maps\layers\BicyclingLayer;
@@ -126,101 +127,103 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="col-md-6">
     <?php
-    $coord = new LatLng(['lat' => $model->latitude, 'lng' => $model->longitude]);
-    $map = new Map([
-        'center' => $coord,
-        'zoom' => 14,
-    ]);
 
-    // lets use the directions renderer
-//    $home = new LatLng(['lat' => -16.347922, 'lng' => -48.9730085]);
-//    $vaipassarpor = new LatLng(['lat' => -16.3277793, 'lng' => -48.9594287]);
-   // $santo_domingo = new LatLng(['lat' => $model->latitude, 'lng' => $model->longitude]);
+    $array_nome = \app\models\Publicacaouser::find()->select('nome')->asArray()->all();
+    $array_fotos = \app\models\Publicacaouser::find()->select('img1')->asArray()->all();
+    $array_latitude = \app\models\Publicacaouser::find()->select('latitude')->asArray()->all();
+    $array_longitude = \app\models\Publicacaouser::find()->select('longitude')->asArray()->all();
 
-    // setup just one waypoint (Google allows a max of 8)
-//    $waypoints = [
-//        new DirectionsWayPoint(['location' => $vaipassarpor])
-//    ];
-
- /*   $directionsRequest = new DirectionsRequest([
-        'origin' => $home,
-        'destination' => $coord,
-        'waypoints' => $waypoints,
-        'travelMode' => TravelMode::DRIVING
-    ]); */
-
-    // Lets configure the polyline that renders the direction
- /*   $polylineOptions = new PolylineOptions([
-        'strokeColor' => '#FFAA00',
-        'draggable' => true
-    ]); */
-
-    // Now the renderer
-   /* $directionsRenderer = new DirectionsRenderer([
-        'map' => $map->getName(),
-        'polylineOptions' => $polylineOptions
-    ]); */
-
-    // Finally the directions service
-  /*  $directionsService = new DirectionsService([
-        'directionsRenderer' => $directionsRenderer,
-       // 'directionsRequest' => $directionsRequest
-    ]); */
-
-    // Thats it, append the resulting script to the map
-   // $map->appendScript($directionsService->getJs());
-
-    // Lets add a marker now
-    $marker = new Marker([
-        'position' => $coord,
-        'title' => 'My Home Town',
-    ]);
-
-    // Provide a shared InfoWindow to the marker
-    $marker->attachInfoWindow(
-        new InfoWindow([
-            'content' => $model->nome
-        ])
-    );
-
-    // Add marker to the map
-    $map->addOverlay($marker);
-
-
-
-
-
-
-
+    //$latitude = \yii\helpers\ArrayHelper::map(\app\models\Publicacaouser::find()->orderBy('latitude','longitude')->all(), 'latitude', 'latitude');
+    //$longitude = \yii\helpers\ArrayHelper::map(\app\models\Publicacaouser::find()->orderBy('longitude')->all(), 'longitude', 'longitude');
     // Now lets write a polygon
-    $coords = [
-        new LatLng(['lat' => 25.774252, 'lng' => -80.190262]),
-        new LatLng(['lat' => 18.466465, 'lng' => -66.118292]),
-        new LatLng(['lat' => 32.321384, 'lng' => -64.75737]),
-        new LatLng(['lat' => 25.774252, 'lng' => -80.190262])
-    ];
 
-    $polygon = new Polygon([
-        'paths' => $coords
+
+    $coord = [];
+    $u = 0;
+    $i = count($array_longitude);
+  /*  while($u < $i){
+        $yy = $array[$u]['latitude'];
+        $aa = $array1[$u]['longitude'];
+       // $coord = new LatLng(['lat' => $yy, 'lng' => $aa]);
+        $u++;
+    }*/
+
+    //-------------------------------------------
+
+
+    // Setting a default center coordinates for proper initialization
+    $center = new LatLng(['lat' => $array_latitude[$u]['latitude'], 'lng' => $array_longitude[$u]['longitude']]);
+    $map = new Map([
+        'center' => $center,
+        'zoom' => 5,
+        'width' => '100%',
+        'height' => 400,
+        'containerOptions' => [
+            'id' => 'artworkItemsMap'
+        ]
     ]);
 
-    // Add a shared info window
-    $polygon->attachInfoWindow(new InfoWindow([
-        'content' => '<p>This is my super cool Polygon</p>'
-    ]));
 
-    // Add it now to the map
-    $map->addOverlay($polygon);
+    foreach ($array_longitude as $place) {
+        //$place['name'] = 'carlos teste';
+        // Add markers
+        //$name = (!empty($place['name'])) ? $place['name'] : Yii::t('frontend', 'Not set');
 
 
-    // Lets show the BicyclingLayer :)
-    $bikeLayer = new BicyclingLayer(['map' => $map->getName()]);
 
-    // Append its resulting script
-    $map->appendScript($bikeLayer->getJs());
+        if($u < 8){
+            $filename_path = md5(time().uniqid()).".jpg";
+            $decoded=base64_decode($array_fotos[$u]['img1']);
+            //file_put_contents('C:/Users/carlo/Desktop/urbano/urbano/web/uploads/'.$filename_path,$decoded);
+            $ft = 'C:/Users/carlo/Desktop/urbano/urbano/web/uploads/'.$filename_path;
+            $yy = $array_latitude[$u]['latitude'];
+            $aa = $array_longitude[$u]['longitude'];
+            $nome = $array_nome[$u]['nome'];
+            // $coord = new LatLng(['lat' => $yy, 'lng' => $aa]);
 
-    // Display the map -finally :)
+
+            $size = new \dosamigos\google\maps\Size([
+                'height' => 50,'width' => 50
+            ]);
+
+            $icon = new \dosamigos\google\maps\overlays\Icon([
+                'url' => 'data:image/jpeg;base64,' . $array_fotos[$u]['img1'],
+                'scaledSize' => $size
+            ]);
+
+
+            $size = new \dosamigos\google\maps\Size([
+                'height' => 100,'width' => 100
+            ]);
+            $coord = new LatLng(['lat' => $yy, 'lng' => $aa]);
+            $marker = new Marker([
+                'title' => $nome,
+                'position' => $coord,
+                'icon' => $icon//'data:image/jpeg;base64,' . $array_fotos[$u]['img1'] //\yii\helpers\Url::to('@uploads/'.$filename_path)
+            ]);
+
+
+/*            $point = new \dosamigos\google\maps\Point([
+                'x' => 0,'y' => 0
+            ]);
+
+*/
+
+
+        }
+        $u++;
+
+
+
+
+        $map->addOverlay($marker);
+    }
+ //   $boundsCenter = LatLngBounds::getBoundsOfMarkers($map->getMarkers())->getCenterCoordinates();
+  //  $map->setCenter($boundsCenter);
+
     echo $map->display();
+
+    //$this->registerJs("itemsMap = document.getElementById('artworkItemsMap'); setTimeout( function(){ google.maps.event.trigger(itemsMap, 'resize'); }, 400);");
     ?>
 
 </div> <!-- end second col -->

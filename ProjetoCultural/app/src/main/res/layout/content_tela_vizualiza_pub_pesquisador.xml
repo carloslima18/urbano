@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.carlos.projetocultural.Tela_vizualiza_pub_pesquisador_Activity"
+    tools:context="com.example.carlos.projetocultural.usuario_pesquisador.Tela_vizualiza_pub_pesquisador_Activity"
     tools:showIn="@layout/activity_tela_vizualiza_pub_pesquisador"
     android:orientation="vertical">
 

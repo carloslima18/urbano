@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.publicacaoes_recentes
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.content_tela_listagem_pub_recentes.*
 import android.os.Parcelable
 import android.view.View
 import android.widget.SearchView;
+import com.example.carlos.projetocultural.MainActivity
+import com.example.carlos.projetocultural.R
 
 
 class Tela_listagem_pub_recentes_Activity : AppCompatActivity(), SearchView.OnQueryTextListener {

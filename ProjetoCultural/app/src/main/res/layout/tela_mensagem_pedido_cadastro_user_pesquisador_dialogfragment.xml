@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_border"
     android:padding="15dp"
-    tools:context=".Tela_mensagem_pedido_cadastro_user_pesquisador_DialogFragment">
+    tools:context=".usuario_pesquisador.Tela_mensagem_pedido_cadastro_user_pesquisador_DialogFragment">
 
 
     <ScrollView

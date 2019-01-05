@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_comum
 
 
 //AIzaSyBnfiLIhSwZD1JLxn4W-x5PK8ouSKYXVJI
@@ -31,6 +31,8 @@ import kotlinx.android.synthetic.main.tela_altera_e_exclui_pub_user_comum_fragme
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import com.bumptech.glide.request.RequestOptions
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.utils.Validacpf
 
 
@@ -522,7 +524,7 @@ class Tela_altera_e_exclui_pub_user_comum_Fragment : DialogFragment(), OnMapRead
         pubuser?.img4 =  base64_4
         pubuser?.latitude =  latitude.toString()
         pubuser?.longitude =  longitude.toString()
-        if(pubuser?.img1 != "" && pubuser?.img2 != "" && pubuser?.img3 != "" && pubuser?.img4 != "" && pubuser?.nome != ""  && pubuser?.contato != "" && pubuser?.categoria != "") {
+        if(pubuser?.img1 != "" && pubuser?.img2 != "" && pubuser?.img3 != "" && pubuser?.img4 != "" && pubuser?.nome != ""  && pubuser?.categoria != "") {
             if (Validacpf().validateEmailFormat(email) || email == "") {
 
 

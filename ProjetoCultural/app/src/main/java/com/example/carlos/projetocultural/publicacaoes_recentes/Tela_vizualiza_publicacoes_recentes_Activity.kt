@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.publicacaoes_recentes
 
 import android.content.Intent
 import android.graphics.Color
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.Pubuser
 import com.example.carlos.projetocultural.domain.pubService

@@ -29,11 +29,17 @@ $config = [
 
         'assetManager' => [
             'bundles' => [
+                /*'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,   // do not publish the bundle
+                    'js' => [
+                        '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+                    ]
+                ],*/
                 'dosamigos\google\maps\MapAsset' => [
                     'options' => [
                         'key' => 'AIzaSyDpcX-GScOiQX3IxBAu_Drpet-YqjM8t0U',	//aqui coloca a chave do google maps
                         'language' => 'id',
-                        'version' => '3.1.18'
+                        'version' => '3.1.18',
                     ]
                 ]
             ]

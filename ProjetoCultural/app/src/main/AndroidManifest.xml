@@ -42,7 +42,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Tela_splash_Activity"
+            android:name=".telas_ajudas_recados_informacoes.Tela_splash_Activity"
             android:theme="@style/AppFullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,21 +59,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Tela_listagem_pub_user_comum_Activity"
+            android:name=".usuario_comum.Tela_listagem_pub_user_comum_Activity"
             android:label="MINHAS PUBLICAÇÕES"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_listagem_pub_recentes_Activity"
+            android:name=".publicacaoes_recentes.Tela_listagem_pub_recentes_Activity"
             android:launchMode="singleTop"
             android:label="@string/title_activity_home"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_formulario_user_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_formulario_user_pesquisador_Activity"
             android:label="FORMULARIO"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"
@@ -96,9 +96,9 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".Tela_vizualiza_publicacoes_recentes_Activity"
+            android:name=".publicacaoes_recentes.Tela_vizualiza_publicacoes_recentes_Activity"
             android:label="@string/title_activity_act_view_pub"
-            android:parentActivityName=".Tela_listagem_pub_user_comum_Activity"
+            android:parentActivityName=".usuario_comum.Tela_listagem_pub_user_comum_Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -106,12 +106,12 @@
             android:name=".utils.OperacoesEconfiguracoesCameraImagemCameraHelper"
             android:label="@string/title_activity_act_view_pub"
             android:launchMode="singleTop"
-            android:parentActivityName=".Tela_listagem_pub_user_comum_Activity"
+            android:parentActivityName=".usuario_comum.Tela_listagem_pub_user_comum_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
-            android:name=".Tela_add_pub_user_comum_Fragment$broadcastReceive"
+            android:name=".usuario_comum.Tela_add_pub_user_comum_Fragment$broadcastReceive"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -129,12 +129,12 @@
         </provider>
 
         <activity
-            android:name=".Tela_avaliacao_publicaoes_Activity"
+            android:name=".publicacaoes_recentes.Tela_avaliacao_publicaoes_Activity"
             android:launchMode="singleTop"
             android:label="@string/title_activity_avaliacao"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_login_user_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_login_user_pesquisador_Activity"
             android:launchMode="singleTop"
             android:label="LOGIN PESQUISADOR"
             android:parentActivityName=".MainActivity"
@@ -151,42 +151,42 @@
 
         <!-- .Light.NoActionBar  impede que a atividade uso a actionBarnativa do androis -->
         <activity
-            android:name=".Tela_menu_user_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_menu_user_pesquisador_Activity"
             android:launchMode="singleTop"
             android:label="PESQUISADOR"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity"
             android:label="SUAS PUBLICAÇÕES"
             android:launchMode="singleTop"
-            android:parentActivityName=".Tela_menu_user_pesquisador_Activity"
+            android:parentActivityName=".usuario_pesquisador.Tela_menu_user_pesquisador_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_cadastra_user_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_cadastra_user_pesquisador_Activity"
             android:label="@string/title_activity_cadastrapesq_"
-            android:parentActivityName=".Tela_login_user_pesquisador_Activity"
+            android:parentActivityName=".usuario_pesquisador.Tela_login_user_pesquisador_Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_vizualiza_pub_pesquisador_Activity"
+            android:name=".usuario_pesquisador.Tela_vizualiza_pub_pesquisador_Activity"
             android:label="DADOS GERAIS DE PESQUISA"
             android:launchMode="singleTop"
-            android:parentActivityName=".Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity"
+            android:parentActivityName=".usuario_pesquisador.Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
         <activity
-            android:name=".Tela_fale_conosco_Activity"
+            android:name=".telas_ajudas_recados_informacoes.Tela_fale_conosco_Activity"
             android:label="FALE CONOSCO"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Tela_pgts_frequentes_ajuda_Activity"
+            android:name=".telas_ajudas_recados_informacoes.Tela_pgts_frequentes_ajuda_Activity"
             android:label="DÚVIDAS"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"

@@ -1,10 +1,11 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.pubService
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.AndroidUtils

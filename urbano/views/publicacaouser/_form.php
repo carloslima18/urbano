@@ -75,7 +75,7 @@ use kartik\file\FileInput;
         ]
     ) ?>
 
-    <?= $form->field($model, 'img3')->widget(FileInput::classname(),[
+    <?= $form->field($model, 'img3')->widget(FileInput::classname(),[ //33028852
             'options' => ['accept' => 'image/*'],
         ]
     ) ?>
@@ -100,4 +100,4 @@ use kartik\file\FileInput;
 
     <?php ActiveForm::end(); ?>
 
-</div>
+</div>3

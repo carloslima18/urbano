@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.carlos.projetocultural.Tela_fale_conosco_Activity">
+    tools:context="com.example.carlos.projetocultural.telas_ajudas_recados_informacoes.Tela_fale_conosco_Activity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

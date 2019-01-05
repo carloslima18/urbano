@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.Manifest
 import android.app.ProgressDialog
@@ -19,6 +19,7 @@ import org.jetbrains.anko.alert
 import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.Validacpf
 import kotlinx.android.synthetic.main.activity_tela_listagem_pub_user_comum.*

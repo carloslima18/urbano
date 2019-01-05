@@ -19,6 +19,7 @@ import android.text.Html
 import android.view.View
 import android.widget.*
 import com.example.carlos.projetocultural.domain.pubService
+import com.example.carlos.projetocultural.publicacaoes_recentes.Tela_vizualiza_publicacoes_recentes_Activity
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.activity_configuracao_google_maps.*
 import org.jetbrains.anko.alert

@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.app.Dialog
 import android.content.BroadcastReceiver
@@ -24,6 +24,8 @@ import android.view.Window
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
 
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService
@@ -48,7 +50,7 @@ class Tela_altera_e_exclui_pub_user_pesquisador_Activity : DialogFragment(), OnM
     //variaveis para receber as imagens do BD para coloca-las para a edição
     var base64_1:String ?= "" ;var base64_2:String ?= "" ;var base64_3:String ?= "" ;var base64_4:String ?= "" ;val camera = OperacoesEconfiguracoesCameraImagemCameraHelper() // variavel usada para estanciar a classe que cuida (de tirar foto entre conversões .......)
     //variavel para operação de captura de imagem
-    var latitude:Double?=null ;var longitude:Double?=null ;var mapView : MapView?=null ;val mappub = Configuracao_google_maps_Activity() ;val categories = ArrayList<String>();
+    var latitude:Double?=null ;var longitude:Double?=null ;var mapView : MapView?=null ;val mappub = Configuracao_google_maps_Activity();val categories = ArrayList<String>();
     var dataAdapter: ArrayAdapter<String>?=null ;var spinner: Spinner?=null ;var database: MyDatabaseOpenHelper?=null
 
 
@@ -569,7 +571,7 @@ class Tela_altera_e_exclui_pub_user_pesquisador_Activity : DialogFragment(), OnM
         pubpesq?.latitude =  latitude.toString()
         pubpesq?.longitude =  longitude.toString()
 
-        if(pubpesq?.img1 != "" && pubpesq?.img2 != "" && pubpesq?.img3 != "" && pubpesq?.img4 != "" && pubpesq?.nome != "" && pubpesq?.contato != ""&& pubpesq?.categoria != "") {
+        if(pubpesq?.img1 != "" && pubpesq?.img2 != "" && pubpesq?.img3 != "" && pubpesq?.img4 != "" && pubpesq?.nome != "" && pubpesq?.categoria != "") {
             if (Validacpf().validateEmailFormat(email) || email == "") {
 
                 val handle = Handler()

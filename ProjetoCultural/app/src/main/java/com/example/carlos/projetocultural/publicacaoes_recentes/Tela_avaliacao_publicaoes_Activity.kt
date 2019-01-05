@@ -1,8 +1,9 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.publicacaoes_recentes
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.*
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.pubService
 import com.example.carlos.projetocultural.extensions.toast
 import com.example.carlos.projetocultural.utils.AndroidUtils

@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_comum
 
 import android.Manifest
 import android.app.ProgressDialog
@@ -16,6 +16,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
+
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.adapters.Tela_listagem_pub_user_comum_Adapter
 import com.example.carlos.projetocultural.domain.Pubuser
 import com.example.carlos.projetocultural.domain.PubuserService
@@ -27,6 +29,11 @@ import com.google.android.gms.common.api.GoogleApiClient
 import kotlinx.android.synthetic.main.content_tela_listagem_pub_user_comum.*
 //import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.*
+import android.content.IntentSender
+import com.example.carlos.projetocultural.MainActivity
+import com.google.android.gms.common.api.ResolvableApiException
+
+
 
 //CUIDA DAS PUBLICAÇÕES DO USUARIO (AONDE SALVA ELA, EDITA ELAS)
 class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks{
@@ -39,7 +46,7 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
 
     private var locationManager : LocationManager? = null
 
-
+    var avisa_gps_ativo_para_add_pub = null
     val camera =OperacoesEconfiguracoesCameraImagemCameraHelper()
     val pubuser = Pubuser
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +54,7 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
         setContentView(R.layout.activity_tela_listagem_pub_user_comum)
         setSupportActionBar(toolbar)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-
+        avisa_gps_ativo_para_add_pub!= false
         toolbar.setNavigationOnClickListener {
             val intent = Intent(this@Tela_listagem_pub_user_comum_Activity, MainActivity::class.java)
             intent.putExtra("sem splash","0")
@@ -67,7 +74,6 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
 
 
 
-
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?;
 
         try {
@@ -81,10 +87,12 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
 
 
 
+
     //define the listener
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-           // toast("" + location.longitude + ":" + location.latitude)
+            //toast("" + location.longitude + ":" + location.latitude)
+            //toast("Lozalização encontrada")
             latitude = location.latitude
             longitude = location.longitude
             //thetext.setText("" + location.longitude + ":" + location.latitude);
@@ -169,6 +177,7 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
 
     override fun onResume() {
         super.onResume()
+
     }
 
     override fun onPause() {
@@ -187,11 +196,14 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
         }
     }
 
+
+
     //chama o fragment de adicionar a publicação
     private fun addFragment(context: Context){
         val provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-        if(provider == null || provider.length == 0 ){//|| latitude == 0.0 || longitude == 0.0
-            toast("Ligue seu GPS")
+        if(provider == null || provider.length == 0 || latitude == 0.0 || longitude == 0.0){//||
+            toast("Veririque se o GPS está ativo, Aguarde seu posicionamento e tente novamente")
+
         }else {
             val ft = supportFragmentManager.beginTransaction()
             val fragAnterior = supportFragmentManager.findFragmentByTag(Tela_add_pub_user_comum_Fragment.KEY)
@@ -207,7 +219,7 @@ class Tela_listagem_pub_user_comum_Activity : AppCompatActivity(), GoogleApiClie
             val width = metrics.widthPixels;
 
             val bundle = Bundle()//cria um bundle para enviar os dados necessarios para o fragment
-            //onConnected(bundle) // ativa a função onConnecte para atualizar os dados da localização do usuario
+            //onConnected(bundle ) // ativa a função onConnecte para atualizar os dados da localização do usuario
             bundle.putDouble("latitude", latitude)//pega os dados da localização
             bundle.putDouble("longitude", longitude)
             bundle.putInt("height", height)//pega os daddos da tela

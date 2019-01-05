@@ -1,9 +1,11 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.telas_ajudas_recados_informacoes
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.carlos.projetocultural.MainActivity
+import com.example.carlos.projetocultural.R
 
 import kotlinx.android.synthetic.main.activity_tela_fale_conosco.*
 import org.jetbrains.anko.email

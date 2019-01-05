@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.*
 import android.provider.Settings
@@ -22,7 +24,14 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import com.example.carlos.projetocultural.domain.*
 
 import com.example.carlos.projetocultural.extensions.toast
+import com.example.carlos.projetocultural.publicacaoes_recentes.Tela_listagem_pub_recentes_Activity
+import com.example.carlos.projetocultural.telas_ajudas_recados_informacoes.Tela_fale_conosco_Activity
+import com.example.carlos.projetocultural.telas_ajudas_recados_informacoes.Tela_pgts_frequentes_ajuda_Activity
+import com.example.carlos.projetocultural.telas_ajudas_recados_informacoes.Tela_splash_Activity
+import com.example.carlos.projetocultural.usuario_comum.Tela_listagem_pub_user_comum_Activity
+import com.example.carlos.projetocultural.usuario_pesquisador.Tela_login_user_pesquisador_Activity
 import com.example.carlos.projetocultural.utils.MapUtils
+import org.jetbrains.anko.toast
 
 //import kotlinx.coroutines.experimental.*
 //import kotlinx.coroutines.experimental.android.UI
@@ -65,6 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
       //  texto2.visibility = View.INVISIBLE
 
 
+
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -83,8 +93,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //       texto2.text = resources.getString(R.string.noticias2)
         //       vermais.visibility = View.INVISIBLE
         //   }
-
-
     }
 
     override fun onBackPressed() {
@@ -242,7 +250,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.suas_pub -> {
-                    startActivity(Intent(this, Tela_listagem_pub_user_comum_Activity::class.java))
+            //    val intent = Intent(this@MainActivity, Tela_listagem_pub_user_comum_Activity::class.java)
+                // intent.putExtra("local","feiras")
+            //    intent.putExtra("latitudem",latitude)
+            //    intent.putExtra("longitudem",longitude)
+            //    startActivity(intent)
+                startActivity(Intent(this, Tela_listagem_pub_user_comum_Activity::class.java))
 
             }
             R.id.outros->{

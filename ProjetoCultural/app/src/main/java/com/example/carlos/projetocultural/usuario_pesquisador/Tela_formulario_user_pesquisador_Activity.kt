@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.app.AlertDialog
 import android.content.*
@@ -14,6 +14,8 @@ import android.os.Handler
 import android.view.View
 import android.widget.*
 import br.edu.computacaoifg.todolist.MyDatabaseOpenHelper
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService
 import com.example.carlos.projetocultural.extensions.toast
@@ -93,7 +95,7 @@ class Tela_formulario_user_pesquisador_Activity : AppCompatActivity(), GoogleApi
         // Spinner click listener, que pega a lista do arquivo 'strings'
         val spinner=findViewById<Spinner>(R.id.spinneradd) as Spinner
         val adapter = ArrayAdapter.createFromResource(this,
-        R.array.planets_array, android.R.layout.simple_spinner_item);
+                R.array.planets_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner

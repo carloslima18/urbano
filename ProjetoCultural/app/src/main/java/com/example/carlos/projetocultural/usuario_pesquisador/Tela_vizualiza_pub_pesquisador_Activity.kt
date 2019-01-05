@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
 import com.example.carlos.projetocultural.domain.Pubpesq
 import com.example.carlos.projetocultural.domain.PubpesqService
 import com.google.android.gms.maps.GoogleMap

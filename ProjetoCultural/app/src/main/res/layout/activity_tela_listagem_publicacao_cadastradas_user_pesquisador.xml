@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.carlos.projetocultural.Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity">
+    tools:context="com.example.carlos.projetocultural.usuario_pesquisador.Tela_listagem_publicacao_cadastradas_user_pesquisador_Activity">
 
 
     <android.support.design.widget.AppBarLayout

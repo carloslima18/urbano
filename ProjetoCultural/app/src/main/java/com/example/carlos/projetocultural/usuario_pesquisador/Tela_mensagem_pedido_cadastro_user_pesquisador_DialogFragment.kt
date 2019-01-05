@@ -1,4 +1,4 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_pesquisador
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.carlos.projetocultural.R
 
 import kotlinx.android.synthetic.main.tela_mensagem_pedido_cadastro_user_pesquisador_dialogfragment.*
 

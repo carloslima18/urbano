@@ -1,5 +1,6 @@
-package com.example.carlos.projetocultural
+package com.example.carlos.projetocultural.usuario_comum
 import android.Manifest
+import android.app.Activity
 import android.app.Dialog
 import android.content.*
 import android.os.Bundle
@@ -24,8 +25,20 @@ import org.jetbrains.anko.uiThread
 //import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 
 import android.content.Context
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.os.Handler
+import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
+import com.example.carlos.projetocultural.Configuracao_google_maps_Activity
+import com.example.carlos.projetocultural.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import org.jetbrains.anko.bundleOf
+import org.jetbrains.anko.toast
 
 // e talvez você precisa em alguns ocations
 /**
@@ -34,21 +47,28 @@ import android.support.v4.content.ContextCompat
 // fragment para adicionar uma publicação
 class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback , AdapterView.OnItemSelectedListener {
 
-    private val REQUEST_IMAGE_CODE = 1888; //variaveis obrigatorias para parametro da funcao "startActivityForResult"
-    val PICK_FROM_FILE = 2;     //para tirar foto, ou importa da galeria
     var latitude:Double?= null // variaveis para pegar via intentPut extra a long e lat enviadas..
     var longitude: Double?= null //..pela Tela_listagem_pub_user_comum_Activity
     var mapView : MapView?=null //variavel para amostragem do mapa no neste fragment
     val camera = OperacoesEconfiguracoesCameraImagemCameraHelper() // variavel usada para estanciar a classe que cuida (de tirar foto entre conversões .......)
     var numImgx:Int= 0 //variavel para identificar qual imageView que o usuario clicou la no layout
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     val mappub = Configuracao_google_maps_Activity()
     //create dialog
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.window!!.requestFeature(Window.FEATURE_NO_TITLE)
+        val context= getContext()
+        if(context != null) {
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+        }
+
         return dialog
     }
+
+
 
     //infla a view! joga na tela o fragment para o usuario
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -90,9 +110,10 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
 
 
 
+
         //recebe os dados via bundle da Tela_listagem_pub_user_comum_Activity
-        latitude = arguments?.getDouble("latitude")
-        longitude = arguments?.getDouble("longitude")
+       latitude = arguments?.getDouble("latitude")
+       longitude = arguments?.getDouble("longitude")
 
         //recebe a instancia do "obj" mapView que se encontra no layout desse fragment
         mapView = view.findViewById<MapView>(R.id.figMapAdda) as MapView
@@ -101,7 +122,7 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
 
 
 
-        context?.registerReceiver(broadcastReceive(), IntentFilter(Configuracao_google_maps_Activity.loc_receiver))
+        //context?.registerReceiver(broadcastReceive(), IntentFilter(Configuracao_google_maps_Activity.loc_receiver))
         //retorna a view com os dados adquiridos
         return view
     }
@@ -141,21 +162,21 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
     }
     override fun onStop() {
         super.onStop()
-        try {
+        /*try {
             context?.unregisterReceiver(broadcastReceive())
         }catch (e: Exception){
 
-        }
+        } */
         mapView?.onStop();//padrão para o mapView
     }
     override fun onDestroy() {
 
-        try {
+        /*try {
             if (broadcastReceive() != null)
                 context?.unregisterReceiver(broadcastReceive())
 
         } catch (e: Exception) {
-        }
+        } */
 
         super.onDestroy()
         mapView?.onDestroy()//padrão para o mapView
@@ -170,11 +191,11 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
         mapView?.onLowMemory()//padrão para o mapView
     }
     override fun onPause() {
-        try {
+        /*try {
             context?.unregisterReceiver(broadcastReceive())
         }catch (e: Exception){
 
-        }
+        }*/
         super.onPause()
         mapView?.onPause()
 
@@ -182,6 +203,11 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
 
 
     override fun onResume() {
+
+
+
+
+
         super.onResume()
         layoutaddcampos.visibility = View.GONE
 
@@ -273,29 +299,53 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
         // Refresh the state of the +1 button each time the activity receives focus.
     }
 
+    private var mDelayHandler: Handler? = null
+    private val SPLASH_DELAY: Long = 2000 //3 seconds
 
+
+    //aquiboy
     // função obrigatoria para a extensão "OnMapReadyCallback" feita nessa atv para mostrar a coordenada no mapView
     override fun onMapReady(googleMap: GoogleMap?) {
-        /*já mostra as coordenadas no mapView ao abrir a actividade, que foram passadas
-        //pela Tela_listagem_pub_user_comum_Activity por parametro (essas coordenadas) foram adquiridas
-        //automaticamente la na Prin.Act referente ao local atual da pessoa quando abre o app(para caso for add um publicação aq)*/
-        mappub.atualizaCoordenadasNoMapView(googleMap,latitude,longitude,"newPub","subtexto")
 
-         //aq só faz a atualização do marcador, dps que a pessoa confirma a atualização no mapa pela outra função responsavel, (quando clica no MapView)*/
-        googleMap?.setOnMapClickListener(){
-            mappub.atualizaCoordenadasNoMapView(googleMap,latitude,longitude,"newPub","subtexto")
+        val context= getContext()
+        if(context != null) {
+            if (ContextCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                    latitude = location?.latitude
+                    longitude = location?.longitude
+                    // Tem a última localização conhecida. Em algumas situações raras, isso pode ser nulo.
+                }
+
+            }
+        }
+
+            //Initialize the Handler
+        if(latitude!=0.0 && latitude != null && longitude !=0.0 && longitude != null) {
+                /*já mostra as coordenadas no mapView ao abrir a actividade, que foram passadas
+            //pela Tela_listagem_pub_user_comum_Activity por parametro (essas coordenadas) foram adquiridas
+            //automaticamente la na Prin.Act referente ao local atual da pessoa quando abre o app(para caso for add um publicação aq)*/
+                mappub.atualizaCoordenadasNoMapView(googleMap, latitude, longitude, "newPub", "subtexto")
+
+                //aq só faz a atualização do marcador, dps que a pessoa confirma a atualização no mapa pela outra função responsavel, (quando clica no MapView)*/
+                googleMap?.setOnMapClickListener() {
+                    mappub.atualizaCoordenadasNoMapView(googleMap, latitude, longitude, "newPub", "subtexto")
+                }
+
+        }else{
+            toast("erro 01 comunique o administrador")
         }
     }
 
     //OBSERVAÇÃO::::::::::::;; verificar o unreceiver no onPause
     //atualiza as variaveis com as coordenadas novas, selecionadas pelo usuario la no atv Configuracao_google_maps_Activity
-    inner class broadcastReceive:BroadcastReceiver(){
+    /*---inner class broadcastReceive:BroadcastReceiver(){
         override fun onReceive(context: Context?,intent: Intent?){
             latitude = intent?.getStringExtra("latMap")?.toDouble()
             longitude = intent?.getStringExtra("logMap")?.toDouble()
   //          context?.unregisterReceiver(broadcastReceive())
         }
-    }
+    } */
     val pubuser = Pubuser()
 
     //CHAMA A FUNCAO CASO O DISPOSITIVO NÃO TENHA PERMISSAO
@@ -347,7 +397,7 @@ class Tela_add_pub_user_comum_Fragment() : DialogFragment(), OnMapReadyCallback 
                 val campo4 = campo4a.text.toString()
                 val campo5 = campo5a.text.toString()
 
-        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && nome != ""  && contato != "" && categoria != "") {
+        if(pubuser.img1 != "" && pubuser.img2 != "" && pubuser.img3 != "" && pubuser.img4 != "" && nome != "" && categoria != "") {
             if (Validacpf().validateEmailFormat(email) || email == "") {
                 pubuser.nome = nome;
                 pubuser.redesocial = redesocial

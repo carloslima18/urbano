@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_border"
     android:padding="15dp"
-    tools:context=".Tela_add_pub_user_comum_Fragment">
+    tools:context=".usuario_comum.Tela_add_pub_user_comum_Fragment">
 
 
     <ScrollView

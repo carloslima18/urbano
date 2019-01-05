@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Tela_altera_e_exclui_pub_user_comum_Fragment">
+    tools:context=".usuario_comum.Tela_altera_e_exclui_pub_user_comum_Fragment">
 
 
     <ScrollView
